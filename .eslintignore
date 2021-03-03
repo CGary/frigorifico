@@ -1,4 +1,5 @@
 .git/**
 node_modules/**
-dist/**
+server-build/**
+client-build/**
 package-lock.json
