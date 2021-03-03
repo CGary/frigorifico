@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setPass, dialogoState } from "../../../redux/actions";
+import { setPass, dialogoState } from "../../redux/actions";
 import { rutaSetPass } from "../rutas";
 import md5 from "md5";
 import { setpass_fail, setpass_same, setpass_ok } from "../msg";
-import { errorPeticion } from "../../msgGeneral";
+// import { errorPeticion } from "../../msgGeneral";
+const errorPeticion = "error general de peticion";
 
 export default () => {
   const dispatch = useDispatch();

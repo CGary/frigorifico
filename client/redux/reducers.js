@@ -1,4 +1,4 @@
-import { segReducer } from "../brl/seguridad/reducer";
+import { segReducer } from "../brlSeguridad/reducer";
 
 export default (state = {}, action) => {
   return {

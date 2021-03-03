@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { dialogoState } from "../../../redux/actions";
+import { dialogoState } from "../../redux/actions";
 import { rutaChangePass } from "../rutas";
 import md5 from "md5";
 import { changepass_nomath, changepass_same, changepass_fail } from "../msg";
 import { changepass_ok } from "../msg";
-import { errorPeticion } from "../../msgGeneral";
+// import { errorPeticion } from "../../msgGeneral";
+const errorPeticion = "error general de peticion";
 
 export default () => {
   const dispatch = useDispatch();

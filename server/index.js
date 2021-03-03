@@ -2,13 +2,14 @@ import "dotenv/config";
 import "./services/logger";
 import { app, initApp } from "./services/application";
 import { appConfig } from "./tools";
+import rutasLogin from "./brlSeguridad/rutas";
 
 const init = async () => {
   try {
     await initApp();
     appConfig(app);
-    // const rutasApi = [];
-    // app.use("/api-v1", rutasApi);
+    const rutasApi = [rutasLogin];
+    app.use("/api-v1", rutasApi);
 
     console.log("servidor Inicializado");
   } catch (err) {

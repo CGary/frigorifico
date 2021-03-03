@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { logout, dialogoState } from "../../../redux/actions";
+import { logout, dialogoState } from "../../redux/actions";
 import { rutaLogout } from "../rutas";
 import axios from "axios";
-import { errorPeticion } from "../../msgGeneral";
+// import { errorPeticion } from "../../msgGeneral";
+const errorPeticion = "error general de peticion";
 
 export default () => {
   const dispatch = useDispatch();

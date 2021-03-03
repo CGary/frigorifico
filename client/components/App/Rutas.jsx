@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Switch /* , Route */, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-// import Alogin from "../views/Alogin";
+import Alogin from "../pages/Alogin";
 
 const Rutas = () => {
   return (
     <Switch>
-      {/* <Route exact path={["/", "/Alogin"]} component={Alogin}></Route> */}
-
+      <Route exact path={["/", "/Alogin"]} component={Alogin}></Route>
       <Redirect to="/" />
     </Switch>
   );

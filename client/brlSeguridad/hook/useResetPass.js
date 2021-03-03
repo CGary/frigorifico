@@ -1,9 +1,10 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { dialogoState } from "../../../redux/actions";
+import { dialogoState } from "../../redux/actions";
 import { rutaResetPass } from "../rutas";
 import { resetpass_mail, resetpass_nohay } from "../msg";
-import { errorPeticion } from "../../msgGeneral";
+// import { errorPeticion } from "../../msgGeneral";
+const errorPeticion = "error general de peticion";
 
 export default () => {
   const { goBack } = useHistory();

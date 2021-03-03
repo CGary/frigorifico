@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
-import { login, dialogoState } from "../../../redux/actions";
+import { login, dialogoState } from "../../redux/actions";
 import { rutaLogin } from "../rutas";
 import axios from "axios";
 import { login_fail } from "../msg";
-import { errorPeticion } from "../../msgGeneral";
+// import { errorPeticion } from "../../msgGeneral";
 import md5 from "md5";
+const errorPeticion = "error general de peticion";
 
 export default () => {
   const dispatch = useDispatch();
