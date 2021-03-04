@@ -3,7 +3,7 @@ import "./services/logger";
 import { app, initApp } from "./services/application";
 import rutasLogin from "./brlSeguridad/rutas";
 
-import * as admin from "firebase-admin";
+// import * as admin from "firebase-admin";
 // import serviceAccount from "../serviceAccountKey.json";
 
 const init = async () => {
@@ -19,15 +19,16 @@ const init = async () => {
 };
 
 init();
-const serviceAccount = { pepe: "true" };
-try {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    // databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
-  });
-} catch (error) {
-  console.log({ error });
-}
+
+// const serviceAccount = { pepe: "true" };
+// try {
+//   admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//     // databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+//   });
+// } catch (error) {
+//   console.log({ error });
+// }
 
 // admin
 //   .auth()

@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import MainStyles from "../../MainStyles";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Rutas from "./Rutas";
+import "firebase/auth";
 
 export default function App() {
   const theme = createMuiTheme({

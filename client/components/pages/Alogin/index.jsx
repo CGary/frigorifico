@@ -5,10 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
-// import { useLogin } from "../../../brlSeguridad/hook";
+import { useLogin } from "../../../brlSeguridad/hook";
 
 export default function Alogin(props) {
-  // const { sendLogin } = useLogin();
+  console.log({ Alogin: "render" });
+  const { sendLogin } = useLogin();
 
   const onClick_pass = (e) => {
     e.preventDefault();
@@ -17,9 +18,9 @@ export default function Alogin(props) {
 
   const handler_onSubmit = (e) => {
     e.preventDefault();
-    // const user = document.getElementById("user").value;
-    // const pass = document.getElementById("pass").value;
-    // sendLogin(user, pass);
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+    sendLogin(user, pass);
   };
 
   return (

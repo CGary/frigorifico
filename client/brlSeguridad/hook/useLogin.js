@@ -1,42 +1,58 @@
 import { useDispatch } from "react-redux";
-import { login, dialogoState } from "../../redux/actions";
-import { rutaLogin } from "../rutas";
-import axios from "axios";
-import { login_fail } from "../msg";
+import { login /* , dialogoState */ } from "../../redux/actions";
+// import axios from "axios";
+// import { login_fail } from "../msg";
 // import { errorPeticion } from "../../msgGeneral";
-import md5 from "md5";
+import { useAuth, useUser } from "reactfire";
 const errorPeticion = "error general de peticion";
+//     email: "user@example.com",
+//     emailVerified: false,
+//     phoneNumber: "+11234567890",
+//     password: "secretPassword",
 
 export default () => {
   const dispatch = useDispatch();
+  const auth = useAuth();
+  const user = useUser();
+  console.log({ user });
 
   const sendLogin = async (dsUser, dsPass) => {
-    const query = {
-      dsUser,
-      dsPass: md5(dsPass),
-    };
     try {
-      const response = await rutaLogin(query);
-      if (!response.icLogin) {
-        dispatch({
-          type: dialogoState,
-          payload: { isVisible: true, content: login_fail },
-        });
-      } else {
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${response.token}`;
-      }
+      const response = await auth.signInWithEmailAndPassword(dsUser, dsPass);
+      // console.log(response);
+      const { displayName, email, emailVerified, phoneNumber } = response.user;
+      // dispatch({
+      //   type: dialogoState,
+      //   payload: { isVisible: true, content: login_fail },
+      // });
+
+      // axios.defaults.headers.common[
+      //   "Authorization"
+      // ] = `Bearer ${response.token}`;
+      // console.log({
+      //   icLogin: true,
+      //   displayName,
+      //   email,
+      //   emailVerified,
+      //   phoneNumber,
+      // });
       dispatch({
         type: login,
-        payload: response,
+        payload: {
+          icLogin: true,
+          displayName,
+          email,
+          emailVerified,
+          phoneNumber,
+        },
       });
     } catch (err) {
       console.log(err);
-      dispatch({
-        type: dialogoState,
-        payload: { isVisible: true, content: errorPeticion },
-      });
+      if (err.message) {
+        alert(err.message);
+      } else {
+        alert(errorPeticion);
+      }
     }
   };
 

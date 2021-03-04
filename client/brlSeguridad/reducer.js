@@ -1,4 +1,4 @@
-import { login, setPass, logout } from "../redux/actions";
+import { login, logout } from "../redux/actions";
 
 export const initialState = {
   icLogin: false,
@@ -7,11 +7,6 @@ export const initialState = {
 export const segReducer = (state = initialState, action) => {
   switch (action.type) {
     case login:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    case setPass:
       return {
         ...state,
         ...action.payload,
