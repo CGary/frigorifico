@@ -1,29 +1,34 @@
 import * as React from "react";
-import { MainForms, BigText, LinkText } from "../../styled";
+import { MainForms } from "../../styled";
 // import Logo from "../../../images/cardon-iv.png";
+import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { useLogin } from "../../../brlSeguridad/hook";
+import Link from "@material-ui/core/Link";
+// import { useLogin } from "../../../brlSeguridad/hook";
 
 export default function Alogin(props) {
-  const { sendLogin } = useLogin();
+  // const { sendLogin } = useLogin();
 
-  const onClick_pass = () => {
+  const onClick_pass = (e) => {
+    e.preventDefault();
     props.history.push("/Aresetpass");
   };
 
   const handler_onSubmit = (e) => {
     e.preventDefault();
-    const user = document.getElementById("user").value;
-    const pass = document.getElementById("pass").value;
-    sendLogin(user, pass);
+    // const user = document.getElementById("user").value;
+    // const pass = document.getElementById("pass").value;
+    // sendLogin(user, pass);
   };
 
   return (
     <MainForms>
       {/* <img src={Logo} /> */}
       <div>logo</div>
-      <BigText>Inicio de Sesión</BigText>
+      <Typography component="h1" variant="h5">
+        Inicio de Sesión
+      </Typography>
       <form onSubmit={handler_onSubmit}>
         <TextField
           autoFocus
@@ -45,7 +50,9 @@ export default function Alogin(props) {
           Iniciar Sesión
         </Button>
       </form>
-      <LinkText onClick={onClick_pass}>¿Olvidaste tu Contraseña?</LinkText>
+      <Link href="#" variant="body1" onClick={onClick_pass}>
+        ¿Olvidaste tu Contraseña?
+      </Link>
     </MainForms>
   );
 }

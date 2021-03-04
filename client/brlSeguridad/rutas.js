@@ -1,4 +1,4 @@
-import { post } from "../tools";
+import { post } from "../../common";
 
 export const rutaLogin = (...params) => post("login", ...params);
 

@@ -196,23 +196,4 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-button {
-    /* font-size: var(----px-font-body); */
-}
-
-a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.table-th-bold {
-    font-weight: 700;
-}
-
-.dataTables_scrollHeadInner{  width:100% !important; }
-.dataTables_scrollHeadInner table{  width:100% !important; }
-
-.MuiButton-label {
-    text-transform: none;
-}
 `;

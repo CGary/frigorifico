@@ -8,10 +8,16 @@ export default function App() {
   const theme = createMuiTheme({
     palette: {
       primary: {
-        light: "#62d0ff",
-        main: "#009fe0",
-        dark: "#0071ae",
-        contrastText: "white",
+        main: "#1976d2",
+        light: "#63a4ff",
+        dark: "#004ba0",
+        contrastText: "#fff",
+      },
+      secondary: {
+        main: "#d32f2f",
+        light: "#ff6659",
+        dark: "#9a0007",
+        contrastText: "#fff",
       },
     },
   });

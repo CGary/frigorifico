@@ -5,7 +5,7 @@ import store from "./redux";
 import App from "./components/App";
 import axios from "axios";
 
-window.prosur = {
+window.plataforma = {
   device: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
   )
