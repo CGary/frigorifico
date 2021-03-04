@@ -1,5 +1,6 @@
 server-build/
 client-build/
+serviceAccountKey.json
 # Logs
 logs
 *.log
