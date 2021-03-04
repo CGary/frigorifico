@@ -3,9 +3,13 @@ import { BrowserRouter } from "react-router-dom";
 import MainStyles from "../../MainStyles";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Rutas from "./Rutas";
-import "firebase/auth";
+import firebase from "firebase/app";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/actions";
 
 export default function App() {
+  const [loading, setLoading] = React.useState(true);
+  const dispatch = useDispatch();
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -22,12 +26,22 @@ export default function App() {
       },
     },
   });
+  React.useEffect(() => {
+    // console.log({ firebase });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        dispatch({ type: logout });
+      }
+      setLoading(false);
+      console.log({ user });
+    });
+  }, []);
   return (
     <>
       <MainStyles />
       <BrowserRouter>
         <MuiThemeProvider theme={theme}>
-          <Rutas />
+          {loading ? <div>cargando...</div> : <Rutas />}
         </MuiThemeProvider>
       </BrowserRouter>
     </>

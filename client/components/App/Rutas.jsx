@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
-import { useAuth, useUser } from "reactfire";
-import { login, logout } from "../../redux/actions";
+import { connect } from "react-redux";
 
 import Alogin from "../pages/Alogin";
 import Achangepass from "../pages/Achangepass";
@@ -12,38 +10,15 @@ import Home from "../pages/Home";
 
 const Rutas = (props) => {
   console.log({ Rutas: "render" });
-  const dispatch = useDispatch();
   const { icLogin } = props;
-  const user = useUser();
+  console.log({ rutasProps: props });
 
   const RutasLoged = () => (
     <Switch>
       <Route exact path="/Home" component={Home}></Route>
     </Switch>
   );
-
-  React.useEffect(() => {
-    console.log({ user });
-    if (user.data) {
-      const { displayName, email, emailVerified, phoneNumber } = user.data;
-      dispatch({
-        type: login,
-        payload: {
-          icLogin: true,
-          displayName,
-          email,
-          emailVerified,
-          phoneNumber,
-        },
-      });
-    } else {
-      dispatch({
-        type: logout,
-      });
-    }
-  });
-
-  return user.hasEmitted ? (
+  return (
     <Switch>
       <Route exact path={["/", "/Alogin"]} component={Alogin}>
         {icLogin === true && <Redirect to="/Home" />}
@@ -56,8 +31,6 @@ const Rutas = (props) => {
 
       <Redirect to="/" />
     </Switch>
-  ) : (
-    <div>cargando...</div>
   );
 };
 

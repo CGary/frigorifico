@@ -8,7 +8,6 @@ export const segReducer = (state = initialState, action) => {
   switch (action.type) {
     case login:
       return {
-        ...state,
         ...action.payload,
       };
     case logout:

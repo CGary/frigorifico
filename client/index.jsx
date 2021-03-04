@@ -4,7 +4,8 @@ import { Provider } from "react-redux";
 import store from "./redux";
 import App from "./components/App";
 import axios from "axios";
-import { FirebaseAppProvider } from "reactfire";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 window.plataforma = {
   device: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -30,13 +31,12 @@ const firebaseConfig = {
   appId: "1:266787757316:web:a20a669bf44fbccdd20451",
   measurementId: "G-V8ZE3635QB",
 };
+firebase.initializeApp(firebaseConfig);
 
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        <App />
-      </FirebaseAppProvider>
+      <App />
     </Provider>,
     document.getElementById("app")
   );
