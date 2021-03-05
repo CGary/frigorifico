@@ -1,13 +1,16 @@
 import { useDispatch } from "react-redux";
 import { login /* , dialogoState */ } from "../../redux/actions";
 import firebase from "firebase/app";
+import useLoading from "../../components/common/Loading/useLoading";
 const errorPeticion = "error general de peticion";
 //     email: "user@example.com",
 //     password: "secretPassword",
 export default () => {
   const dispatch = useDispatch();
+  const { setLoading } = useLoading();
 
   const sendLogin = async (dsUser, dsPass) => {
+    setLoading(true);
     try {
       const result = await firebase
         .auth()
@@ -18,7 +21,7 @@ export default () => {
       dispatch({
         type: login,
         payload: {
-          icLogin: true,
+          isLogin: true,
           displayName,
           email,
           uid,
@@ -32,6 +35,7 @@ export default () => {
         alert(errorPeticion);
       }
     }
+    setLoading(false);
   };
 
   return {

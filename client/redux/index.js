@@ -13,7 +13,8 @@ const loadFromLocalStorage = () => {
     if (serializedState === null) return undefined;
     serializedState = JSON.parse(serializedState);
 
-    // delete serializedState.
+    delete serializedState.loadingReducer;
+    delete serializedState.segReducer;
 
     return serializedState;
   } catch (err) {

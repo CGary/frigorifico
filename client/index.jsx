@@ -5,6 +5,17 @@ import store from "./redux";
 import App from "./components/App";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { login, logout } from "./redux/actions";
+
+const render = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById("app")
+  );
+};
+let flagRender = false;
 
 const firebaseConfig = {
   apiKey: "AIzaSyCULVT0OJNT8ajZrA70JfpIf7nZ52olYLU",
@@ -17,16 +28,21 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-const render = () => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById("app")
-  );
-};
-
-render();
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    const { displayName, email, uid } = user;
+    store.dispatch({
+      type: login,
+      payload: { isLogin: true, displayName, email, uid },
+    });
+  } else {
+    store.dispatch({ type: logout });
+  }
+  if (!flagRender) {
+    render();
+    flagRender = true;
+  }
+});
 
 // eslint-disable-next-line
 module.hot && module.hot.accept("./components/App", () => render());

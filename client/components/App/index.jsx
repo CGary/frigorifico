@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import MainStyles from "../../MainStyles";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Rutas from "./Rutas";
+import { Loading } from "../common";
 
 export default function App() {
   const theme = createMuiTheme({
@@ -28,6 +29,7 @@ export default function App() {
       <BrowserRouter>
         <MuiThemeProvider theme={theme}>
           <Rutas />
+          <Loading />
         </MuiThemeProvider>
       </BrowserRouter>
     </>

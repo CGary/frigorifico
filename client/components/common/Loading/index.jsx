@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Loading = (props) => {
+  console.log({ Loading: "render" });
   const classes = useStyles();
   return (
     <Backdrop className={classes.backdrop} open={props.isLoading}>

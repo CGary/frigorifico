@@ -1,7 +1,7 @@
 import { login, logout } from "../redux/actions";
 
 export const initialState = {
-  icLogin: false,
+  isLogin: false,
 };
 
 export const segReducer = (state = initialState, action) => {
