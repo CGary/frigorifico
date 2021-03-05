@@ -9,12 +9,12 @@ export default () => {
   const dispatch = useDispatch();
   const { setLoading } = useLoading();
 
-  const sendLogin = async (dsUser, dsPass) => {
+  const sendLogin = async (dsMail, dsPass) => {
     setLoading(true);
     try {
       const result = await firebase
         .auth()
-        .signInWithEmailAndPassword(dsUser, dsPass);
+        .signInWithEmailAndPassword(dsMail, dsPass);
 
       const { displayName, email, uid } = result.user;
 

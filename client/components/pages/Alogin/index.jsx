@@ -18,9 +18,9 @@ export default function Alogin(props) {
 
   const handler_onSubmit = (e) => {
     e.preventDefault();
-    const user = document.getElementById("user").value;
+    const email = document.getElementById("email").value;
     const pass = document.getElementById("pass").value;
-    sendLogin(user, pass);
+    sendLogin(email, pass);
   };
 
   return (
@@ -36,8 +36,9 @@ export default function Alogin(props) {
           variant="outlined"
           required
           fullWidth
-          label="Usuario"
-          id="user"
+          label="Correo Electrónico"
+          type="email"
+          id="email"
         />
         <TextField
           variant="outlined"
