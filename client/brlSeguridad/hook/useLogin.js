@@ -1,40 +1,27 @@
 import { useDispatch } from "react-redux";
 import { login /* , dialogoState */ } from "../../redux/actions";
-// import axios from "axios";
-// import { login_fail } from "../msg";
-// import { errorPeticion } from "../../msgGeneral";
+import firebase from "firebase/app";
 const errorPeticion = "error general de peticion";
 //     email: "user@example.com",
-//     emailVerified: false,
-//     phoneNumber: "+11234567890",
 //     password: "secretPassword",
-
 export default () => {
   const dispatch = useDispatch();
 
   const sendLogin = async (dsUser, dsPass) => {
     try {
-      // dispatch({
-      //   type: dialogoState,
-      //   payload: { isVisible: true, content: login_fail },
-      // });
+      const result = await firebase
+        .auth()
+        .signInWithEmailAndPassword(dsUser, dsPass);
 
-      // axios.defaults.headers.common[
-      //   "Authorization"
-      // ] = `Bearer ${response.token}`;
-      // console.log({
-      //   icLogin: true,
-      //   displayName,
-      //   email,
-      //   emailVerified,
-      //   phoneNumber,
-      // });
+      const { displayName, email, uid } = result.user;
+
       dispatch({
         type: login,
         payload: {
           icLogin: true,
-          dsUser,
-          dsPass,
+          displayName,
+          email,
+          uid,
         },
       });
     } catch (err) {

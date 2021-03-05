@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/actions";
+import firebase from "firebase/app";
 // import { errorPeticion } from "../../msgGeneral";
 const errorPeticion = "error general de peticion";
 
@@ -8,6 +9,7 @@ export default () => {
 
   const sendLogout = async () => {
     try {
+      firebase.auth().signOut();
       dispatch({
         type: logout,
       });
