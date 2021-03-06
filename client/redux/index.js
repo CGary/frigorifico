@@ -2,9 +2,15 @@ import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
 
+const arrUnstoredReducers = ["segReducer", "loadingReducer"];
+
 const saveToLocalStorage = (state) => {
-  const serializedState = JSON.stringify(state);
-  localStorage.setItem("state", serializedState);
+  const storedState = { ...state };
+
+  arrUnstoredReducers.map((reducer) => delete storedState[reducer]);
+
+  const stringifyState = JSON.stringify(storedState);
+  localStorage.setItem("state", stringifyState);
 };
 
 const loadFromLocalStorage = () => {
@@ -13,8 +19,7 @@ const loadFromLocalStorage = () => {
     if (serializedState === null) return undefined;
     serializedState = JSON.parse(serializedState);
 
-    delete serializedState.loadingReducer;
-    delete serializedState.segReducer;
+    arrUnstoredReducers.map((reducer) => delete serializedState[reducer]);
 
     return serializedState;
   } catch (err) {
