@@ -5,15 +5,15 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
-// import { useResetPass } from "../../../brlSeguridad/hook";
+import { useResetPass } from "../../../brlSeguridad/hook";
 
 export default function Aresetpass(props) {
-  // const { sendMail } = useResetPass();
+  const { sendMail } = useResetPass();
 
   const handler_onSubmit = async (e) => {
     e.preventDefault();
-    props.history.push("/Achangepass");
-    // sendMail(document.getElementById("email").value);
+
+    sendMail(document.getElementById("email").value);
   };
 
   const onClick_volver = () => props.history.goBack();

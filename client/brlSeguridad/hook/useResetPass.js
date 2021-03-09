@@ -1,36 +1,27 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { dialogoState } from "../../redux/actions";
-import { rutaResetPass } from "../rutas";
-import { resetpass_mail, resetpass_nohay } from "../msg";
-// import { errorPeticion } from "../../msgGeneral";
+import firebase from "firebase/app";
+import useLoading from "../../components/common/Loading/useLoading";
+import { resetpass_mail } from "../msg";
 const errorPeticion = "error general de peticion";
 
 export default () => {
   const { goBack } = useHistory();
-  const dispatch = useDispatch();
+  const { setLoading } = useLoading();
 
-  const sendMail = async (dsCorreo) => {
+  const sendMail = async (email) => {
     try {
-      const response = await rutaResetPass({ dsCorreo });
-      if (response.icCorreoEnviado) {
-        dispatch({
-          type: dialogoState,
-          payload: { isVisible: true, content: resetpass_mail },
-        });
-        goBack();
-      } else {
-        dispatch({
-          type: dialogoState,
-          payload: { isVisible: true, content: resetpass_nohay },
-        });
-      }
+      setLoading(true);
+      await firebase.auth().sendPasswordResetEmail(email);
+      alert(resetpass_mail);
+      setLoading(false);
+      goBack();
     } catch (err) {
       console.log(err);
-      dispatch({
-        type: dialogoState,
-        payload: { isVisible: true, content: errorPeticion },
-      });
+      if (err.message) {
+        alert(err.message);
+      } else {
+        alert(errorPeticion);
+      }
     }
   };
 

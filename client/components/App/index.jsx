@@ -2,7 +2,7 @@ import * as React from "react";
 import { BrowserRouter } from "react-router-dom";
 import MainStyles from "../../MainStyles";
 import ThemeProvider from "./ThemeProvider";
-import Rutas from "./Rutas";
+import Init from "./Init";
 import { Loading } from "../common";
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
       <MainStyles />
       <BrowserRouter>
         <ThemeProvider>
-          <Rutas />}
+          <Init />
           <Loading />
         </ThemeProvider>
       </BrowserRouter>

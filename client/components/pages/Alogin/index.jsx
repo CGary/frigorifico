@@ -13,7 +13,7 @@ export default function Alogin(props) {
 
   const onClick_pass = (e) => {
     e.preventDefault();
-    props.history.push("/Aresetpass");
+    props.history.push("/resetpass");
   };
 
   const handler_onSubmit = (e) => {

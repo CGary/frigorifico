@@ -9,8 +9,6 @@ export const changepass_same =
 export const changepass_fail = "La antigua contraseña no es correcta.";
 export const changepass_ok = "Su contraseña fue cambiada con éxito.";
 
-export const resetpass_mail =
-  "Se envió un correo electrónico con la nueva contraseña.";
-export const resetpass_nohay = "El correo proporcioando no existe.";
+export const resetpass_mail = "Se envió un link a su correo electrónico.";
 
 export const setpass_same = "Las contaseñas no coinciden.";
