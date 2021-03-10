@@ -1,6 +1,5 @@
 import * as React from "react";
 import { MainForms } from "../../styled";
-// import Logo from "../../../images/cardon-iv.png";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -20,8 +19,6 @@ export default function Aresetpass(props) {
 
   return (
     <MainForms>
-      {/* <img src={Logo} /> */}
-      <div>logo</div>
       <Typography component="h1" variant="h5">
         Reiniciar Contraseña
       </Typography>
