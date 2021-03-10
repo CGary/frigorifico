@@ -1,6 +1,6 @@
 import ContainerVertical from "./ContainerVertical";
 import ContainerHorizontal from "./ContainerHorizontal";
-import LinkText from "./LinkText";
 import MainForms from "./MainForms";
+import MainContainer from "./MainContainer";
 
-export { ContainerVertical, ContainerHorizontal, LinkText, MainForms };
+export { ContainerVertical, ContainerHorizontal, MainForms, MainContainer };

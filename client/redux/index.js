@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
 
-const arrUnstoredReducers = ["segReducer", "loadingReducer"];
+const arrUnstoredReducers = ["segReducer", "loadingReducer", "dialogoReducer"];
 
 const saveToLocalStorage = (state) => {
   const storedState = { ...state };

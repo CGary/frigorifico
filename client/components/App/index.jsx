@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import MainStyles from "../../MainStyles";
 import ThemeProvider from "./ThemeProvider";
 import Init from "./Init";
-import { Loading } from "../common";
+import { Loading, Dialogo } from "../common";
 
 export default function App() {
   console.log({ App: "renders" });
@@ -15,6 +15,7 @@ export default function App() {
         <ThemeProvider>
           <Init />
           <Loading />
+          <Dialogo />
         </ThemeProvider>
       </BrowserRouter>
     </>

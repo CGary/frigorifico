@@ -8,7 +8,7 @@ export default styled.div`
   form {
     display: grid;
     grid-row-gap: 10px;
-    min-width: 350px;
+    width: 100%;
   }
   img {
     height: 64px;

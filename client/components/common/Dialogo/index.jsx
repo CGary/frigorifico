@@ -1,4 +1,6 @@
-import React, { useCallback } from "react";
+import * as React from "react";
+import { connect } from "react-redux";
+import { dialogoClose } from "../../../redux/actions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -6,19 +8,33 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const ConfirmationDialog = () => {
-  const options = {
-    title: "Are you sure?",
-    description: "",
-    confirmationText: "Ok",
-    cancellationText: "Cancel",
-    dialogProps: {},
-    confirmationButtonProps: {},
-    cancellationButtonProps: {},
+const ConfirmationDialog = (props) => {
+  const {
+    open,
+    title,
+    description,
+    confirmationText,
+    cancellationText,
+    type,
+    resolve,
+    dispatch,
+  } = props;
+
+  const handlerClose = () => {
+    console.log("close");
+    dispatch({ type: dialogoClose });
+  };
+  const handlerClick_cancel = () => {
+    resolve?.("cancel");
+    handlerClose();
+  };
+  const handlerClick_confirm = () => {
+    resolve?.("confirm");
+    handlerClose();
   };
 
   return (
-    <Dialog fullWidth {...dialogProps} open={true} onClose={onClose}>
+    <Dialog fullWidth open={open} onClose={handlerClose}>
       {title && <DialogTitle>{title}</DialogTitle>}
       {description && (
         <DialogContent>
@@ -26,14 +42,10 @@ const ConfirmationDialog = () => {
         </DialogContent>
       )}
       <DialogActions>
-        <Button {...cancellationButtonProps} onClick={onCancel}>
-          {cancellationText}
-        </Button>
-        <Button
-          color="primary"
-          {...confirmationButtonProps}
-          onClick={onConfirm}
-        >
+        {type === "confirm" && (
+          <Button onClick={handlerClick_cancel}>{cancellationText}</Button>
+        )}
+        <Button color="primary" onClick={handlerClick_confirm}>
           {confirmationText}
         </Button>
       </DialogActions>
@@ -41,4 +53,5 @@ const ConfirmationDialog = () => {
   );
 };
 
-export default ConfirmationDialog;
+const mapStateToProps = (reducers) => reducers.dialogoReducer;
+export default connect(mapStateToProps)(ConfirmationDialog);

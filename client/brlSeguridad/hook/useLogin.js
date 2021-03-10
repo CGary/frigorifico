@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { login /* , dialogoState */ } from "../../redux/actions";
 import firebase from "firebase/app";
-import useLoading from "../../components/common/Loading/useLoading";
+import { useLoading, useDialogo } from "../../components/common";
 const errorPeticion = "error general de peticion";
 
 //     email: "user@example.com",
@@ -10,6 +10,7 @@ const errorPeticion = "error general de peticion";
 export default () => {
   const dispatch = useDispatch();
   const { setLoading } = useLoading();
+  const { msgAlert } = useDialogo();
 
   const sendLogin = async (dsMail, dsPass) => {
     setLoading(true);
@@ -32,9 +33,9 @@ export default () => {
     } catch (err) {
       console.log(err);
       if (err.message) {
-        alert(err.message);
+        msgAlert({ description: err.message });
       } else {
-        alert(errorPeticion);
+        msgAlert({ description: errorPeticion });
       }
     }
     setLoading(false);
