@@ -32,6 +32,9 @@ export default function Init() {
       }
 
       firebase.auth().onAuthStateChanged((user) => {
+        console.log("onAuthStateChanged");
+        isInitializingUser && setLoading(false);
+
         if (user) {
           const { displayName, email, uid } = user;
           dispatch({
@@ -51,7 +54,6 @@ export default function Init() {
             },
           });
         }
-        setLoading(false);
       });
     }
   }, []);

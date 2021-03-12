@@ -22,4 +22,4 @@ const Loading = (props) => {
 };
 
 const mapStateToProps = (reducers) => reducers.loadingReducer;
-export default connect(mapStateToProps, {})(Loading);
+export default connect(mapStateToProps)(Loading);
