@@ -3,6 +3,7 @@ import { useStylesNavContent } from "./styles";
 import { Avatar, Box, Divider, List } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
+import NavItem from "./NavItem";
 
 const user = {
   avatar: "", //"/static/images/avatars/avatar_6.png",
@@ -31,7 +32,16 @@ export default function NavContent() {
       </Box>
       <Divider />
       <Box p={2}>
-        <List></List>
+        <List>
+          <NavItem href={"/faena"} title={"Faena"} />
+          <NavItem href={"/ingreso"} title={"Registrar Ingreso"} />
+          <NavItem href={"/recibo"} title={"Registrar Recibo"} />
+          <NavItem href={"/cliente"} title={"Agregar Cliente"} />
+          <NavItem href={"/reportes"} title={"Reportes"} />
+          <NavItem href={"/adm"} title={"Adminstración"} />
+          <Divider />
+          <NavItem href={"/cerrar"} title={"Cerrar Sesión"} />
+        </List>
       </Box>
       <Box flexGrow={1} />
     </Box>

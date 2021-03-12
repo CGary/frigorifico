@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink as RouterLink } from "react-router-dom";
-import clsx from "clsx";
-import PropTypes from "prop-types";
 import { Button, ListItem, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,15 +34,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
+const NavItem = ({ href, icon: Icon, title, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <ListItem
-      className={clsx(classes.item, className)}
-      disableGutters
-      {...rest}
-    >
+    <ListItem className={classes.item} disableGutters {...rest}>
       <Button
         activeClassName={classes.active}
         className={classes.button}
@@ -56,13 +50,6 @@ const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
       </Button>
     </ListItem>
   );
-};
-
-NavItem.propTypes = {
-  className: PropTypes.string,
-  href: PropTypes.string,
-  icon: PropTypes.elementType,
-  title: PropTypes.string,
 };
 
 export default NavItem;

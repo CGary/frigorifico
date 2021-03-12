@@ -7,18 +7,23 @@ import MainLayout from "../layout/MainLayout";
 
 import Alogin from "../pages/Alogin";
 import Aresetpass from "../pages/Aresetpass";
-import Home from "../pages/Home";
+
+import Faena from "../pages/Faena";
+import Cerrar from "../pages/Cerrar";
 
 export default function Routes() {
-  console.log({ Routes: "render" });
   const { isLogin } = useSelector((state) => state.segReducer);
+  console.log({ Routes: "render", isLogin });
 
   const LoggedInRoutes = () => (
     <Switch>
       <DashLayout>
-        <Route exact path={["/", "/home"]} component={Home}></Route>
+        <Route exact path="/faena" component={Faena}></Route>
+        <Route exact path={["/", "/cerrar"]} component={Cerrar}></Route>
+        <Route path="*">
+          <Redirect to="/faena" />
+        </Route>
       </DashLayout>
-      <Redirect to="/home" />
     </Switch>
   );
 
@@ -27,8 +32,10 @@ export default function Routes() {
       <MainLayout>
         <Route exact path={["/", "/login"]} component={Alogin}></Route>
         <Route exact path="/resetpass" component={Aresetpass}></Route>
+        <Route path="*">
+          <Redirect to="/login" />
+        </Route>
       </MainLayout>
-      <Redirect to="/login" />
     </Switch>
   );
 
