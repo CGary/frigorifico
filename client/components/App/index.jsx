@@ -6,8 +6,6 @@ import Init from "./Init";
 import { Loading, Dialogo } from "../common";
 
 export default function App() {
-  console.log({ App: "renders" });
-
   return (
     <>
       <MainStyles />

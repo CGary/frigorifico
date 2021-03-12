@@ -20,8 +20,8 @@ export default function Opcion() {
       <Button
         onClick={handleClick}
         size="large"
-        startIcon={<MdSettings />}
-        endIcon={<MdKeyboardArrowDown />}
+        startIcon={<MdSettings size="28px" />}
+        endIcon={<MdKeyboardArrowDown size="28px" />}
       />
       <Menu
         anchorEl={anchorEl}

@@ -17,9 +17,8 @@ export default function Routes() {
     <Switch>
       <MenuLayout>
         <Route exact path={["/", "/home"]} component={Home}></Route>
-
-        <Redirect to="/home" />
       </MenuLayout>
+      <Redirect to="/home" />
     </Switch>
   );
 
@@ -28,9 +27,8 @@ export default function Routes() {
       <MainLayout>
         <Route exact path={["/", "/login"]} component={Alogin}></Route>
         <Route exact path="/resetpass" component={Aresetpass}></Route>
-
-        <Redirect to="/login" />
       </MainLayout>
+      <Redirect to="/login" />
     </Switch>
   );
 
