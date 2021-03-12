@@ -2,7 +2,7 @@ import * as React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import MenuLayout from "../layout/DashLayout";
+import DashLayout from "../layout/DashLayout";
 import MainLayout from "../layout/MainLayout";
 
 import Alogin from "../pages/Alogin";
@@ -15,9 +15,9 @@ export default function Routes() {
 
   const LoggedInRoutes = () => (
     <Switch>
-      <MenuLayout>
+      <DashLayout>
         <Route exact path={["/", "/home"]} component={Home}></Route>
-      </MenuLayout>
+      </DashLayout>
       <Redirect to="/home" />
     </Switch>
   );

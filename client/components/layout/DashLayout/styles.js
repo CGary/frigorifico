@@ -1,8 +1,29 @@
-import styled from "styled-components";
+import { makeStyles } from "@material-ui/core";
 
-export const ContainerConfig = styled.div`
-  .MuiButton-root {
-    text-transform: none;
-    color: #fff;
-  }
-`;
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.dark,
+    display: "flex",
+    height: "100%",
+    overflow: "hidden",
+    width: "100%",
+  },
+  wrapper: {
+    display: "flex",
+    flex: "1 1 auto",
+    overflow: "hidden",
+    [theme.breakpoints.up("md")]: {
+      paddingLeft: 256,
+    },
+  },
+  contentContainer: {
+    display: "flex",
+    flex: "1 1 auto",
+    overflow: "hidden",
+  },
+  content: {
+    flex: "1 1 auto",
+    height: "100%",
+    overflow: "auto",
+  },
+}));

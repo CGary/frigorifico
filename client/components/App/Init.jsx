@@ -8,12 +8,12 @@ import Routes from "./Routes";
 
 export default function Init() {
   console.log({ Init: "render" });
-  const { isLoading } = useSelector((state) => state.segReducer);
+  const { isInitializingUser } = useSelector((state) => state.segReducer);
   const dispatch = useDispatch();
   const { setLoading } = useLoading();
 
   React.useEffect(() => {
-    if (isLoading) {
+    if (isInitializingUser) {
       setLoading(true);
       const firebaseConfig = {
         apiKey: "AIzaSyCULVT0OJNT8ajZrA70JfpIf7nZ52olYLU",
@@ -37,7 +37,7 @@ export default function Init() {
           dispatch({
             type: login,
             payload: {
-              isLoading: false,
+              isInitializingUser: false,
               displayName,
               email,
               uid,
@@ -47,7 +47,7 @@ export default function Init() {
           dispatch({
             type: logout,
             payload: {
-              isLoading: false,
+              isInitializingUser: false,
             },
           });
         }
@@ -56,5 +56,5 @@ export default function Init() {
     }
   }, []);
 
-  return !isLoading && <Routes />;
+  return !isInitializingUser && <Routes />;
 }

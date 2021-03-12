@@ -1,29 +1,14 @@
 import React, { useEffect } from "react";
+import { useStyles } from "./styles";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { Avatar, Box, Divider, Drawer, Hidden, List } from "@material-ui/core";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 const user = {
   avatar: "", //"/static/images/avatars/avatar_6.png",
   jobTitle: "Operador",
   name: "Jose Sanabria",
 };
-
-const useStyles = makeStyles(() => ({
-  mobileDrawer: {
-    width: 256,
-  },
-  desktopDrawer: {
-    width: 256,
-    top: 64,
-    height: "calc(100% - 64px)",
-  },
-  avatar: {
-    cursor: "pointer",
-    width: 64,
-    height: 64,
-  },
-}));
 
 export default function NavBar({ onMobileClose, openMobile }) {
   console.log({ NavBar: "render" });
@@ -64,8 +49,8 @@ export default function NavBar({ onMobileClose, openMobile }) {
     <>
       <Hidden mdUp>
         <Drawer
-          anchor="left"
           classes={{ paper: classes.mobileDrawer }}
+          anchor="left"
           onClose={onMobileClose}
           open={openMobile}
           variant="temporary"
@@ -75,8 +60,8 @@ export default function NavBar({ onMobileClose, openMobile }) {
       </Hidden>
       <Hidden smDown>
         <Drawer
-          anchor="left"
           classes={{ paper: classes.desktopDrawer }}
+          anchor="left"
           open
           variant="persistent"
         >
