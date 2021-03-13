@@ -1,46 +1,58 @@
 import * as React from "react";
-import { useStylesNavContent } from "./styles";
-import { Avatar, Box, Divider, List } from "@material-ui/core";
+import { BoxAvatar, Avatar } from "./styles";
+import { Box, Divider, List } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import NavItem from "./NavItem";
-
-const user = {
-  avatar: "", //"/static/images/avatars/avatar_6.png",
-  jobTitle: "Operador",
-  name: "Jose Sanabria",
-};
+import { useSelector } from "react-redux";
+import { GiCow, GiGearHammer } from "react-icons/gi";
+import { FaFileInvoiceDollar } from "react-icons/fa";
+import { MdPersonAdd } from "react-icons/md";
+import { HiDocumentReport } from "react-icons/hi";
+import { IoMdLogOut } from "react-icons/io";
+import { CgArrowLongRightE } from "react-icons/cg";
 
 export default function NavContent() {
   console.log({ NavContent: "render" });
-  const classes = useStylesNavContent();
+  const { displayName, email } = useSelector((state) => state.segReducer);
   return (
     <Box height="100%" display="flex" flexDirection="column">
-      <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar
-          className={classes.avatar}
-          component={RouterLink}
-          src={user.avatar}
-          to="/app/account"
-        />
-        <Typography color="textPrimary" variant="h5">
-          {user.name}
+      <BoxAvatar>
+        <Avatar component={RouterLink} src={""} to="/app/account" />
+        <Typography color="textPrimary" variant="h6">
+          {displayName || email}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          Operador
         </Typography>
-      </Box>
+      </BoxAvatar>
       <Divider />
       <Box p={2}>
         <List>
-          <NavItem href={"/faena"} title={"Faena"} />
-          <NavItem href={"/ingreso"} title={"Registrar Ingreso"} />
-          <NavItem href={"/recibo"} title={"Registrar Recibo"} />
-          <NavItem href={"/cliente"} title={"Agregar Cliente"} />
-          <NavItem href={"/reportes"} title={"Reportes"} />
-          <NavItem href={"/adm"} title={"Adminstración"} />
+          <NavItem href={"/faena"} title={"Faena"} icon={GiCow} />
+          <NavItem
+            href={"/ingreso"}
+            title={"Registrar Ingreso"}
+            icon={CgArrowLongRightE}
+          />
+          <NavItem
+            href={"/recibo"}
+            title={"Registrar Recibo"}
+            icon={FaFileInvoiceDollar}
+          />
+          <NavItem
+            href={"/cliente"}
+            title={"Agregar Cliente"}
+            icon={MdPersonAdd}
+          />
+          <NavItem
+            href={"/reportes"}
+            title={"Reportes"}
+            icon={HiDocumentReport}
+          />
+          <NavItem href={"/adm"} title={"Adminstración"} icon={GiGearHammer} />
           <Divider />
-          <NavItem href={"/cerrar"} title={"Cerrar Sesión"} />
+          <NavItem href={"/cerrar"} title={"Cerrar Sesión"} icon={IoMdLogOut} />
         </List>
       </Box>
       <Box flexGrow={1} />
