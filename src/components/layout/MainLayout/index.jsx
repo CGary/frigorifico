@@ -7,7 +7,7 @@ import { AppBar, Toolbar } from "@material-ui/core";
 export default function MainLayout({ children }) {
   return (
     <MainContainer>
-      <AppBar position="static" elevation={0}>
+      <AppBar position="static" elevation={0} style={{ height: "64px" }}>
         <Toolbar>
           <RouterLink to="/">
             <div>logo</div>

@@ -10,15 +10,15 @@ export default function DashLayout({ children }) {
   const classes = useStyles();
 
   return (
-    <MainContainer>
+    <MainContainer className={classes.root}>
       <TopBar />
-      <NavDesktop />
-      <NavMobile />
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>{children}</div>
         </div>
       </div>
+      <NavDesktop />
+      <NavMobile />
     </MainContainer>
   );
 }

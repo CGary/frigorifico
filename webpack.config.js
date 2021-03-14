@@ -4,16 +4,16 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = (env, { mode }) => {
   let entry = {
-    app: path.resolve(__dirname, "client/index.jsx"),
+    app: path.resolve(__dirname, "src/index.jsx"),
   };
 
   let output = {
-    path: path.resolve(__dirname, "client-build"),
+    path: path.resolve(__dirname, "dist"),
   };
 
   let plugins = [
     new HtmlPlugin({
-      template: path.resolve(__dirname, "client/index.html"),
+      template: path.resolve(__dirname, "src/index.html"),
     }),
     new Dotenv(),
   ];

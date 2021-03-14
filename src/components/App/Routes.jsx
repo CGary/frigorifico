@@ -19,7 +19,7 @@ export default function Routes() {
     <Switch>
       <DashLayout>
         <Route exact path="/faena" component={Faena}></Route>
-        <Route exact path={["/", "/cerrar"]} component={Cerrar}></Route>
+        <Route exact path="/cerrar" component={Cerrar}></Route>
         <Route path="*">
           <Redirect to="/faena" />
         </Route>

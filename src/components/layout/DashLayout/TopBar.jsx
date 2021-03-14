@@ -11,7 +11,7 @@ export default function TopBar() {
     dispatch({ type: mobileOpen });
   };
   return (
-    <AppBar position="sticky" elevation={0}>
+    <AppBar position="sticky" elevation={0} style={{ height: "64px" }}>
       <Toolbar>
         <RouterLink to="/">
           <div>logo</div>
