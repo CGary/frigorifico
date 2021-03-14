@@ -2,7 +2,7 @@ import { dialogoOpen, dialogoClose } from "../../../redux/actions";
 
 export const initialState = {
   open: false,
-  title: "Frigorificos de Carne",
+  title: "Frigoríficos de Carne",
   description: "",
   confirmationText: "Aceptar",
   cancellationText: "Cancelar",

@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
-import { useLogin } from "../../../brlSeguridad/hook";
+import { useLogin } from "../../../brlSeguridad/hooks";
 
 export default function Alogin(props) {
   console.log({ Alogin: "render" });

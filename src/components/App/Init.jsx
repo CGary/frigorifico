@@ -2,6 +2,7 @@ import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 import { login, logout } from "../../redux/actions";
 import { useLoading } from "../../components/common";
 import Routes from "./Routes";
@@ -27,6 +28,7 @@ export default function Init() {
 
       try {
         firebase.initializeApp(firebaseConfig);
+        firebase.firestore().settings({ timestampsInSnapshots: true });
       } catch (err) {
         console.log(err);
       }

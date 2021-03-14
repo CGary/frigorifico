@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLogout } from "../../../brlSeguridad/hook";
+import { useLogout } from "../../../brlSeguridad/hooks";
 
 export default function Cerrar() {
   console.log({ Cerrar: "render" });
@@ -7,7 +7,7 @@ export default function Cerrar() {
 
   React.useEffect(() => {
     sendLogout();
-  });
+  }, []);
 
-  return null;
+  return <div>Cerrando Sesión...</div>;
 }

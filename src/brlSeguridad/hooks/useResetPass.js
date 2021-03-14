@@ -1,18 +1,21 @@
+import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import { useLoading, useDialogo } from "../../components/common";
-const errorPeticion = "error general de peticion";
-
-//     email: "user@example.com",
-//     password: "secretPassword",
+import { resetpass_mail } from "../msg";
+import { errorPeticion } from "../../tools/msg";
 
 export default () => {
+  const { goBack } = useHistory();
   const { setLoading } = useLoading();
   const { msgAlert } = useDialogo();
 
-  const sendLogin = async (dsMail, dsPass) => {
-    setLoading(true);
+  const sendMail = async (email) => {
     try {
-      await firebase.auth().signInWithEmailAndPassword(dsMail, dsPass);
+      setLoading(true);
+      await firebase.auth().sendPasswordResetEmail(email);
+      msgAlert({ description: resetpass_mail });
+      setLoading(false);
+      goBack();
     } catch (err) {
       console.log(err);
       if (err.message) {
@@ -21,10 +24,9 @@ export default () => {
         msgAlert({ description: errorPeticion });
       }
     }
-    setLoading(false);
   };
 
   return {
-    sendLogin,
+    sendMail,
   };
 };

@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
-const errorPeticion = "error general de peticion";
 import { useDialogo } from "../../components/common";
+import { errorPeticion } from "../../tools/msg";
 
 export default () => {
   const { msgAlert } = useDialogo();

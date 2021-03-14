@@ -1,10 +1,21 @@
 import * as React from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardHeader, CardContent } from "@material-ui/core";
+import { useAdd } from "../../../brlFaena/hooks";
 
 export default function Form() {
+  console.log({ Form: "render" });
+  const addFaena = useAdd();
   const handler_onSubmit = (e) => {
     e.preventDefault();
+    const izq = document.getElementById("izq").value;
+    const der = document.getElementById("der").value;
+    addFaena({ izq, der }).then(() => {
+      document.getElementById("der").value = "";
+      const inputIzq = document.getElementById("izq");
+      inputIzq.value = "";
+      inputIzq.focus();
+    });
   };
   return (
     <Card>
@@ -15,11 +26,13 @@ export default function Form() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField
+                autoFocus
                 variant="outlined"
                 required
                 fullWidth
                 label="Peso Izquierda"
                 type="number"
+                id="izq"
               />
             </Grid>
             <Grid item xs={12}>
@@ -29,6 +42,7 @@ export default function Form() {
                 fullWidth
                 label="Peso Derecha"
                 type="number"
+                id="der"
               />
             </Grid>
           </Grid>
