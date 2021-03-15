@@ -8,11 +8,12 @@ export default function Form() {
   const addFaena = useAdd();
   const handler_onSubmit = (e) => {
     e.preventDefault();
-    const izq = document.getElementById("izq").value;
-    const der = document.getElementById("der").value;
+    const inputIzq = document.getElementById("izq");
+    const inputDer = document.getElementById("der");
+    const izq = inputIzq.value;
+    const der = inputDer.value;
     addFaena({ izq, der }).then(() => {
-      document.getElementById("der").value = "";
-      const inputIzq = document.getElementById("izq");
+      inputDer.value = "";
       inputIzq.value = "";
       inputIzq.focus();
     });

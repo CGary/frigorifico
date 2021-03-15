@@ -9,6 +9,7 @@ import Alogin from "../pages/Alogin";
 import Aresetpass from "../pages/Aresetpass";
 
 import Faena from "../pages/Faena";
+import Ingreso from "../pages/Ingreso";
 import Cerrar from "../pages/Cerrar";
 
 export default function Routes() {
@@ -19,9 +20,10 @@ export default function Routes() {
     <Switch>
       <DashLayout>
         <Route exact path="/faena" component={Faena}></Route>
+        <Route exact path="/ingreso" component={Ingreso}></Route>
         <Route exact path="/cerrar" component={Cerrar}></Route>
         <Route path="*">
-          <Redirect to="/faena" />
+          <Redirect to="/ingreso" />
         </Route>
       </DashLayout>
     </Switch>

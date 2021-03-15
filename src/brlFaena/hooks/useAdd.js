@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import { useLoading, useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
 import { errorPeticion } from "../../tools/msg";
+import { faena } from "../../firebase/constants";
 
 export default () => {
   const { setLoading } = useLoading();
@@ -32,7 +33,7 @@ export default () => {
       setLoading(true);
       firebase
         .firestore()
-        .collection("faena")
+        .collection(faena)
         .add(query)
         .then(then_add)
         .catch(catchCallback);

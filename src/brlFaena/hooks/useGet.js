@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import { useState, useEffect } from "react";
 import { useLoading, useDialogo } from "../../components/common";
 import { errorPeticion } from "../../tools/msg";
+import { faena, desc } from "../../firebase/constants";
 
 export default () => {
   const { setLoading } = useLoading();
@@ -20,24 +21,23 @@ export default () => {
 
     try {
       const result = await msgConfirm({
-        description: "¿desea eliminar este registro?",
+        description: "¿Desea eliminar este registro?",
       });
-      console.log({ result });
       if (result === "confirm") {
         setLoading(true);
         await firebase.firestore().collection("faena").doc(id).delete();
+        setLoading(false);
       }
     } catch (err) {
       catchCallback(err);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
     firebase
       .firestore()
-      .collection("faena")
-      .orderBy("fecha", "desc")
+      .collection(faena)
+      .orderBy("fecha", desc)
       .onSnapshot((result) => {
         setFaenas([
           ...result.docs.map((item) => ({ ...item.data(), id: item.id })),

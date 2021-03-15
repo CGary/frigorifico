@@ -13,9 +13,7 @@ export default function DashLayout({ children }) {
     <MainContainer className={classes.root}>
       <TopBar />
       <div className={classes.wrapper}>
-        <div className={classes.contentContainer}>
-          <div className={classes.content}>{children}</div>
-        </div>
+        <div className={classes.content}>{children}</div>
       </div>
       <NavDesktop />
       <NavMobile />
