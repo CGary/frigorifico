@@ -2,14 +2,14 @@ import firebase from "firebase/app";
 import { useState, useEffect } from "react";
 import { useLoading, useDialogo } from "../../components/common";
 import { errorPeticion } from "../../tools/msg";
-import { faena, desc } from "../../firebase/constants";
+import { ingreso, desc } from "../../firebase/constants";
 
 export default () => {
   const { setLoading } = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
-  const [faenas, setFaenas] = useState([]);
+  const [ingresos, setIngresos] = useState([]);
 
-  const deleteFaena = async (id) => {
+  const deleteIngreso = async (id) => {
     const catchCallback = (err) => {
       console.log(err);
       if (err.message) {
@@ -25,7 +25,7 @@ export default () => {
       });
       if (result === "confirm") {
         setLoading(true);
-        await firebase.firestore().collection(faena).doc(id).delete();
+        await firebase.firestore().collection(ingreso).doc(id).delete();
         setLoading(false);
       }
     } catch (err) {
@@ -36,17 +36,17 @@ export default () => {
   useEffect(() => {
     firebase
       .firestore()
-      .collection(faena)
+      .collection(ingreso)
       .orderBy("fecha", desc)
       .onSnapshot((result) => {
-        setFaenas([
+        setIngresos([
           ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
         ]);
       });
   }, []);
 
   return {
-    faenas,
-    deleteFaena,
+    ingresos,
+    deleteIngreso,
   };
 };

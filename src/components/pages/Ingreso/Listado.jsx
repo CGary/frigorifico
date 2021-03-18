@@ -4,18 +4,16 @@ import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 // import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
-import { MdEdit } from "react-icons/md";
-// import { useGet } from "../../../brlFaena/hooks";
+import { MdEdit, MdCheck } from "react-icons/md";
+import { useGet } from "../../../brlIngreso/hooks";
+import { getDateUTCToLocalShort } from "../../../tools/formatDate";
 
 export default function Listado() {
-  // const { faenas, deleteFaena } = useGet();
-  const clientes = [];
-  console.log({
-    Listado: "render",
-  });
+  const { ingresos, deleteIngreso } = useGet();
+  console.log({ Listado: "render", ingresos });
   return (
     <Card>
-      <CardHeader title="Clientes" />
+      <CardHeader title="Listado de Ingresos de Servicios" />
       <Divider />
       <CardContent>
         <TableContainer component={Paper}>
@@ -24,18 +22,22 @@ export default function Listado() {
               <TableRow>
                 <TableCell>Eliminar</TableCell>
                 <TableCell>Editar</TableCell>
-                <TableCell>Código</TableCell>
-                <TableCell>Fecha Ingreso</TableCell>
-                <TableCell>Cantidad</TableCell>
-                <TableCell>Limpieza</TableCell>
-                <TableCell>Transporte</TableCell>
+                <TableCell>Cliente</TableCell>
+                <TableCell align="center">Fecha Ingreso</TableCell>
+                <TableCell align="right">Cantidad</TableCell>
+                <TableCell align="center">Limpieza</TableCell>
+                <TableCell align="center">Transporte</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {clientes.map((row) => (
+              {ingresos.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
-                    <IconButton style={{ padding: "0" }} color="secondary">
+                    <IconButton
+                      style={{ padding: "0" }}
+                      color="secondary"
+                      onClick={() => deleteIngreso(row.id)}
+                    >
                       <IoTrashOutline size="28px" />
                     </IconButton>
                   </TableCell>
@@ -44,10 +46,17 @@ export default function Listado() {
                       <MdEdit size="28px" />
                     </IconButton>
                   </TableCell>
-                  <TableCell>{row.fecha?.toDate().toLocaleString()}</TableCell>
-                  <TableCell></TableCell>
-                  <TableCell></TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>{row.cliente}</TableCell>
+                  <TableCell align="center">
+                    {getDateUTCToLocalShort(row.fecha)}
+                  </TableCell>
+                  <TableCell align="right">{row.cantidad}</TableCell>
+                  <TableCell align="center">
+                    {row.isLimpieza && <MdCheck size="28px" />}
+                  </TableCell>
+                  <TableCell align="center" color="primary">
+                    {row.isTransporte && <MdCheck size="28px" />}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

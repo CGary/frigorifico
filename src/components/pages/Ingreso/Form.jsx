@@ -1,30 +1,86 @@
 import * as React from "react";
+import { useState } from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
 import { CardContent, FormControlLabel, Checkbox } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-// import { useAdd } from "../../../brlFaena/hooks";
+import { useAdd } from "../../../brlIngreso/hooks";
 
 export default function Form() {
   console.log({ Form: "render" });
-  // const addFaena = useAdd();
+  const addIngreso = useAdd();
+
+  const [cliente, setcliente] = useState("");
+  const [fecha, setfecha] = useState(null);
+  const [cantidad, setcantidad] = useState("");
+  const [isLimpieza, setisLimpieza] = useState(false);
+  const [isTransporte, setisTransporte] = useState(false);
+
+  const props = {
+    cliente: {
+      label: "Cliente",
+      value: cliente,
+      onChange: (e) => {
+        setcliente(e.target.value);
+      },
+    },
+    cantidad: {
+      type: "number",
+      label: "Cantidad",
+      value: cantidad,
+      onChange: (e) => {
+        setcantidad(e.target.value);
+      },
+    },
+    fecha: {
+      label: "Fecha",
+      value: fecha,
+      onChange: (date) => {
+        setfecha(date);
+      },
+    },
+    isLimpieza: {
+      onChange: (e) => {
+        setisLimpieza(e.target.checked);
+      },
+    },
+    isTransporte: {
+      onChange: (e) => {
+        setisTransporte(e.target.checked);
+      },
+    },
+  };
+
+  const resetValues = () => {
+    setcliente("");
+    setfecha(null);
+    setcantidad("");
+    setisLimpieza(false);
+    setisTransporte(false);
+  };
+
   const handler_onSubmit = (e) => {
     e.preventDefault();
-    const cliente = document.getElementById("cliente").value;
-    const fecha = document.getElementById("fecha").value;
-    const cantidad = document.getElementById("cantidad").value;
-    const isLimpieza = document.getElementById("isLimpieza").checked;
-    const isTransporte = document.getElementById("isTransporte").checked;
-    console.log({ cliente, fecha, cantidad, isLimpieza, isTransporte });
-    // addFaena({ izq, der }).then(() => {
-    //   document.getElementById("der").value = "";
-    //   const inputIzq = document.getElementById("izq");
-    //   inputIzq.value = "";
-    //   inputIzq.focus();
-    // });
+    const query = {
+      cliente,
+      fecha,
+      cantidad,
+      isLimpieza,
+      isTransporte,
+    };
+    // console.log({ query });
+    addIngreso(query).then(() => {
+      resetValues();
+    });
   };
   return (
     <Card>
-      <CardHeader /* subheader="" */ title="Ingreso" />
+      <CardHeader title="Ingreso de Servicio" />
       <Divider />
       <form autoComplete="off" onSubmit={handler_onSubmit}>
         <CardContent>
@@ -35,33 +91,40 @@ export default function Form() {
                 variant="outlined"
                 required
                 fullWidth
-                label="Cliente"
-                id="cliente"
+                {...props.cliente}
               />
+            </Grid>
+            <Grid item xs={12}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  fullWidth
+                  required
+                  disableToolbar
+                  autoOk
+                  variant="inline"
+                  inputVariant="outlined"
+                  format="dd/MM/yyyy"
+                  {...props.fecha}
+                />
+              </MuiPickersUtilsProvider>
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                label="Fecha de Ingreso"
-                id="fecha"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="Cantidad"
-                type="number"
-                id="cantidad"
+                {...props.cantidad}
               />
             </Grid>
             <Grid item xs={6}>
               <FormControlLabel
                 control={
-                  <Checkbox name="checkedC" color="primary" id="isLimpieza" />
+                  <Checkbox
+                    name="checkedC"
+                    color="primary"
+                    id="isLimpieza"
+                    {...props.isLimpieza}
+                  />
                 }
                 label="Limpieza"
               />
@@ -69,7 +132,12 @@ export default function Form() {
             <Grid item xs={6}>
               <FormControlLabel
                 control={
-                  <Checkbox name="checkedC" color="primary" id="isTransporte" />
+                  <Checkbox
+                    name="checkedC"
+                    color="primary"
+                    id="isTransporte"
+                    {...props.isTransporte}
+                  />
                 }
                 label="Transporte"
               />
