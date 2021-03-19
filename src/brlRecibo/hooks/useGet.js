@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import { useState, useEffect } from "react";
 import { useLoading, useDialogo } from "../../components/common";
-import { errorPeticion } from "../../tools/msg";
+import { errorPeticion, msgEliminar } from "../../tools/msg";
 import { recibo, desc } from "../../firebase/constants";
 
 export default () => {
@@ -21,7 +21,7 @@ export default () => {
 
     try {
       const result = await msgConfirm({
-        description: "¿Desea eliminar este registro?",
+        description: msgEliminar,
       });
       if (result === "confirm") {
         setLoading(true);

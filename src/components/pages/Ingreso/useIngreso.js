@@ -12,6 +12,7 @@ export default () => {
 
   const props = {
     cliente: {
+      id: "cliente",
       label: "Cliente",
       value: cliente,
       onChange: (e) => {
@@ -71,6 +72,7 @@ export default () => {
     setcantidad("");
     setisLimpieza(false);
     setisTransporte(false);
+    document.getElementById("cliente").focus();
   };
 
   return props;
