@@ -1,15 +1,13 @@
 import firebase from "firebase/app";
-import { useState, useEffect } from "react";
 import { useLoading, useDialogo } from "../../components/common";
 import { errorPeticion, msgEliminar } from "../../tools/msg";
-import { faena, desc } from "../../firebase/constants";
+import { faena } from "../../firebase/constants";
 
 export default () => {
   const { setLoading } = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
-  const [faenas, setFaenas] = useState([]);
 
-  const deleteFaena = async (id) => {
+  const eliminar = async (id) => {
     const catchCallback = (err) => {
       console.log(err);
       if (err.message) {
@@ -33,20 +31,5 @@ export default () => {
     }
   };
 
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection(faena)
-      .orderBy("fecha", desc)
-      .onSnapshot((result) => {
-        setFaenas([
-          ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
-        ]);
-      });
-  }, []);
-
-  return {
-    faenas,
-    deleteFaena,
-  };
+  return eliminar;
 };

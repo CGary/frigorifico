@@ -5,11 +5,13 @@ import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 // import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
-import { useGet } from "../../../brlCliente/hooks";
+import { useDelete } from "../../../brlCliente/hooks";
+import { useSelector } from "react-redux";
 import { getDateUTCToLocalShort } from "../../../tools/formatDate";
 
 export default function Listado() {
-  const { clientes, eliminar } = useGet();
+  const eliminar = useDelete();
+  const { arrCliente } = useSelector((state) => state.clienteReducer);
   console.log({ Listado: "render" });
   return (
     <Card>
@@ -28,7 +30,7 @@ export default function Listado() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {clientes.map((row) => (
+              {arrCliente.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton

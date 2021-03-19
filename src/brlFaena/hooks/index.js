@@ -1,4 +1,4 @@
 import useAdd from "./useAdd";
-import useGet from "./useGet";
+import useDelete from "./useDelete";
 
-export { useAdd, useGet };
+export { useAdd, useDelete };

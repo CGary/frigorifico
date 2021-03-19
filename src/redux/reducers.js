@@ -2,6 +2,8 @@ import { segReducer } from "../brlSeguridad/reducer";
 import { loadingReducer } from "../components/common/Loading/reducer";
 import { dialogoReducer } from "../components/common/Dialogo/reducer";
 import { navMobileReducer } from "../components/layout/DashLayout/NavBar/reducer";
+import { faenaReducer } from "../brlFaena/reducer";
+import { clienteReducer } from "../brlCliente/reducer";
 
 export default (state = {}, action) => {
   return {
@@ -9,5 +11,7 @@ export default (state = {}, action) => {
     loadingReducer: loadingReducer(state.loadingReducer, action),
     dialogoReducer: dialogoReducer(state.dialogoReducer, action),
     navMobileReducer: navMobileReducer(state.navMobileReducer, action),
+    faenaReducer: faenaReducer(state.faenaReducer, action),
+    clienteReducer: clienteReducer(state.clienteReducer, action),
   };
 };

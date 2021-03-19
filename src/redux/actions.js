@@ -9,3 +9,9 @@ export const dialogoClose = "dialogoClose";
 
 export const mobileOpen = "mobileOpen";
 export const mobileClose = "mobileClose";
+
+export const setFaena = "setFaena";
+export const setArrFaena = "setArrFaena";
+
+export const setCliente = "setCliente";
+export const setArrCliente = "setArrCliente";

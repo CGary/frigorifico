@@ -8,6 +8,7 @@ import {
 } from "@material-ui/pickers";
 import { CardContent } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
+import { SearchCliente } from "../../common";
 import useRecibo from "./useRecibo";
 
 export default function Form() {
@@ -31,12 +32,17 @@ export default function Form() {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                {...props.cliente}
-              />
+              <SearchCliente>
+                {(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    required
+                    fullWidth
+                    {...props.cliente}
+                  />
+                )}
+              </SearchCliente>
             </Grid>
             <Grid item xs={12}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>

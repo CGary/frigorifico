@@ -1,13 +1,11 @@
 import firebase from "firebase/app";
-import { useState, useEffect } from "react";
 import { useLoading, useDialogo } from "../../components/common";
 import { errorPeticion, msgEliminar } from "../../tools/msg";
-import { cliente, desc } from "../../firebase/constants";
+import { cliente } from "../../firebase/constants";
 
 export default () => {
   const { setLoading } = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
-  const [clientes, setClientes] = useState([]);
 
   const eliminar = async (id) => {
     const catchCallback = (err) => {
@@ -33,20 +31,5 @@ export default () => {
     }
   };
 
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection(cliente)
-      .orderBy("fecha", desc)
-      .onSnapshot((result) => {
-        setClientes([
-          ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
-        ]);
-      });
-  }, []);
-
-  return {
-    clientes,
-    eliminar,
-  };
+  return eliminar;
 };
