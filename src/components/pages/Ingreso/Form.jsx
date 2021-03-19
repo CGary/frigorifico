@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -9,80 +8,17 @@ import {
 } from "@material-ui/pickers";
 import { CardContent, FormControlLabel, Checkbox } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-import { useAdd } from "../../../brlIngreso/hooks";
+import useIngreso from "./useIngreso";
 
 export default function Form() {
   console.log({ Form: "render" });
-  const addIngreso = useAdd();
+  const props = useIngreso();
 
-  const [cliente, setcliente] = useState("");
-  const [fecha, setfecha] = useState(null);
-  const [cantidad, setcantidad] = useState("");
-  const [isLimpieza, setisLimpieza] = useState(false);
-  const [isTransporte, setisTransporte] = useState(false);
-
-  const props = {
-    cliente: {
-      label: "Cliente",
-      value: cliente,
-      onChange: (e) => {
-        setcliente(e.target.value);
-      },
-    },
-    cantidad: {
-      type: "number",
-      label: "Cantidad",
-      value: cantidad,
-      onChange: (e) => {
-        setcantidad(e.target.value);
-      },
-    },
-    fecha: {
-      label: "Fecha",
-      value: fecha,
-      onChange: (date) => {
-        setfecha(date);
-      },
-    },
-    isLimpieza: {
-      onChange: (e) => {
-        setisLimpieza(e.target.checked);
-      },
-    },
-    isTransporte: {
-      onChange: (e) => {
-        setisTransporte(e.target.checked);
-      },
-    },
-  };
-
-  const resetValues = () => {
-    setcliente("");
-    setfecha(null);
-    setcantidad("");
-    setisLimpieza(false);
-    setisTransporte(false);
-  };
-
-  const handler_onSubmit = (e) => {
-    e.preventDefault();
-    const query = {
-      cliente,
-      fecha,
-      cantidad,
-      isLimpieza,
-      isTransporte,
-    };
-    // console.log({ query });
-    addIngreso(query).then(() => {
-      resetValues();
-    });
-  };
   return (
     <Card>
       <CardHeader title="Ingreso de Servicio" />
       <Divider />
-      <form autoComplete="off" onSubmit={handler_onSubmit}>
+      <form autoComplete="off" {...props.form}>
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -122,11 +58,10 @@ export default function Form() {
                   <Checkbox
                     name="checkedC"
                     color="primary"
-                    id="isLimpieza"
                     {...props.isLimpieza}
                   />
                 }
-                label="Limpieza"
+                label={props.isLimpieza.label}
               />
             </Grid>
             <Grid item xs={6}>
@@ -135,11 +70,10 @@ export default function Form() {
                   <Checkbox
                     name="checkedC"
                     color="primary"
-                    id="isTransporte"
                     {...props.isTransporte}
                   />
                 }
-                label="Transporte"
+                label={props.isTransporte.label}
               />
             </Grid>
           </Grid>

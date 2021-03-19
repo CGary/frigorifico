@@ -27,7 +27,7 @@ export default function Routes() {
         <Route exact path="/recibo" component={Recibo}></Route>
         <Route exact path="/cliente" component={Cliente}></Route>
         <Route path="*">
-          <Redirect to="/cliente" />
+          <Redirect to="/faena" />
         </Route>
       </DashLayout>
     </Switch>
