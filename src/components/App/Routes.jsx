@@ -10,6 +10,8 @@ import Aresetpass from "../pages/Aresetpass";
 
 import Faena from "../pages/Faena";
 import Ingreso from "../pages/Ingreso";
+import Recibo from "../pages/Recibo";
+import Cliente from "../pages/Cliente";
 import Cerrar from "../pages/Cerrar";
 
 export default function Routes() {
@@ -22,8 +24,10 @@ export default function Routes() {
         <Route exact path="/faena" component={Faena}></Route>
         <Route exact path="/ingreso" component={Ingreso}></Route>
         <Route exact path="/cerrar" component={Cerrar}></Route>
+        <Route exact path="/recibo" component={Recibo}></Route>
+        <Route exact path="/cliente" component={Cliente}></Route>
         <Route path="*">
-          <Redirect to="/ingreso" />
+          <Redirect to="/cliente" />
         </Route>
       </DashLayout>
     </Switch>
