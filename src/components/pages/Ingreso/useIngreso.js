@@ -4,7 +4,8 @@ import { useAdd } from "../../../brlIngreso/hooks";
 export default () => {
   const add = useAdd();
 
-  const [cliente, setcliente] = useState("");
+  const [cliente, setcliente] = useState(null);
+  const [idCliente, setidCliente] = useState(null);
   const [fecha, setfecha] = useState(null);
   const [cantidad, setcantidad] = useState("");
   const [isLimpieza, setisLimpieza] = useState(false);
@@ -15,8 +16,10 @@ export default () => {
       id: "cliente",
       label: "Cliente",
       value: cliente,
-      onChange: (e) => {
-        setcliente(e.target.value);
+      autoFocus: true,
+      onChange: (item) => {
+        setcliente(item.codigo);
+        setidCliente(item.id);
       },
     },
     cantidad: {
@@ -53,12 +56,13 @@ export default () => {
         e.preventDefault();
         const query = {
           cliente,
+          idCliente,
           fecha,
           cantidad,
           isLimpieza,
           isTransporte,
         };
-        // console.log({ query });
+        console.log(query);
         add(query).then(() => {
           resetValues();
         });
@@ -67,7 +71,8 @@ export default () => {
   };
 
   const resetValues = () => {
-    setcliente("");
+    setcliente(null);
+    setidCliente(null);
     setfecha(null);
     setcantidad("");
     setisLimpieza(false);

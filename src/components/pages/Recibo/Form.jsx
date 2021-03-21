@@ -32,17 +32,7 @@ export default function Form() {
               />
             </Grid>
             <Grid item xs={12}>
-              <SearchCliente>
-                {(params) => (
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    required
-                    fullWidth
-                    {...props.cliente}
-                  />
-                )}
-              </SearchCliente>
+              <SearchCliente {...props.cliente} />
             </Grid>
             <Grid item xs={12}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>

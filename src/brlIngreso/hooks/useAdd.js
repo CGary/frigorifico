@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import { useLoading, useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
 import { errorPeticion } from "../../tools/msg";
-import { ingreso } from "../../firebase/constants";
+import { ingreso, cliente } from "../../firebase/constants";
 import { getDateLocalToUTC } from "../../tools/formatDate";
 
 export default () => {
@@ -33,11 +33,20 @@ export default () => {
         resolve();
       };
 
+      const { idCliente, ...rest } = query;
+      const refCliente = firebase
+        .firestore()
+        .collection(cliente)
+        .doc(idCliente);
+
       setLoading(true);
       firebase
         .firestore()
         .collection(ingreso)
-        .add(query)
+        .add({
+          ...rest,
+          refCliente,
+        })
         .then(then_add)
         .catch(catchCallback);
     });

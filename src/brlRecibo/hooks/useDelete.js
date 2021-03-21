@@ -1,15 +1,13 @@
 import firebase from "firebase/app";
-import { useState, useEffect } from "react";
 import { useLoading, useDialogo } from "../../components/common";
 import { errorPeticion, msgEliminar } from "../../tools/msg";
-import { ingreso, desc } from "../../firebase/constants";
+import { recibo } from "../../firebase/constants";
 
 export default () => {
   const { setLoading } = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
-  const [ingresos, setIngresos] = useState([]);
 
-  const deleteIngreso = async (id) => {
+  const eliminar = async (id) => {
     const catchCallback = (err) => {
       console.log(err);
       if (err.message) {
@@ -25,7 +23,7 @@ export default () => {
       });
       if (result === "confirm") {
         setLoading(true);
-        await firebase.firestore().collection(ingreso).doc(id).delete();
+        await firebase.firestore().collection(recibo).doc(id).delete();
         setLoading(false);
       }
     } catch (err) {
@@ -33,20 +31,5 @@ export default () => {
     }
   };
 
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection(ingreso)
-      .orderBy("fecha", desc)
-      .onSnapshot((result) => {
-        setIngresos([
-          ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
-        ]);
-      });
-  }, []);
-
-  return {
-    ingresos,
-    deleteIngreso,
-  };
+  return eliminar;
 };

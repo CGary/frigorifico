@@ -23,18 +23,7 @@ export default function Form() {
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <SearchCliente>
-                {(params) => (
-                  <TextField
-                    {...params}
-                    autoFocus
-                    variant="outlined"
-                    required
-                    fullWidth
-                    {...props.cliente}
-                  />
-                )}
-              </SearchCliente>
+              <SearchCliente {...props.cliente} />
             </Grid>
             <Grid item xs={12}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>

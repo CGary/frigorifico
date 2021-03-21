@@ -1,8 +1,8 @@
 dist/
-serviceAccountKey.json
 .firebase/
 firebase.json
 .firebaserc
+serviceAccountKey.json
 # Logs
 logs
 *.log

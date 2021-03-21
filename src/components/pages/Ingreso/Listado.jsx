@@ -5,12 +5,14 @@ import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 // import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit, MdCheck } from "react-icons/md";
-import { useGet } from "../../../brlIngreso/hooks";
 import { getDateUTCToLocalShort } from "../../../tools/formatDate";
+import { useDelete } from "../../../brlIngreso/hooks";
+import { useSelector } from "react-redux";
 
 export default function Listado() {
-  const { ingresos, deleteIngreso } = useGet();
-  console.log({ Listado: "render", ingresos });
+  const eliminar = useDelete();
+  const { arrIngreso } = useSelector((state) => state.ingresoReducer);
+  console.log({ Listado: "render", arrIngreso });
   return (
     <Card>
       <CardHeader title="Listado de Ingresos de Servicios" />
@@ -30,13 +32,13 @@ export default function Listado() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {ingresos.map((row) => (
+              {arrIngreso.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton
                       style={{ padding: "0" }}
                       color="secondary"
-                      onClick={() => deleteIngreso(row.id)}
+                      onClick={() => eliminar(row.id)}
                     >
                       <IoTrashOutline size="28px" />
                     </IconButton>

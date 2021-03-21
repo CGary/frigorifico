@@ -2,6 +2,8 @@ import * as React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { useSnapshots } from "../../firebase";
+
 import DashLayout from "../layout/DashLayout";
 import MainLayout from "../layout/MainLayout";
 
@@ -16,22 +18,7 @@ import Cerrar from "../pages/Cerrar";
 
 export default function Routes() {
   const { isLogin } = useSelector((state) => state.segReducer);
-  console.log({ Routes: "render", isLogin });
-
-  const LoggedInRoutes = () => (
-    <Switch>
-      <DashLayout>
-        <Route exact path="/faena" component={Faena}></Route>
-        <Route exact path="/ingreso" component={Ingreso}></Route>
-        <Route exact path="/cerrar" component={Cerrar}></Route>
-        <Route exact path="/recibo" component={Recibo}></Route>
-        <Route exact path="/cliente" component={Cliente}></Route>
-        <Route path="*">
-          <Redirect to="/faena" />
-        </Route>
-      </DashLayout>
-    </Switch>
-  );
+  console.log({ Routes: "render" });
 
   const LoggedOutRoutes = () => (
     <Switch>
@@ -47,3 +34,21 @@ export default function Routes() {
 
   return isLogin ? <LoggedInRoutes /> : <LoggedOutRoutes />;
 }
+
+const LoggedInRoutes = () => {
+  useSnapshots();
+  return (
+    <Switch>
+      <DashLayout>
+        <Route exact path="/faena" component={Faena}></Route>
+        <Route exact path="/ingreso" component={Ingreso}></Route>
+        <Route exact path="/cerrar" component={Cerrar}></Route>
+        <Route exact path="/recibo" component={Recibo}></Route>
+        <Route exact path="/cliente" component={Cliente}></Route>
+        <Route path="*">
+          <Redirect to="/faena" />
+        </Route>
+      </DashLayout>
+    </Switch>
+  );
+};

@@ -2,14 +2,15 @@ import * as React from "react";
 import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
-// import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
-import { useGet } from "../../../brlRecibo/hooks";
 import { getDateUTCToLocalShort } from "../../../tools/formatDate";
+import { useDelete } from "../../../brlRecibo/hooks";
+import { useSelector } from "react-redux";
 
 export default function Listado() {
-  const { recibos, eliminar } = useGet();
+  const eliminar = useDelete();
+  const { arrRecibo } = useSelector((state) => state.reciboReducer);
   console.log({ Listado: "render" });
   return (
     <Card>
@@ -24,12 +25,12 @@ export default function Listado() {
                 <TableCell>Editar</TableCell>
                 <TableCell align="right">Nro Recibo</TableCell>
                 <TableCell>Cliente</TableCell>
-                <TableCell align="center">Fecha Ingreso</TableCell>
+                <TableCell align="center">Fecha</TableCell>
                 <TableCell align="right">Monto</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {recibos.map((row) => (
+              {arrRecibo.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton

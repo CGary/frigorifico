@@ -5,12 +5,14 @@ export default () => {
   const add = useAdd();
 
   const [recibo, setrecibo] = useState("");
-  const [cliente, setcliente] = useState("");
+  const [cliente, setcliente] = useState(null);
+  const [idCliente, setidCliente] = useState(null);
   const [fecha, setfecha] = useState(null);
   const [monto, setmonto] = useState("");
 
   const props = {
     recibo: {
+      id: "recibo",
       label: "Nro de Recibo",
       value: recibo,
       onChange: (e) => {
@@ -20,8 +22,9 @@ export default () => {
     cliente: {
       label: "Cliente",
       value: cliente,
-      onChange: (e) => {
-        setcliente(e.target.value);
+      onChange: (value) => {
+        setcliente(value.codigo);
+        setidCliente(value.id);
       },
     },
     fecha: {
@@ -45,10 +48,10 @@ export default () => {
         const query = {
           recibo,
           cliente,
+          idCliente,
           fecha,
           monto,
         };
-
         add(query).then(() => {
           resetValues();
         });
@@ -57,10 +60,12 @@ export default () => {
   };
 
   const resetValues = () => {
-    setrecibo;
-    setcliente("");
+    setrecibo("");
+    setcliente(null);
+    setidCliente(null);
     setfecha(null);
     setmonto("");
+    document.getElementById("recibo").focus();
   };
 
   return props;
