@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { useSnapshots } from "../../firebase";
 
 import DashLayout from "../layout/DashLayout";
@@ -21,15 +20,15 @@ export default function Routes() {
   console.log({ Routes: "render" });
 
   const LoggedOutRoutes = () => (
-    <Switch>
-      <MainLayout>
+    <MainLayout>
+      <Switch>
         <Route exact path={["/", "/login"]} component={Alogin}></Route>
         <Route exact path="/resetpass" component={Aresetpass}></Route>
         <Route path="*">
           <Redirect to="/login" />
         </Route>
-      </MainLayout>
-    </Switch>
+      </Switch>
+    </MainLayout>
   );
 
   return isLogin ? <LoggedInRoutes /> : <LoggedOutRoutes />;
@@ -38,8 +37,8 @@ export default function Routes() {
 const LoggedInRoutes = () => {
   useSnapshots();
   return (
-    <Switch>
-      <DashLayout>
+    <DashLayout>
+      <Switch>
         <Route exact path="/faena" component={Faena}></Route>
         <Route exact path="/ingreso" component={Ingreso}></Route>
         <Route exact path="/cerrar" component={Cerrar}></Route>
@@ -48,7 +47,7 @@ const LoggedInRoutes = () => {
         <Route path="*">
           <Redirect to="/faena" />
         </Route>
-      </DashLayout>
-    </Switch>
+      </Switch>
+    </DashLayout>
   );
 };
