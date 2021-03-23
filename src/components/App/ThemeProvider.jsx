@@ -1,5 +1,6 @@
 import * as React from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import "date-fns";
 
 export default function ThemeProvider({ children }) {
   const theme = createMuiTheme({

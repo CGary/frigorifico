@@ -14,7 +14,7 @@ export default function SearchCliente({ onChange, id, value, ...rest }) {
 
   return (
     <Autocomplete
-      disableClearable
+      // disableClearable
       autoHighlight
       id={id}
       options={arrCliente}

@@ -1,12 +1,8 @@
 import { useEffect } from "react";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
-import {
-  setArrFaena,
-  setArrCliente,
-  setArrIngreso,
-  setArrRecibo,
-} from "../redux/actions";
+import { setArrFaena, setArrCliente } from "../redux/actions";
+import { setArrIngreso, setArrRecibo } from "../redux/actions";
 import { cliente, faena, ingreso, recibo, desc } from "./constants";
 
 export default () => {
@@ -14,7 +10,7 @@ export default () => {
 
   useEffect(() => {
     //cliente
-    firebase
+    const unsubscribeCliente = firebase
       .firestore()
       .collection(cliente)
       .orderBy("fecha", desc)
@@ -28,7 +24,7 @@ export default () => {
       );
 
     //faena
-    firebase
+    const unsubscribeFaena = firebase
       .firestore()
       .collection(faena)
       .orderBy("fecha", desc)
@@ -42,7 +38,7 @@ export default () => {
       );
 
     //ingreso
-    firebase
+    const unsubscribeIngreso = firebase
       .firestore()
       .collection(ingreso)
       .orderBy("fecha", desc)
@@ -56,7 +52,7 @@ export default () => {
       );
 
     //recibo
-    firebase
+    const unsubscribeRecibo = firebase
       .firestore()
       .collection(recibo)
       .orderBy("fecha", desc)
@@ -68,5 +64,11 @@ export default () => {
           ],
         })
       );
+    return () => {
+      unsubscribeCliente();
+      unsubscribeFaena();
+      unsubscribeIngreso();
+      unsubscribeRecibo();
+    };
   }, []);
 };

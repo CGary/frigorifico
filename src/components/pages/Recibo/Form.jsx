@@ -1,11 +1,8 @@
 import * as React from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
-import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { KeyboardDatePicker } from "@material-ui/pickers";
 import { CardContent } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
 import { SearchCliente } from "../../common";
