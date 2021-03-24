@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLogout } from "../../../brlSeguridad/hooks";
+import { useLogout } from "../../../brlSeguridad";
 
 export default function Cerrar() {
   console.log({ Cerrar: "render" });

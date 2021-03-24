@@ -1,8 +1,8 @@
 import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../../components/common";
-import { resetpass_mail } from "../msg";
-import { errorPeticion } from "../../tools/msg";
+import { useLoading, useDialogo } from "../components/common";
+import { resetpass_mail } from "./msg";
+import { errorPeticion } from "../tools/msg";
 
 export default () => {
   const { goBack } = useHistory();

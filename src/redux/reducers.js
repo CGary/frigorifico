@@ -1,4 +1,4 @@
-import { segReducer } from "../brlSeguridad/reducer";
+import { segReducer } from "../brlSeguridad";
 import { loadingReducer } from "../components/common/Loading";
 import { dialogoReducer } from "../components/common/Dialogo";
 import { navMobileReducer } from "../components/layout/DashLayout/NavBar";

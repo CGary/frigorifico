@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../../components/common";
-import { errorPeticion } from "../../tools/msg";
+import { useLoading, useDialogo } from "../components/common";
+import { errorPeticion } from "../tools/msg";
 
 export default () => {
   const setLoading = useLoading();
