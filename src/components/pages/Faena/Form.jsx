@@ -3,18 +3,22 @@ import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardHeader, CardContent } from "@material-ui/core";
 import useFaena from "./useFaena";
 import { useSelector } from "react-redux";
+import { getDateUTCToLocalShort } from "../../../tools/formatDate";
 
 export default function Form() {
-  const uidIngreso = useSelector(
-    (state) => state.faenaReducer.faena.uidIngreso
+  const { fecha, nombre, cliente, refIngreso } = useSelector(
+    (state) => state.faenaReducer.faena
   );
 
-  console.log({ Form: "render", uidIngreso });
-  const props = useFaena();
+  console.log({ Form: "render" });
+  const props = useFaena(refIngreso);
 
-  return (
+  return cliente ? (
     <Card>
-      <CardHeader subheader="Mario Cronenmbol" title="RVX1" />
+      <CardHeader
+        subheader={nombre}
+        title={getDateUTCToLocalShort(fecha) + " - " + cliente}
+      />
       <Divider />
       <form autoComplete="off" {...props.form}>
         <CardContent>
@@ -41,5 +45,5 @@ export default function Form() {
         </Box>
       </form>
     </Card>
-  );
+  ) : null;
 }

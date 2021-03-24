@@ -7,12 +7,12 @@ import { faena } from "../firebase";
 export default () => {
   const setLoading = useLoading();
   const { msgAlert } = useDialogo();
-  const uid = useSelector((state) => state.segReducer.uid);
+  const uidUser = useSelector((state) => state.segReducer.uid);
 
   const add = (query) => {
     query = {
       ...query,
-      uidUser: uid,
+      uidUser,
       fecha: firebase.firestore.FieldValue.serverTimestamp(),
     };
     return new Promise((resolve) => {

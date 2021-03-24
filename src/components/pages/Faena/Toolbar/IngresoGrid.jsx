@@ -5,11 +5,10 @@ import { TableContainer, TableHead, TableBody } from "@material-ui/core";
 import { MdCheck } from "react-icons/md";
 import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
 import { getDateLocalToUTC } from "../../../../tools/formatDate";
-import { setFaena } from "../../../../redux";
-import { useDispatch } from "react-redux";
+import { useSetIngreso } from "../../../../brlFaena";
 
 export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
-  const dispatch = useDispatch();
+  const setIngreso = useSetIngreso();
   const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
   console.log({ IngresoGrid: "render", desde });
 
@@ -32,14 +31,9 @@ export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
     }),
   ];
 
-  const handlerClickRow = (uidIngreso) => () => {
-    dispatch({
-      type: setFaena,
-      payload: {
-        uidIngreso,
-      },
-    });
+  const handlerClickRow = (idIngreso) => () => {
     onSelectedRow?.();
+    setIngreso(arrIngreso.find((row) => row.id === idIngreso));
   };
 
   return (

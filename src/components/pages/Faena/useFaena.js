@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAdd } from "../../../brlFaena";
 
-export default () => {
+export default (refIngreso) => {
   const add = useAdd();
 
   const [izq, setizq] = useState("");
@@ -28,7 +28,7 @@ export default () => {
     form: {
       onSubmit: (e) => {
         e.preventDefault();
-        add({ izq, der }).then(() => {
+        add({ izq, der, refIngreso }).then(() => {
           setizq("");
           setder("");
           document.getElementById("izq").focus();

@@ -6,15 +6,26 @@ import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useDelete } from "../../../brlFaena";
+import { getDateUTCToLocalShort } from "../../../tools/formatDate";
 
 export default function Listado() {
   const eliminar = useDelete();
   const arrFaena = useSelector((state) => state.faenaReducer.arrFaena);
+  const { fecha, nombre, cliente, refIngreso } = useSelector(
+    (state) => state.faenaReducer.faena
+  );
   console.log({ Listado: "render", arrFaena });
 
-  return (
+  const matrix = [
+    ...arrFaena.filter((row) => row.refIngreso.id === refIngreso.id),
+  ];
+
+  return cliente ? (
     <Card>
-      <CardHeader subheader="Mario Cronenmbol" title="RVX1" />
+      <CardHeader
+        subheader={nombre}
+        title={getDateUTCToLocalShort(fecha) + " - " + cliente}
+      />
       <Divider />
       <CardContent>
         <Typography variant="body2" component="p">
@@ -32,7 +43,7 @@ export default function Listado() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {arrFaena.map((row) => (
+              {matrix.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton
@@ -55,5 +66,5 @@ export default function Listado() {
         </TableContainer>
       </CardContent>
     </Card>
-  );
+  ) : null;
 }
