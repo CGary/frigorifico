@@ -4,7 +4,7 @@ import { TextField } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 export default function SearchCliente({ onChange, id, value, ...rest }) {
-  const { arrCliente } = useSelector((state) => state.clienteReducer);
+  const arrCliente = useSelector((state) => state.clienteReducer.arrCliente);
 
   const [valor, setValor] = React.useState(
     arrCliente.find((cliente) => cliente.codigo === value) || null

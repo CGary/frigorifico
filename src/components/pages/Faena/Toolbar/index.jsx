@@ -28,9 +28,11 @@ export default function Toolbar() {
     setOpen(false);
   };
 
-  const onSelectedRow = (a) => {
-    setOpen(false);
-    console.log({ a });
+  const propsIngresoGrid = {
+    ...props,
+    onSelectedRow: () => {
+      setOpen(false);
+    },
   };
 
   return (
@@ -84,7 +86,7 @@ export default function Toolbar() {
               </MuiPickersUtilsProvider>
             </Grid>
             <Grid item xs={12}>
-              <IngresoGrid {...{ ...props, onSelectedRow }} />
+              <IngresoGrid {...propsIngresoGrid} />
             </Grid>
           </Grid>
         </DialogContent>

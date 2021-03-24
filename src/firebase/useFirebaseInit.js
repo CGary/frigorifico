@@ -7,7 +7,9 @@ import { login, logout } from "../redux";
 import { useLoading } from "../components/common";
 
 export default () => {
-  const { isInitializingUser } = useSelector((state) => state.segReducer);
+  const isInitializingUser = useSelector(
+    (state) => state.segReducer.isInitializingUser
+  );
   const dispatch = useDispatch();
   const setLoading = useLoading();
 

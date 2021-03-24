@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 export default function Listado() {
   const eliminar = useDelete();
-  const { arrIngreso } = useSelector((state) => state.ingresoReducer);
+  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
   console.log({ Listado: "render", arrIngreso });
   return (
     <Card>

@@ -8,7 +8,7 @@ import { getDateLocalToUTC } from "../tools/formatDate";
 export default () => {
   const setLoading = useLoading();
   const { msgAlert } = useDialogo();
-  const { uid } = useSelector((state) => state.segReducer);
+  const uid = useSelector((state) => state.segReducer.uid);
 
   const add = (query) => {
     const { fecha, ...rest } = query;

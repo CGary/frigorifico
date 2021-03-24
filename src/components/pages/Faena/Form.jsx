@@ -2,9 +2,14 @@ import * as React from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardHeader, CardContent } from "@material-ui/core";
 import useFaena from "./useFaena";
+import { useSelector } from "react-redux";
 
 export default function Form() {
-  console.log({ Form: "render" });
+  const uidIngreso = useSelector(
+    (state) => state.faenaReducer.faena.uidIngreso
+  );
+
+  console.log({ Form: "render", uidIngreso });
   const props = useFaena();
 
   return (

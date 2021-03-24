@@ -5,9 +5,12 @@ import { TableContainer, TableHead, TableBody } from "@material-ui/core";
 import { MdCheck } from "react-icons/md";
 import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
 import { getDateLocalToUTC } from "../../../../tools/formatDate";
+import { setFaena } from "../../../../redux";
+import { useDispatch } from "react-redux";
 
 export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
-  const { arrIngreso } = useSelector((state) => state.ingresoReducer);
+  const dispatch = useDispatch();
+  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
   console.log({ IngresoGrid: "render", desde });
 
   let matrix = [
@@ -29,8 +32,14 @@ export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
     }),
   ];
 
-  const handlerClickRow = (a) => () => {
-    onSelectedRow?.(a);
+  const handlerClickRow = (uidIngreso) => () => {
+    dispatch({
+      type: setFaena,
+      payload: {
+        uidIngreso,
+      },
+    });
+    onSelectedRow?.();
   };
 
   return (

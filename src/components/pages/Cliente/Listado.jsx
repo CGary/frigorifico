@@ -11,7 +11,7 @@ import { getDateUTCToLocalShort } from "../../../tools/formatDate";
 
 export default function Listado() {
   const eliminar = useDelete();
-  const { arrCliente } = useSelector((state) => state.clienteReducer);
+  const arrCliente = useSelector((state) => state.clienteReducer.arrCliente);
   console.log({ Listado: "render" });
   return (
     <Card>

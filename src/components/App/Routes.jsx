@@ -16,7 +16,7 @@ import Cliente from "../pages/Cliente";
 import Cerrar from "../pages/Cerrar";
 
 export default function Routes() {
-  const { isLogin } = useSelector((state) => state.segReducer);
+  const isLogin = useSelector((state) => state.segReducer.isLogin);
   console.log({ Routes: "render" });
 
   const LoggedOutRoutes = () => (

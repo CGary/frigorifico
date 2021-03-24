@@ -9,8 +9,8 @@ import { useDelete } from "../../../brlFaena";
 
 export default function Listado() {
   const eliminar = useDelete();
-  const { arrFaena } = useSelector((state) => state.faenaReducer);
-  console.log({ Listado: "render" });
+  const arrFaena = useSelector((state) => state.faenaReducer.arrFaena);
+  console.log({ Listado: "render", arrFaena });
 
   return (
     <Card>

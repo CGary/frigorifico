@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 export default function Listado() {
   const eliminar = useDelete();
-  const { arrRecibo } = useSelector((state) => state.reciboReducer);
+  const arrRecibo = useSelector((state) => state.reciboReducer.arrRecibo);
   console.log({ Listado: "render" });
   return (
     <Card>
