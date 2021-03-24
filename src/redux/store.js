@@ -20,7 +20,7 @@ const loadFromLocalStorage = () => {
 
     arrUnstoredReducers.map((reducer) => delete serializedState[reducer]);
 
-    return serializedState;
+    return {}; //serializedState;
   } catch (err) {
     console.log(err.message);
     return undefined;
