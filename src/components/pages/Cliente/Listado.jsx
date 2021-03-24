@@ -5,7 +5,7 @@ import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 // import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
-import { useDelete } from "../../../brlCliente/hooks";
+import { useDelete } from "../../../brlCliente";
 import { useSelector } from "react-redux";
 import { getDateUTCToLocalShort } from "../../../tools/formatDate";
 

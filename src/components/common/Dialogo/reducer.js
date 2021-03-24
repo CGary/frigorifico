@@ -1,6 +1,6 @@
-import { dialogoOpen, dialogoClose } from "../../../redux/actions";
+import { dialogoOpen, dialogoClose } from "../../../redux";
 
-export const initialState = {
+const initialState = {
   open: false,
   title: "Frigoríficos de Carne",
   description: "",
@@ -8,7 +8,7 @@ export const initialState = {
   cancellationText: "Cancelar",
 };
 
-export const dialogoReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case dialogoOpen:
       return {

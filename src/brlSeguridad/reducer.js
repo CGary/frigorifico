@@ -1,4 +1,4 @@
-import { login, logout } from "../redux/actions";
+import { login, logout } from "../redux";
 
 export const initialState = {
   isLogin: false,

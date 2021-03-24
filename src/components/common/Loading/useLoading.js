@@ -1,4 +1,4 @@
-import { loading } from "../../../redux/actions";
+import { loading } from "../../../redux";
 import { useDispatch } from "react-redux";
 
 export default () => {

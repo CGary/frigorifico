@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
-import { setArrFaena, setArrCliente } from "../redux/actions";
-import { setArrIngreso, setArrRecibo } from "../redux/actions";
-import { cliente, faena, ingreso, recibo, desc } from "./constants";
+import { setArrFaena, setArrCliente } from "../redux";
+import { setArrIngreso, setArrRecibo } from "../redux";
+import { cliente, faena, ingreso, recibo, desc } from "./index";
 
 export default () => {
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { Drawer, Hidden } from "@material-ui/core";
 import NavContent from "./NavContent";
 import { connect } from "react-redux";
-import { mobileClose } from "../../../../redux/actions";
+import { mobileClose } from "../../../../redux";
 
 const NavMobile = ({ isMobileOpen, dispatch }) => {
   console.log({ Mobile: "render" });

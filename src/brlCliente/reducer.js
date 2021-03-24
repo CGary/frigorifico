@@ -1,11 +1,11 @@
-import { setCliente, setArrCliente } from "../redux/actions";
+import { setCliente, setArrCliente } from "../redux";
 
-export const initialState = {
+const initialState = {
   cliente: {},
   arrCliente: [],
 };
 
-export const clienteReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case setCliente:
       return {

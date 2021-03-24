@@ -1,9 +1,8 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../../components/common";
+import { useLoading, useDialogo } from "../components/common";
 import { useSelector } from "react-redux";
-import { errorPeticion } from "../../tools/msg";
-import { cliente } from "../../firebase/constants";
-import { getDateLocalToUTC } from "../../tools/formatDate";
+import { errorPeticion } from "../tools/msg";
+import { faena } from "../firebase";
 
 export default () => {
   const { setLoading } = useLoading();
@@ -11,12 +10,10 @@ export default () => {
   const { uid } = useSelector((state) => state.segReducer);
 
   const add = (query) => {
-    const { fecha, ...rest } = query;
     query = {
-      ...rest,
-      fecha: getDateLocalToUTC(fecha),
+      ...query,
       uidUser: uid,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
     };
     return new Promise((resolve) => {
       const catchCallback = (err) => {
@@ -36,7 +33,7 @@ export default () => {
       setLoading(true);
       firebase
         .firestore()
-        .collection(cliente)
+        .collection(faena)
         .add(query)
         .then(then_add)
         .catch(catchCallback);

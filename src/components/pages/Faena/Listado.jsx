@@ -5,7 +5,7 @@ import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import { useDelete } from "../../../brlFaena/hooks";
+import { useDelete } from "../../../brlFaena";
 
 export default function Listado() {
   const eliminar = useDelete();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAdd } from "../../../brlRecibo/hooks";
+import { useAdd } from "../../../brlRecibo";
 
 export default () => {
   const add = useAdd();

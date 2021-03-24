@@ -2,8 +2,7 @@ import * as React from "react";
 import { useStyles } from "./styles";
 import { MainContainer } from "../../styled";
 import TopBar from "./TopBar";
-import NavDesktop from "./NavBar/NavDesktop";
-import NavMobile from "./NavBar/NavMobile";
+import { NavDesktop, NavMobile } from "./NavBar";
 
 export default function DashLayout({ children }) {
   console.log({ DashLayout: "render" });

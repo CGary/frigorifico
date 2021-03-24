@@ -1,11 +1,11 @@
 import { segReducer } from "../brlSeguridad/reducer";
-import { loadingReducer } from "../components/common/Loading/reducer";
-import { dialogoReducer } from "../components/common/Dialogo/reducer";
-import { navMobileReducer } from "../components/layout/DashLayout/NavBar/reducer";
-import { faenaReducer } from "../brlFaena/reducer";
-import { clienteReducer } from "../brlCliente/reducer";
-import { ingresoReducer } from "../brlIngreso/reducer";
-import { reciboReducer } from "../brlRecibo/reducer";
+import { loadingReducer } from "../components/common/Loading";
+import { dialogoReducer } from "../components/common/Dialogo";
+import { navMobileReducer } from "../components/layout/DashLayout/NavBar";
+import { faenaReducer } from "../brlFaena";
+import { clienteReducer } from "../brlCliente";
+import { ingresoReducer } from "../brlIngreso";
+import { reciboReducer } from "../brlRecibo";
 
 export default (state = {}, action) => {
   return {

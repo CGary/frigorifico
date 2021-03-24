@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAdd } from "../../../brlFaena/hooks";
+import { useAdd } from "../../../brlFaena";
 
 export default () => {
   const add = useAdd();

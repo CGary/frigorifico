@@ -1,11 +1,11 @@
-import { setRecibo, setArrRecibo } from "../redux/actions";
+import { setRecibo, setArrRecibo } from "../redux";
 
-export const initialState = {
+const initialState = {
   recibo: {},
   arrRecibo: [],
 };
 
-export const reciboReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case setRecibo:
       return {

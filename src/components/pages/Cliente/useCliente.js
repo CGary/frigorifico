@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAdd } from "../../../brlCliente/hooks";
+import { useAdd } from "../../../brlCliente";
 
 export default () => {
   const add = useAdd();

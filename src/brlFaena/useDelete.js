@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../../components/common";
-import { errorPeticion, msgEliminar } from "../../tools/msg";
-import { faena } from "../../firebase/constants";
+import { useLoading, useDialogo } from "../components/common";
+import { errorPeticion, msgEliminar } from "../tools/msg";
+import { faena } from "../firebase";
 
 export default () => {
   const { setLoading } = useLoading();

@@ -1,10 +1,10 @@
-import { mobileOpen, mobileClose } from "../../../../redux/actions";
+import { mobileOpen, mobileClose } from "../../../../redux";
 
-export const initialState = {
+const initialState = {
   isMobileOpen: false,
 };
 
-export const navMobileReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case mobileOpen:
       return {

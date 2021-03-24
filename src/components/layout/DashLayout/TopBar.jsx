@@ -3,7 +3,7 @@ import { AppBar, Hidden, IconButton, Toolbar, Box } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import { MdViewHeadline } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { mobileOpen } from "../../../redux/actions";
+import { mobileOpen } from "../../../redux";
 
 export default function TopBar() {
   const dispatch = useDispatch();

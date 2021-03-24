@@ -1,44 +1,23 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import reduxThunk from "redux-thunk";
-import reducers from "./reducers";
+//seguridad Actions
+export const login = "login";
+export const logout = "logout";
 
-const arrUnstoredReducers = ["segReducer", "loadingReducer", "dialogoReducer"];
+export const loading = "loading";
 
-const saveToLocalStorage = (state) => {
-  const storedState = { ...state };
+export const dialogoOpen = "dialogoOpen";
+export const dialogoClose = "dialogoClose";
 
-  arrUnstoredReducers.map((reducer) => delete storedState[reducer]);
+export const mobileOpen = "mobileOpen";
+export const mobileClose = "mobileClose";
 
-  const stringifyState = JSON.stringify(storedState);
-  localStorage.setItem("state", stringifyState);
-};
+export const setFaena = "setFaena";
+export const setArrFaena = "setArrFaena";
 
-const loadFromLocalStorage = () => {
-  try {
-    let serializedState = localStorage.getItem("state");
-    if (serializedState === null) return undefined;
-    serializedState = JSON.parse(serializedState);
+export const setCliente = "setCliente";
+export const setArrCliente = "setArrCliente";
 
-    arrUnstoredReducers.map((reducer) => delete serializedState[reducer]);
+export const setIngreso = "setIngreso";
+export const setArrIngreso = "setArrIngreso";
 
-    return serializedState;
-  } catch (err) {
-    console.log(err.message);
-    return undefined;
-  }
-};
-
-const persistedState = loadFromLocalStorage();
-
-const arrComposes = [applyMiddleware(reduxThunk)];
-
-if (window.__REDUX_DEVTOOLS_EXTENSION__)
-  arrComposes.push(window.__REDUX_DEVTOOLS_EXTENSION__());
-
-const store = createStore(reducers, persistedState, compose(...arrComposes));
-
-store.subscribe(() => {
-  saveToLocalStorage(store.getState());
-});
-
-export default store;
+export const setRecibo = "setRecibo";
+export const setArrRecibo = "setArrRecibo";

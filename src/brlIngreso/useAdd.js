@@ -1,9 +1,9 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../../components/common";
+import { useLoading, useDialogo } from "../components/common";
 import { useSelector } from "react-redux";
-import { errorPeticion } from "../../tools/msg";
-import { recibo, cliente } from "../../firebase/constants";
-import { getDateLocalToUTC } from "../../tools/formatDate";
+import { errorPeticion } from "../tools/msg";
+import { ingreso, cliente } from "../firebase";
+import { getDateLocalToUTC } from "../tools/formatDate";
 
 export default () => {
   const { setLoading } = useLoading();
@@ -42,7 +42,7 @@ export default () => {
       setLoading(true);
       firebase
         .firestore()
-        .collection(recibo)
+        .collection(ingreso)
         .add({
           ...rest,
           refCliente,

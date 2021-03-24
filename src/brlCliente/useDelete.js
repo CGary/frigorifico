@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../../components/common";
-import { errorPeticion, msgEliminar } from "../../tools/msg";
-import { recibo } from "../../firebase/constants";
+import { useLoading, useDialogo } from "../components/common";
+import { errorPeticion, msgEliminar } from "../tools/msg";
+import { cliente } from "../firebase";
 
 export default () => {
   const { setLoading } = useLoading();
@@ -23,7 +23,7 @@ export default () => {
       });
       if (result === "confirm") {
         setLoading(true);
-        await firebase.firestore().collection(recibo).doc(id).delete();
+        await firebase.firestore().collection(cliente).doc(id).delete();
         setLoading(false);
       }
     } catch (err) {

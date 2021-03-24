@@ -1,10 +1,10 @@
-import { loading } from "../../../redux/actions";
+import { loading } from "../../../redux";
 
-export const initialState = {
+const initialState = {
   isLoading: false,
 };
 
-export const loadingReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case loading:
       return {

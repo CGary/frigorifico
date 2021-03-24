@@ -6,7 +6,7 @@ import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit, MdCheck } from "react-icons/md";
 import { getDateUTCToLocalShort } from "../../../tools/formatDate";
-import { useDelete } from "../../../brlIngreso/hooks";
+import { useDelete } from "../../../brlIngreso";
 import { useSelector } from "react-redux";
 
 export default function Listado() {

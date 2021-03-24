@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { dialogoOpen } from "../../../redux/actions";
+import { dialogoOpen } from "../../../redux";
 export default () => {
   const dispatch = useDispatch();
   const msgConfirm = (options = {}) => {
