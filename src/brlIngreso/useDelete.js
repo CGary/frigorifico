@@ -4,7 +4,7 @@ import { errorPeticion, msgEliminar } from "../tools/msg";
 import { ingreso } from "../firebase";
 
 export default () => {
-  const { setLoading } = useLoading();
+  const setLoading = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
 
   const eliminar = async (id) => {

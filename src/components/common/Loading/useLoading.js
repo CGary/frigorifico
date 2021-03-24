@@ -6,5 +6,5 @@ export default () => {
   const setLoading = (flag) => {
     dispatch({ type: loading, payload: { isLoading: flag } });
   };
-  return { setLoading };
+  return setLoading;
 };

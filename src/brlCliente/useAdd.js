@@ -6,7 +6,7 @@ import { cliente } from "../firebase";
 import { getDateLocalToUTC } from "../tools/formatDate";
 
 export default () => {
-  const { setLoading } = useLoading();
+  const setLoading = useLoading();
   const { msgAlert } = useDialogo();
   const { uid } = useSelector((state) => state.segReducer);
 

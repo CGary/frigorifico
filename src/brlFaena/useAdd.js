@@ -5,7 +5,7 @@ import { errorPeticion } from "../tools/msg";
 import { faena } from "../firebase";
 
 export default () => {
-  const { setLoading } = useLoading();
+  const setLoading = useLoading();
   const { msgAlert } = useDialogo();
   const { uid } = useSelector((state) => state.segReducer);
 

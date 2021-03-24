@@ -3,7 +3,7 @@ import { useLoading, useDialogo } from "../../components/common";
 import { errorPeticion } from "../../tools/msg";
 
 export default () => {
-  const { setLoading } = useLoading();
+  const setLoading = useLoading();
   const { msgAlert } = useDialogo();
 
   const sendLogin = async (dsMail, dsPass) => {

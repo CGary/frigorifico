@@ -9,7 +9,7 @@ import { useLoading } from "../components/common";
 export default () => {
   const { isInitializingUser } = useSelector((state) => state.segReducer);
   const dispatch = useDispatch();
-  const { setLoading } = useLoading();
+  const setLoading = useLoading();
 
   useEffect(() => {
     if (isInitializingUser) {

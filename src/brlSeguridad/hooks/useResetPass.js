@@ -6,7 +6,7 @@ import { errorPeticion } from "../../tools/msg";
 
 export default () => {
   const { goBack } = useHistory();
-  const { setLoading } = useLoading();
+  const setLoading = useLoading();
   const { msgAlert } = useDialogo();
 
   const sendMail = async (email) => {
