@@ -17,7 +17,7 @@ export default function Listado() {
   console.log({ Listado: "render", arrFaena });
 
   const matrix = [
-    ...arrFaena.filter((row) => row.refIngreso.id === refIngreso.id),
+    ...arrFaena.filter((row) => row.refIngreso.id === refIngreso?.id),
   ];
 
   return cliente ? (

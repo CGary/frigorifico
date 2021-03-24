@@ -42,7 +42,6 @@ export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
         <TableHead>
           <TableRow>
             <TableCell>Código Cliente</TableCell>
-            {/* <TableCell>Nombre Cliente</TableCell> */}
             <TableCell align="center">Fecha Ingreso</TableCell>
             <TableCell align="right">Cantidad</TableCell>
             <TableCell align="center">Limpieza</TableCell>
