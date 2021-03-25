@@ -14,13 +14,13 @@ const saveToLocalStorage = (state) => {
 
 const loadFromLocalStorage = () => {
   try {
-    let serializedState = localStorage.getItem("state");
-    if (serializedState === null) return undefined;
-    serializedState = JSON.parse(serializedState);
+    let stringState = localStorage.getItem("state");
+    if (stringState === null) return {};
+    const serializedState = JSON.parse(stringState);
 
     arrUnstoredReducers.map((reducer) => delete serializedState[reducer]);
 
-    return {}; //serializedState;
+    return serializedState;
   } catch (err) {
     console.log(err.message);
     return undefined;

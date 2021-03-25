@@ -6,7 +6,10 @@ import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useDelete } from "../../../brlFaena";
-import { getDateUTCToLocalShort } from "../../../tools/formatDate";
+import {
+  getDateUTCToLocalShort,
+  getesESfromDate,
+} from "../../../tools/formatDate";
 
 export default function Listado() {
   const eliminar = useDelete();
@@ -29,7 +32,7 @@ export default function Listado() {
       <Divider />
       <CardContent>
         <Typography variant="body2" component="p">
-          {"Cantidad de items: " + arrFaena.length}
+          {"Cantidad de items: " + matrix.length}
         </Typography>
         <Divider />
         <TableContainer component={Paper}>
@@ -55,7 +58,7 @@ export default function Listado() {
                     </IconButton>
                   </TableCell>
                   <TableCell>
-                    {row.fecha?.toDate?.().toLocaleString("es-ES")}
+                    {getesESfromDate(row.fecha?.toDate?.())}
                   </TableCell>
                   <TableCell align="right">{row.izq}</TableCell>
                   <TableCell align="right">{row.der}</TableCell>

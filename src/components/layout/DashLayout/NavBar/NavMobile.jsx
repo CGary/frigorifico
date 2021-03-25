@@ -4,24 +4,18 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Drawer, Hidden } from "@material-ui/core";
 import NavContent from "./NavContent";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { mobileClose } from "../../../../redux";
 
-const NavMobile = ({ isMobileOpen, dispatch }) => {
+export default function NavMobile() {
   console.log({ Mobile: "render" });
-
+  const dispatch = useDispatch();
+  const { isMobileOpen } = useSelector((state) => state.navMobileReducer);
   const classes = useStylesMobile();
-  const location = useLocation();
 
   const handlerClose = () => {
     dispatch({ type: mobileClose });
   };
-
-  useEffect(() => {
-    if (isMobileOpen) {
-      dispatch({ type: mobileClose });
-    }
-  }, [location.pathname]);
 
   return (
     <Hidden mdUp>
@@ -34,9 +28,18 @@ const NavMobile = ({ isMobileOpen, dispatch }) => {
       >
         <NavContent />
       </Drawer>
+      <ListenerToCloseMobilDrawer />
     </Hidden>
   );
-};
+}
 
-const mapStateToProps = (reducers) => reducers.navMobileReducer;
-export default connect(mapStateToProps)(NavMobile);
+const ListenerToCloseMobilDrawer = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch({ type: mobileClose });
+  }, [location.pathname]);
+
+  return null;
+};

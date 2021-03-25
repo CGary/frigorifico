@@ -27,7 +27,6 @@ export default function Form() {
                 <KeyboardDatePicker
                   fullWidth
                   required
-                  disableToolbar
                   autoOk
                   variant="inline"
                   inputVariant="outlined"
