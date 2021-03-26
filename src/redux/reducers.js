@@ -7,7 +7,7 @@ import { clienteReducer } from "../brlCliente";
 import { ingresoReducer } from "../brlIngreso";
 import { reciboReducer } from "../brlRecibo";
 
-export default (state = {}, action) => {
+export default (state = {}, action = "") => {
   return {
     segReducer: segReducer(state.segReducer, action),
     loadingReducer: loadingReducer(state.loadingReducer, action),
