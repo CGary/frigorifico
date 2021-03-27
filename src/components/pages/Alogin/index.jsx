@@ -8,7 +8,7 @@ import { useLogin } from "../../../brlSeguridad";
 
 export default function Alogin(props) {
   console.log({ Alogin: "render" });
-  const { sendLogin } = useLogin();
+  const sendLogin = useLogin();
 
   const onClick_pass = (e) => {
     e.preventDefault();

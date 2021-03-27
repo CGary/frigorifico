@@ -9,7 +9,7 @@ export default () => {
   const { msgAlert } = useDialogo();
   const uidUser = useSelector((state) => state.segReducer.uid);
 
-  const add = (query) => {
+  return (query) => {
     query = {
       ...query,
       uidUser,
@@ -39,6 +39,4 @@ export default () => {
         .catch(catchCallback);
     });
   };
-
-  return add;
 };

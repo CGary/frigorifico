@@ -7,7 +7,7 @@ export default () => {
   const setLoading = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
 
-  const eliminar = async (id) => {
+  return async (id) => {
     const catchCallback = (err) => {
       console.log(err);
       if (err.message) {
@@ -30,6 +30,4 @@ export default () => {
       catchCallback(err);
     }
   };
-
-  return eliminar;
 };

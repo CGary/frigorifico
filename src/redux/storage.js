@@ -24,6 +24,6 @@ export const loadFromLocalStorage = () => {
     return serializedState;
   } catch (err) {
     console.log(err.message);
-    return undefined;
+    return {};
   }
 };

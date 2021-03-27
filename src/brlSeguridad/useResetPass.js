@@ -9,7 +9,7 @@ export default () => {
   const setLoading = useLoading();
   const { msgAlert } = useDialogo();
 
-  const sendMail = async (email) => {
+  return async (email) => {
     try {
       setLoading(true);
       await firebase.auth().sendPasswordResetEmail(email);
@@ -24,9 +24,5 @@ export default () => {
         msgAlert({ description: errorPeticion });
       }
     }
-  };
-
-  return {
-    sendMail,
   };
 };

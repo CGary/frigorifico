@@ -1,53 +1,25 @@
 import * as React from "react";
-import { Autocomplete } from "@material-ui/lab";
-import { TextField } from "@material-ui/core";
 import { useSelector } from "react-redux";
+import Search from "../Search";
 
-export default function SearchCliente({ onChange, id, value, ...rest }) {
-  const arrCliente = useSelector((state) => state.clienteReducer.arrCliente);
+export default function SearchCliente({ value, ...rest }) {
+  const arrSource = useSelector((state) => state.clienteReducer.arrCliente);
 
-  const [valor, setValor] = React.useState(
-    arrCliente.find((cliente) => cliente.codigo === value) || null
-  );
-
-  React.useEffect(() => {
-    value === null && setValor(null);
-  }, [value]);
-
-  const props = {
-    id: id,
-    value: valor,
-    options: arrCliente,
+  const propsSearch = {
+    ...rest,
+    arrSource,
+    valor: arrSource.find((cliente) => cliente.codigo === value) || null,
     getOptionLabel: (option) => option.codigo,
-    filterOptions: (options, state) => {
-      return options.filter(
+    filterOptions: (options, state) =>
+      options.filter(
         (option) =>
           option.codigo
             .toLowerCase()
             .includes(state.inputValue.toLowerCase()) ||
           option.nombre.toLowerCase().includes(state.inputValue.toLowerCase())
-      );
-    },
+      ),
     renderOption: (option) => option.codigo + " - " + option.nombre,
-    onChange: (obj, newValue) => {
-      onChange(newValue);
-      setValor(newValue);
-    },
   };
 
-  return (
-    <Autocomplete
-      autoHighlight
-      renderInput={(params) => (
-        <TextField
-          required
-          fullWidth
-          variant="outlined"
-          {...params}
-          {...rest}
-        />
-      )}
-      {...props}
-    />
-  );
+  return <Search {...propsSearch} />;
 }

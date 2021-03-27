@@ -7,7 +7,7 @@ import Link from "@material-ui/core/Link";
 import { useResetPass } from "../../../brlSeguridad";
 
 export default function Aresetpass(props) {
-  const { sendMail } = useResetPass();
+  const sendMail = useResetPass();
 
   const handler_onSubmit = async (e) => {
     e.preventDefault();

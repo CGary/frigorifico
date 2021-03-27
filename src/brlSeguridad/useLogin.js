@@ -6,7 +6,7 @@ export default () => {
   const setLoading = useLoading();
   const { msgAlert } = useDialogo();
 
-  const sendLogin = async (dsMail, dsPass) => {
+  return async (dsMail, dsPass) => {
     setLoading(true);
     try {
       await firebase.auth().signInWithEmailAndPassword(dsMail, dsPass);
@@ -19,9 +19,5 @@ export default () => {
       }
     }
     setLoading(false);
-  };
-
-  return {
-    sendLogin,
   };
 };

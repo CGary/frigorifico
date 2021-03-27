@@ -8,7 +8,7 @@ export default () => {
   const dispatch = useDispatch();
   const setLoading = useLoading();
 
-  const set = async (objIngreso) => {
+  return async (objIngreso) => {
     setLoading(true);
     try {
       const { refCliente, fecha, cliente, id } = objIngreso;
@@ -28,5 +28,4 @@ export default () => {
     }
     setLoading(false);
   };
-  return set;
 };

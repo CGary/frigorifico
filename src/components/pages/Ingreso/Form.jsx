@@ -79,20 +79,3 @@ export default function Form() {
     </Card>
   );
 }
-/* <FormControl variant="outlined" fullWidth>
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Cliente
-                </InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  readOnly
-                  labelWidth={70}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton>
-                        <MdSearch size="28px" />
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </FormControl> */

@@ -10,7 +10,7 @@ export default () => {
   const { msgAlert } = useDialogo();
   const uid = useSelector((state) => state.segReducer.uid);
 
-  const add = (query) => {
+  return (query) => {
     const { fecha, ...rest } = query;
     query = {
       ...rest,
@@ -42,6 +42,4 @@ export default () => {
         .catch(catchCallback);
     });
   };
-
-  return add;
 };

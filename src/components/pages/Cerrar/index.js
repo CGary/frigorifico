@@ -3,7 +3,7 @@ import { useLogout } from "../../../brlSeguridad";
 
 export default function Cerrar() {
   console.log({ Cerrar: "render" });
-  const { sendLogout } = useLogout();
+  const sendLogout = useLogout();
 
   React.useEffect(() => {
     sendLogout();

@@ -2,7 +2,6 @@ import * as React from "react";
 import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
-// import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit, MdCheck } from "react-icons/md";
 import { getDateUTCToLocalShort } from "../../../tools/formatDate";
