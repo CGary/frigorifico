@@ -5,12 +5,8 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { CardContent } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-import useCliente from "./useCliente";
 
-export default function Form() {
-  console.log({ Form: "render" });
-  const props = useCliente();
-
+export default function Form(props) {
   return (
     <Card>
       <CardHeader title="Cliente" />

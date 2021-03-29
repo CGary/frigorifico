@@ -1,13 +1,24 @@
+import * as React from "react";
+import Form from "./Form";
 import { useState } from "react";
-import { useAdd } from "../../../brlFaena";
+import { useAdd } from "../../../../brlFaena";
+import { useSelector } from "react-redux";
 
-export default (refIngreso) => {
+export default function Formulario() {
+  console.log({ Form: "render" });
   const add = useAdd();
 
   const [izq, setizq] = useState("");
   const [der, setder] = useState("");
 
-  const props = {
+  const { fecha, nombre, cliente, refIngreso } = useSelector(
+    (state) => state.faenaReducer.faena
+  );
+
+  const propsForm = {
+    fecha,
+    nombre,
+    cliente,
     izq: {
       id: "izq",
       type: "number",
@@ -37,5 +48,5 @@ export default (refIngreso) => {
     },
   };
 
-  return props;
-};
+  return cliente ? <Form {...propsForm} /> : null;
+}

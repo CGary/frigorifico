@@ -5,13 +5,9 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardContent, FormControlLabel, Checkbox } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-import { SearchCliente } from "../../common";
-import useIngreso from "./useIngreso";
+import { SearchCliente } from "../../../common";
 
-export default function Form() {
-  console.log({ Form: "render" });
-  const props = useIngreso();
-
+export default function Form(props) {
   return (
     <Card>
       <CardHeader title="Ingreso de Servicio" />

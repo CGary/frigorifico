@@ -3,18 +3,13 @@ import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
-import { MdEdit, MdCheck } from "react-icons/md";
-import { getDateUTCToLocalShort } from "../../../tools/formatDate";
-import { useDelete } from "../../../brlIngreso";
-import { useSelector } from "react-redux";
+import { MdEdit } from "react-icons/md";
+import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
 
-export default function Listado() {
-  const eliminar = useDelete();
-  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
-  console.log({ Listado: "render", arrIngreso });
+export default function Grilla({ eliminar, arrCliente }) {
   return (
     <Card>
-      <CardHeader title="Listado de Ingresos de Servicios" />
+      <CardHeader title="Listado de Clientes" />
       <Divider />
       <CardContent>
         <TableContainer component={Paper}>
@@ -23,15 +18,13 @@ export default function Listado() {
               <TableRow>
                 <TableCell>Eliminar</TableCell>
                 <TableCell>Editar</TableCell>
-                <TableCell>Cliente</TableCell>
+                <TableCell>Código Cliente</TableCell>
+                <TableCell>Nombres</TableCell>
                 <TableCell align="center">Fecha Ingreso</TableCell>
-                <TableCell align="right">Cantidad</TableCell>
-                <TableCell align="center">Limpieza</TableCell>
-                <TableCell align="center">Transporte</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {arrIngreso.map((row) => (
+              {arrCliente.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton
@@ -47,16 +40,10 @@ export default function Listado() {
                       <MdEdit size="28px" />
                     </IconButton>
                   </TableCell>
-                  <TableCell>{row.cliente}</TableCell>
+                  <TableCell>{row.codigo}</TableCell>
+                  <TableCell>{row.nombre}</TableCell>
                   <TableCell align="center">
                     {getDateUTCToLocalShort(row.fecha)}
-                  </TableCell>
-                  <TableCell align="right">{row.cantidad}</TableCell>
-                  <TableCell align="center">
-                    {row.isLimpieza && <MdCheck size="28px" />}
-                  </TableCell>
-                  <TableCell align="center" color="primary">
-                    {row.isTransporte && <MdCheck size="28px" />}
                   </TableCell>
                 </TableRow>
               ))}

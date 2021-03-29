@@ -3,18 +3,13 @@ import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
-import { MdEdit } from "react-icons/md";
-import { getDateUTCToLocalShort } from "../../../tools/formatDate";
-import { useDelete } from "../../../brlRecibo";
-import { useSelector } from "react-redux";
+import { MdEdit, MdCheck } from "react-icons/md";
+import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
 
-export default function Listado() {
-  const eliminar = useDelete();
-  const arrRecibo = useSelector((state) => state.reciboReducer.arrRecibo);
-  console.log({ Listado: "render" });
+export default function Tabla({ eliminar, arrIngreso }) {
   return (
     <Card>
-      <CardHeader title="Listado de Recibos" />
+      <CardHeader title="Listado de Ingresos de Servicios" />
       <Divider />
       <CardContent>
         <TableContainer component={Paper}>
@@ -23,14 +18,15 @@ export default function Listado() {
               <TableRow>
                 <TableCell>Eliminar</TableCell>
                 <TableCell>Editar</TableCell>
-                <TableCell align="right">Nro Recibo</TableCell>
                 <TableCell>Cliente</TableCell>
-                <TableCell align="center">Fecha</TableCell>
-                <TableCell align="right">Monto</TableCell>
+                <TableCell align="center">Fecha Ingreso</TableCell>
+                <TableCell align="right">Cantidad</TableCell>
+                <TableCell align="center">Limpieza</TableCell>
+                <TableCell align="center">Transporte</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {arrRecibo.map((row) => (
+              {arrIngreso.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton
@@ -46,12 +42,17 @@ export default function Listado() {
                       <MdEdit size="28px" />
                     </IconButton>
                   </TableCell>
-                  <TableCell align="right">{row.recibo}</TableCell>
                   <TableCell>{row.cliente}</TableCell>
                   <TableCell align="center">
                     {getDateUTCToLocalShort(row.fecha)}
                   </TableCell>
-                  <TableCell align="right">{row.monto}</TableCell>
+                  <TableCell align="right">{row.cantidad}</TableCell>
+                  <TableCell align="center">
+                    {row.isLimpieza && <MdCheck size="28px" />}
+                  </TableCell>
+                  <TableCell align="center" color="primary">
+                    {row.isTransporte && <MdCheck size="28px" />}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

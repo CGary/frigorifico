@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useStylesPageMain } from "../../hooks";
 import { Container, Grid } from "@material-ui/core";
-import Form from "./Form";
-import Listado from "./Listado";
+import Formulario from "./Formulario";
+import Tabla from "./Tabla";
 import Toolbar from "./Toolbar";
 
 export default function Faena() {
@@ -15,10 +15,10 @@ export default function Faena() {
       <Container maxWidth="lg" style={{ padding: "0" }}>
         <Grid container spacing={3}>
           <Grid item lg={4} md={6} xs={12}>
-            <Form />
+            <Formulario />
           </Grid>
           <Grid item lg={8} md={6} xs={12}>
-            <Listado />
+            <Tabla />
           </Grid>
         </Grid>
       </Container>

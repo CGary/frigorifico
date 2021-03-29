@@ -5,13 +5,9 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import { CardContent } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-import { SearchCliente } from "../../common";
-import useRecibo from "./useRecibo";
+import { SearchCliente } from "../../../common";
 
-export default function Form() {
-  console.log({ Form: "render" });
-  const props = useRecibo();
-
+export default function Formulario(props) {
   return (
     <Card>
       <CardHeader title="Registro de Recibo" />

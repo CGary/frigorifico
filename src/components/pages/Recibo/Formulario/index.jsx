@@ -1,7 +1,10 @@
+import * as React from "react";
 import { useState } from "react";
-import { useAdd } from "../../../brlRecibo";
+import { useAdd } from "../../../../brlRecibo";
+import Form from "./Form";
 
-export default () => {
+export default function Formulario() {
+  console.log({ Formulario: "render" });
   const add = useAdd();
 
   const [recibo, setrecibo] = useState("");
@@ -10,7 +13,16 @@ export default () => {
   const [fecha, setfecha] = useState(null);
   const [monto, setmonto] = useState("");
 
-  const props = {
+  const resetValues = () => {
+    setrecibo("");
+    setcliente(null);
+    setidCliente(null);
+    setfecha(null);
+    setmonto("");
+    document.getElementById("recibo").focus();
+  };
+
+  const propsForm = {
     recibo: {
       id: "recibo",
       label: "Nro de Recibo",
@@ -59,14 +71,5 @@ export default () => {
     },
   };
 
-  const resetValues = () => {
-    setrecibo("");
-    setcliente(null);
-    setidCliente(null);
-    setfecha(null);
-    setmonto("");
-    document.getElementById("recibo").focus();
-  };
-
-  return props;
-};
+  return <Form {...propsForm} />;
+}

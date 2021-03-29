@@ -1,7 +1,10 @@
+import * as React from "react";
 import { useState } from "react";
-import { useAdd } from "../../../brlIngreso";
+import { useAdd } from "../../../../brlIngreso";
+import Form from "./Form";
 
-export default () => {
+export default function Formulario() {
+  console.log({ Form: "render" });
   const add = useAdd();
 
   const [cliente, setcliente] = useState(null);
@@ -11,7 +14,17 @@ export default () => {
   const [isLimpieza, setisLimpieza] = useState(false);
   const [isTransporte, setisTransporte] = useState(false);
 
-  const props = {
+  const resetValues = () => {
+    setcliente(null);
+    setidCliente(null);
+    setfecha(null);
+    setcantidad("");
+    setisLimpieza(false);
+    setisTransporte(false);
+    document.getElementById("cliente").focus();
+  };
+
+  const propsForm = {
     cliente: {
       id: "cliente",
       label: "Cliente",
@@ -70,15 +83,5 @@ export default () => {
     },
   };
 
-  const resetValues = () => {
-    setcliente(null);
-    setidCliente(null);
-    setfecha(null);
-    setcantidad("");
-    setisLimpieza(false);
-    setisTransporte(false);
-    document.getElementById("cliente").focus();
-  };
-
-  return props;
-};
+  return <Form {...propsForm} />;
+}

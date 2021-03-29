@@ -2,35 +2,38 @@ import * as React from "react";
 import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
-// import { Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
-import { MdEdit } from "react-icons/md";
-import { useDelete } from "../../../brlCliente";
-import { useSelector } from "react-redux";
-import { getDateUTCToLocalShort } from "../../../tools/formatDate";
+import {
+  getDateUTCToLocalShort,
+  getesESfromDate,
+} from "../../../../tools/formatDate";
 
-export default function Listado() {
-  const eliminar = useDelete();
-  const arrCliente = useSelector((state) => state.clienteReducer.arrCliente);
-  console.log({ Listado: "render" });
-  return (
+export default function Tabla({ fecha, nombre, cliente, eliminar, arrSource }) {
+  return cliente ? (
     <Card>
-      <CardHeader title="Listado de Clientes" />
+      <CardHeader
+        subheader={nombre}
+        title={getDateUTCToLocalShort(fecha) + " - " + cliente}
+      />
       <Divider />
       <CardContent>
+        <Typography variant="body2" component="p">
+          {"Cantidad de items: " + arrSource.length}
+        </Typography>
+        <Divider />
         <TableContainer component={Paper}>
-          <Table>
+          <Table css={{ minWidth: "340px" }}>
             <TableHead>
               <TableRow>
                 <TableCell>Eliminar</TableCell>
-                <TableCell>Editar</TableCell>
-                <TableCell>Código Cliente</TableCell>
-                <TableCell>Nombres</TableCell>
-                <TableCell align="center">Fecha Ingreso</TableCell>
+                <TableCell>Fecha Hora</TableCell>
+                <TableCell align="right">Peso Izquierda</TableCell>
+                <TableCell align="right">Peso Derecha</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {arrCliente.map((row) => (
+              {arrSource.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell>
                     <IconButton
@@ -42,15 +45,10 @@ export default function Listado() {
                     </IconButton>
                   </TableCell>
                   <TableCell>
-                    <IconButton style={{ padding: "0" }} color="primary">
-                      <MdEdit size="28px" />
-                    </IconButton>
+                    {getesESfromDate(row.fecha?.toDate?.())}
                   </TableCell>
-                  <TableCell>{row.codigo}</TableCell>
-                  <TableCell>{row.nombre}</TableCell>
-                  <TableCell align="center">
-                    {getDateUTCToLocalShort(row.fecha)}
-                  </TableCell>
+                  <TableCell align="right">{row.izq}</TableCell>
+                  <TableCell align="right">{row.der}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -58,5 +56,5 @@ export default function Listado() {
         </TableContainer>
       </CardContent>
     </Card>
-  );
+  ) : null;
 }
