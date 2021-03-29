@@ -2,7 +2,7 @@ import * as React from "react";
 import { BrowserRouter } from "react-router-dom";
 import MainStyles from "../../MainStyles";
 import ThemeProvider from "./ThemeProvider";
-import Init from "./Init";
+import Routes from "./Routes";
 import { Loading, Dialogo } from "../common";
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
       <MainStyles />
       <BrowserRouter>
         <ThemeProvider>
-          <Init />
+          <Routes />
           <Loading />
           <Dialogo />
         </ThemeProvider>
