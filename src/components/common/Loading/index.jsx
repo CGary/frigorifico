@@ -4,6 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import loadingReducer from "./reducer";
+import event from "../../../tools/event";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -15,6 +16,14 @@ const useStyles = makeStyles((theme) => ({
 const Loading = (props) => {
   console.log({ Loading: "render", props });
   const classes = useStyles();
+  React.useEffect(() => {
+    const listener = event.addListener("showLoading", () => {
+      console.log("show loading event fbemitter");
+    });
+    return () => {
+      listener.remove();
+    };
+  }, []);
   return (
     <Backdrop className={classes.backdrop} open={props.isLoading}>
       <CircularProgress color="inherit" />
