@@ -1,96 +1,96 @@
 import * as React from "react";
-import { Button, Box, Dialog, DialogContent, Divider } from "@material-ui/core";
-import { Grid, useMediaQuery, IconButton, Typography } from "@material-ui/core";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import { useTheme } from "@material-ui/core/styles";
-import { MdClear } from "react-icons/md";
-import DateFnsUtils from "@date-io/date-fns";
-import { KeyboardDatePicker } from "@material-ui/pickers";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { useStyles } from "./styles";
+import { Button, Box } from "@material-ui/core";
+import Buscador from "./Buscador";
 import IngresoGrid from "./IngresoGrid";
-import useSearch from "./useSearch";
 import { SearchCliente } from "../../../common";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useSetIngreso } from "../../../../brlFaena";
+import { getDateLocalToUTC } from "../../../../tools/formatDate";
 
 export default function Toolbar() {
   console.log({ Toolbar: "render" });
-  const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const classes = useStyles();
-  const props = useSearch();
 
+  const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
 
-  const propsIngresoGrid = {
-    ...props,
-    onSelectedRow: () => {
-      setOpen(false);
+  const [cliente, setCliente] = useState(null);
+  const [desde, setDesde] = useState(new Date());
+  const [hasta, setHasta] = useState(new Date());
+  const fieldCliente = {
+    label: "Cliente",
+    value: cliente?.codigo || null,
+    autoFocus: true,
+    onChange: (item) => {
+      setCliente(item);
+    },
+  };
+  const fieldDesde = {
+    label: "Fecha desde",
+    value: desde,
+    onChange: (date) => {
+      setDesde(date);
+    },
+  };
+  const fieldHasta = {
+    label: "Fecha hasta",
+    value: hasta,
+    onChange: (date) => {
+      setHasta(date);
     },
   };
 
+  const propsBuscador = {
+    fieldDesde,
+    fieldHasta,
+    open,
+    handleClose,
+  };
+
+  const setIngreso = useSetIngreso();
+  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
+  const propsIngresoGrid = {
+    handlerClickRow: (idIngreso) => () => {
+      setIngreso(arrIngreso.find((row) => row.id === idIngreso));
+      setOpen(false);
+    },
+    source: [
+      ...arrIngreso.filter((item) => {
+        let flagRow = true;
+
+        if (fieldCliente?.value != null) {
+          flagRow = item.cliente == fieldCliente.value;
+        }
+
+        const fDesde = new Date(getDateLocalToUTC(fieldDesde.value)).getTime();
+        const fHasta = new Date(getDateLocalToUTC(fieldHasta.value)).getTime();
+        const fRow = new Date(item.fecha).getTime();
+        if (fRow < fDesde || fRow > fHasta) {
+          flagRow = false;
+        }
+
+        return flagRow;
+      }),
+    ],
+  };
+
   return (
-    <Box display="flex" justifyContent="flex-start" pl={3} pb={3}>
-      <Button color="primary" variant="contained" onClick={handleClickOpen}>
-        Buscar Ingreso
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        fullScreen={fullScreen}
-        fullWidth
-        maxWidth={false}
-      >
-        <MuiDialogTitle disableTypography className={classes.root}>
-          <Typography variant="h6">Buscar Ingreso</Typography>
-          <IconButton className={classes.closeButton} onClick={handleClose}>
-            <MdClear size="28px" />
-          </IconButton>
-        </MuiDialogTitle>
-        <Divider />
-        <DialogContent style={{ paddingTop: "24px" }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <SearchCliente {...props.cliente} />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  fullWidth
-                  required
-                  autoOk
-                  variant="inline"
-                  inputVariant="outlined"
-                  format="dd/MM/yyyy"
-                  {...props.desde}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                  fullWidth
-                  required
-                  autoOk
-                  variant="inline"
-                  inputVariant="outlined"
-                  format="dd/MM/yyyy"
-                  {...props.hasta}
-                />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={12}>
-              <IngresoGrid {...propsIngresoGrid} />
-            </Grid>
-          </Grid>
-        </DialogContent>
-      </Dialog>
-    </Box>
+    <>
+      <Box display="flex" justifyContent="flex-start" pl={3} pb={3}>
+        <Button color="primary" variant="contained" onClick={handleClickOpen}>
+          Buscar Ingreso
+        </Button>
+      </Box>
+      <Buscador
+        {...propsBuscador}
+        ingresoGrid={() => <IngresoGrid {...propsIngresoGrid} />}
+        searchCliente={() => <SearchCliente {...fieldCliente} />}
+      />
+    </>
   );
 }

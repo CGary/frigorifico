@@ -1,41 +1,10 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
 import { TableRow, Table, Paper, TableCell } from "@material-ui/core";
 import { TableContainer, TableHead, TableBody } from "@material-ui/core";
 import { MdCheck } from "react-icons/md";
 import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
-import { getDateLocalToUTC } from "../../../../tools/formatDate";
-import { useSetIngreso } from "../../../../brlFaena";
 
-export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
-  const setIngreso = useSetIngreso();
-  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
-  console.log({ IngresoGrid: "render", desde });
-
-  let matrix = [
-    ...arrIngreso.filter((item) => {
-      let flagRow = true;
-
-      if (cliente.value != null) {
-        flagRow = item.cliente == cliente.value;
-      }
-
-      const fDesde = new Date(getDateLocalToUTC(desde.value)).getTime();
-      const fHasta = new Date(getDateLocalToUTC(hasta.value)).getTime();
-      const fRow = new Date(item.fecha).getTime();
-      if (fRow < fDesde || fRow > fHasta) {
-        flagRow = false;
-      }
-
-      return flagRow;
-    }),
-  ];
-
-  const handlerClickRow = (idIngreso) => () => {
-    onSelectedRow?.();
-    setIngreso(arrIngreso.find((row) => row.id === idIngreso));
-  };
-
+export default function IngresoGrid({ source, handlerClickRow }) {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -49,7 +18,7 @@ export default function IngresoGrid({ cliente, desde, hasta, onSelectedRow }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {matrix.map((row) => (
+          {source.map((row) => (
             <TableRow key={row.id} hover onClick={handlerClickRow(row.id)}>
               <TableCell>{row.cliente}</TableCell>
               <TableCell align="center">
