@@ -1,15 +1,15 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../components/common";
+import { useDialogo } from "../components/common";
 import { errorPeticion } from "../tools/msg";
-import event from "../tools/event";
+import event, {loadingEvent} from "../tools/event";
 
 export default () => {
-  const setLoading = useLoading();
+  //const setLoading = useLoading();
   const { msgAlert } = useDialogo();
 
   return async (dsMail, dsPass) => {
-    event.emit("showLoading");
-    setLoading(true);
+    event.emit(loadingEvent, true);
+    //setLoading(true);
     try {
       await firebase.auth().signInWithEmailAndPassword(dsMail, dsPass);
     } catch (err) {
@@ -20,6 +20,7 @@ export default () => {
         msgAlert({ description: errorPeticion });
       }
     }
-    setLoading(false);
+    event.emit(loadingEvent, false);
+    //setLoading(false);
   };
 };
