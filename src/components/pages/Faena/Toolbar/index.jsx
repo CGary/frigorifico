@@ -6,7 +6,7 @@ import { SearchCliente } from "../../../common";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useSetIngreso } from "../../../../brlFaena";
-import { getDateLocalToUTC } from "../../../../tools/formatDate";
+import { getDateLocalToUTC } from "../../../../tools";
 
 export default function Toolbar() {
   console.log({ Toolbar: "render" });

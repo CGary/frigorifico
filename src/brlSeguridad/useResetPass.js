@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import { eventEmitter, loadEvent } from "../tools";
 import { useDialogo } from "../components/common";
 import { resetpass_mail } from "./msg";
-import { errorPeticion } from "../tools/msg";
+import { errorPeticion } from "../tools";
 
 export default () => {
   const { goBack } = useHistory();

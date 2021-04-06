@@ -1,4 +1,4 @@
-import { saveToLocalStorage, loadFromLocalStorage } from "../src/redux/storage";
+import { saveToLocalStorage, loadFromLocalStorage } from "./storage";
 
 describe("Test localStorage", () => {
   const state = { propiedad: "contenido de la propiedad" };

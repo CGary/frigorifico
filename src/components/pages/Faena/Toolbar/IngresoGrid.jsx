@@ -2,7 +2,7 @@ import * as React from "react";
 import { TableRow, Table, Paper, TableCell } from "@material-ui/core";
 import { TableContainer, TableHead, TableBody } from "@material-ui/core";
 import { MdCheck } from "react-icons/md";
-import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
+import { getDateUTCToLocalShort } from "../../../../tools";
 
 export default function IngresoGrid({ source, handlerClickRow }) {
   return (

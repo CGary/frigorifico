@@ -4,7 +4,7 @@ import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
-import { getDateUTCToLocalShort } from "../../../../tools/formatDate";
+import { getDateUTCToLocalShort } from "../../../../tools";
 
 export default function Grilla({ eliminar, arrCliente }) {
   return (

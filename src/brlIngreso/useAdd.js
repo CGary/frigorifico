@@ -2,9 +2,9 @@ import firebase from "firebase/app";
 import { eventEmitter, loadEvent } from "../tools";
 import { useDialogo } from "../components/common";
 import { useSelector } from "react-redux";
-import { errorPeticion } from "../tools/msg";
+import { errorPeticion } from "../tools";
 import { ingreso, cliente } from "../firebase";
-import { getDateLocalToUTC } from "../tools/formatDate";
+import { getDateLocalToUTC } from "../tools";
 
 export default () => {
   const { msgAlert } = useDialogo();

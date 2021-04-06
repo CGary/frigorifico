@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import { eventEmitter, loadEvent } from "../tools";
 import { useDialogo } from "../components/common";
-import { errorPeticion, msgEliminar } from "../tools/msg";
+import { errorPeticion, msgEliminar } from "../tools";
 import { faena } from "../firebase";
 
 export default () => {

@@ -1,10 +1,7 @@
-import store from "../src/redux/store";
-import reducers from "../src/redux/reducers";
-import { setFaena } from "../src/redux";
-import {
-  arrUnstoredReducers,
-  loadFromLocalStorage,
-} from "../src/redux/storage";
+import store from "./store";
+import reducers from "./reducers";
+import { setFaena } from ".";
+import { arrUnstoredReducers, loadFromLocalStorage } from "./storage";
 
 describe("Tests redux", () => {
   it("Test getstore vs reducers", () => {

@@ -4,10 +4,7 @@ import { TableContainer, Table, TableHead, TableRow } from "@material-ui/core";
 import { TableCell, TableBody, Paper, IconButton } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { IoTrashOutline } from "react-icons/io5";
-import {
-  getDateUTCToLocalShort,
-  getesESfromDate,
-} from "../../../../tools/formatDate";
+import { getDateUTCToLocalShort, getesESfromDate } from "../../../../tools";
 
 export default function Tabla({ fecha, nombre, cliente, eliminar, arrSource }) {
   return cliente ? (

@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import { useDialogo } from "../components/common";
-import { errorPeticion } from "../tools/msg";
+import { errorPeticion } from "../tools";
 import { eventEmitter, loadEvent } from "../tools";
 
 export default () => {
