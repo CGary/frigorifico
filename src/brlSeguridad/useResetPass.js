@@ -1,20 +1,20 @@
 import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../components/common";
+import { eventEmitter, loadEvent } from "../tools";
+import { useDialogo } from "../components/common";
 import { resetpass_mail } from "./msg";
 import { errorPeticion } from "../tools/msg";
 
 export default () => {
   const { goBack } = useHistory();
-  const setLoading = useLoading();
   const { msgAlert } = useDialogo();
 
   return async (email) => {
     try {
-      setLoading(true);
+      eventEmitter.emit(loadEvent, true);
       await firebase.auth().sendPasswordResetEmail(email);
       msgAlert({ description: resetpass_mail });
-      setLoading(false);
+      eventEmitter.emit(loadEvent, false);
       goBack();
     } catch (err) {
       console.log(err);

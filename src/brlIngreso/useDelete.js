@@ -1,10 +1,10 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../components/common";
+import { eventEmitter, loadEvent } from "../tools";
+import { useDialogo } from "../components/common";
 import { errorPeticion, msgEliminar } from "../tools/msg";
 import { ingreso } from "../firebase";
 
 export default () => {
-  const setLoading = useLoading();
   const { msgAlert, msgConfirm } = useDialogo();
 
   return async (id) => {
@@ -22,9 +22,9 @@ export default () => {
         description: msgEliminar,
       });
       if (result === "confirm") {
-        setLoading(true);
+        eventEmitter.emit(loadEvent, true);
         await firebase.firestore().collection(ingreso).doc(id).delete();
-        setLoading(false);
+        eventEmitter.emit(loadEvent, false);
       }
     } catch (err) {
       catchCallback(err);

@@ -4,18 +4,17 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import { login, logout } from "../redux";
-import { useLoading } from "../components/common";
+import { eventEmitter, loadEvent } from "../tools";
 
 export default () => {
   const isInitializingUser = useSelector(
     (state) => state.segReducer.isInitializingUser
   );
   const dispatch = useDispatch();
-  const setLoading = useLoading();
 
   useEffect(() => {
     if (isInitializingUser) {
-      setLoading(true);
+      eventEmitter.emit(loadEvent, true);
       const firebaseConfig = {
         apiKey: "AIzaSyCULVT0OJNT8ajZrA70JfpIf7nZ52olYLU",
         authDomain: "baseinicial.firebaseapp.com",
@@ -35,7 +34,7 @@ export default () => {
 
       firebase.auth().onAuthStateChanged((user) => {
         console.log("onAuthStateChanged");
-        isInitializingUser && setLoading(false);
+        isInitializingUser && eventEmitter.emit(loadEvent, false);
 
         if (user) {
           const { displayName, email, uid } = user;

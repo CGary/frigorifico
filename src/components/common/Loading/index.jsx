@@ -1,15 +1,13 @@
 import * as React from "react";
-import Telon from "./Telon"
-import loadingReducer from "./reducer";
-import event, {loadingEvent} from "../../../tools/event";
+import Telon from "./Telon";
+import { eventEmitter, loadEvent } from "../../../tools";
 
-export default function Loading () {
-  console.log({ Loading: "render" });
-
+export default function Loading() {
   const [open, setOpen] = React.useState(false);
+  console.log({ Loading: "render", open });
 
   React.useEffect(() => {
-    const listener = event.addListener(loadingEvent, (show) => {
+    const listener = eventEmitter.addListener(loadEvent, (show) => {
       setOpen(show);
     });
     return () => {
@@ -17,10 +15,7 @@ export default function Loading () {
     };
   }, []);
 
-  const propsTelon ={open}
+  const propsTelon = { open };
 
-  return (
-    <Telon {...propsTelon}/>
-  );
-};
-export { loadingReducer };
+  return <Telon {...propsTelon} />;
+}
