@@ -1,27 +1,21 @@
 import * as React from "react";
-import Backdrop from "@material-ui/core/Backdrop";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { makeStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
-import loadingReducer from "./reducer";
+import Telon from "./Telon";
+import { eventEmitter, loadEvent } from "../../../tools";
 
-const useStyles = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: "#fff",
-  },
-}));
+export default function Loading() {
+  const [open, setOpen] = React.useState(false);
+  console.log({ Loading: "render", open });
 
-const Loading = (props) => {
-  console.log({ Loading: "render", props });
-  const classes = useStyles();
-  return (
-    <Backdrop className={classes.backdrop} open={props.isLoading}>
-      <CircularProgress color="inherit" />
-    </Backdrop>
-  );
-};
+  React.useEffect(() => {
+    const listener = eventEmitter.addListener(loadEvent, (show) => {
+      setOpen(show);
+    });
+    return () => {
+      listener.remove();
+    };
+  }, []);
 
-const mapStateToProps = (reducers) => reducers.loadingReducer;
-export default connect(mapStateToProps)(Loading);
-export { loadingReducer };
+  const propsTelon = { open };
+
+  return <Telon {...propsTelon} />;
+}

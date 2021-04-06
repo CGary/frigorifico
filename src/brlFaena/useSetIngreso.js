@@ -2,14 +2,13 @@ import firebase from "firebase/app";
 import { ingreso } from "../firebase";
 import { setFaena } from "../redux";
 import { useDispatch } from "react-redux";
-import { useLoading } from "../components/common";
+import { eventEmitter, loadEvent } from "../tools";
 
 export default () => {
   const dispatch = useDispatch();
-  const setLoading = useLoading();
 
   return async (objIngreso) => {
-    setLoading(true);
+    eventEmitter.emit(loadEvent, true);
     try {
       const { refCliente, fecha, cliente, id } = objIngreso;
       const refIngreso = firebase.firestore().collection(ingreso).doc(id);
@@ -26,6 +25,6 @@ export default () => {
     } catch (err) {
       console.log(err);
     }
-    setLoading(false);
+    eventEmitter.emit(loadEvent, false);
   };
 };

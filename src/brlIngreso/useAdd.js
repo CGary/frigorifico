@@ -1,12 +1,12 @@
 import firebase from "firebase/app";
-import { useLoading, useDialogo } from "../components/common";
+import { eventEmitter, loadEvent } from "../tools";
+import { useDialogo } from "../components/common";
 import { useSelector } from "react-redux";
 import { errorPeticion } from "../tools/msg";
 import { ingreso, cliente } from "../firebase";
 import { getDateLocalToUTC } from "../tools/formatDate";
 
 export default () => {
-  const setLoading = useLoading();
   const { msgAlert } = useDialogo();
   const uid = useSelector((state) => state.segReducer.uid);
 
@@ -20,7 +20,7 @@ export default () => {
     };
     return new Promise((resolve) => {
       const catchCallback = (err) => {
-        setLoading(false);
+        eventEmitter.emit(loadEvent, false);
         console.log(err);
         if (err.message) {
           msgAlert({ description: err.message });
@@ -29,7 +29,7 @@ export default () => {
         }
       };
       const then_add = () => {
-        setLoading(false);
+        eventEmitter.emit(loadEvent, false);
         resolve();
       };
 
@@ -39,7 +39,7 @@ export default () => {
         .collection(cliente)
         .doc(idCliente);
 
-      setLoading(true);
+      eventEmitter.emit(loadEvent, true);
       firebase
         .firestore()
         .collection(ingreso)
