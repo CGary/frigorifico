@@ -10,7 +10,7 @@ export const get2Digitos = (digito) => {
   if (digito < 10) {
     return "0" + digito;
   }
-  return digito;
+  return digito.toString();
 };
 
 export const getDateLocalToUTC = (date) => {
