@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import NavItem from "../NavItem";
 
-export default function Content({ rutas, cerrar, displayName, email }) {
+export default function NavContentView({ rutas, cerrar, displayName, email }) {
   return (
     <Box height="100%" display="flex" flexDirection="column">
       <BoxAvatar>

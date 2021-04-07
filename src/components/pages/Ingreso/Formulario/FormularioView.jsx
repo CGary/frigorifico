@@ -1,29 +1,20 @@
 import * as React from "react";
-import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
-import { CardContent } from "@material-ui/core";
+import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
+import { CardContent, FormControlLabel, Checkbox } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
 import { SearchCliente } from "../../../common";
 
-export default function Formulario(props) {
+export default function FormularioView(props) {
   return (
     <Card>
-      <CardHeader title="Registro de Recibo" />
+      <CardHeader title="Ingreso de Servicio" />
       <Divider />
       <form autoComplete="off" {...props.form}>
         <CardContent>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                autoFocus
-                variant="outlined"
-                required
-                fullWidth
-                {...props.recibo}
-              />
-            </Grid>
             <Grid item xs={12}>
               <SearchCliente {...props.cliente} />
             </Grid>
@@ -45,7 +36,31 @@ export default function Formulario(props) {
                 variant="outlined"
                 required
                 fullWidth
-                {...props.monto}
+                {...props.cantidad}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    name="checkedC"
+                    color="primary"
+                    {...props.isLimpieza}
+                  />
+                }
+                label={props.isLimpieza.label}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    name="checkedC"
+                    color="primary"
+                    {...props.isTransporte}
+                  />
+                }
+                label={props.isTransporte.label}
               />
             </Grid>
           </Grid>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import Telon from "./Telon";
+import LoadingView from "./LoadingView";
 import { eventEmitter, loadEvent } from "../../../tools";
 
 export default function Loading() {
@@ -15,7 +15,7 @@ export default function Loading() {
     };
   }, []);
 
-  const propsTelon = { open };
+  const propsLoadingView = { open };
 
-  return <Telon {...propsTelon} />;
+  return <LoadingView {...propsLoadingView} />;
 }

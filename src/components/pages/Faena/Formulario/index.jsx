@@ -1,5 +1,5 @@
 import * as React from "react";
-import Form from "./Form";
+import FormularioView from "./FormularioView";
 import { useState } from "react";
 import { useAdd } from "../../../../brlFaena";
 import { useSelector } from "react-redux";
@@ -15,7 +15,7 @@ export default function Formulario() {
     (state) => state.faenaReducer.faena
   );
 
-  const propsForm = {
+  const propsFormularioView = {
     fecha,
     nombre,
     cliente,
@@ -48,5 +48,5 @@ export default function Formulario() {
     },
   };
 
-  return cliente ? <Form {...propsForm} /> : null;
+  return cliente ? <FormularioView {...propsFormularioView} /> : null;
 }

@@ -6,11 +6,11 @@ import { MdPersonAdd } from "react-icons/md";
 import { HiDocumentReport } from "react-icons/hi";
 import { IoMdLogOut } from "react-icons/io";
 import { CgArrowLongRightE } from "react-icons/cg";
-import Content from "./Content";
+import NavContentView from "./NavContentView";
 
 export default function NavContent() {
   console.log({ NavContent: "render" });
-  const propsContent = {
+  const propsNavContentView = {
     displayName: useSelector((state) => state.segReducer.displayName),
     email: useSelector((state) => state.segReducer.email),
     rutas: [
@@ -47,5 +47,5 @@ export default function NavContent() {
     },
   };
 
-  return <Content {...propsContent} />;
+  return <NavContentView {...propsNavContentView} />;
 }

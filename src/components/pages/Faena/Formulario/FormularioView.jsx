@@ -3,7 +3,14 @@ import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardHeader, CardContent } from "@material-ui/core";
 import { getDateUTCToLocalShort } from "../../../../tools";
 
-export default function Form({ fecha, nombre, cliente, izq, der, form }) {
+export default function FormularioView({
+  fecha,
+  nombre,
+  cliente,
+  izq,
+  der,
+  form,
+}) {
   return cliente ? (
     <Card>
       <CardHeader

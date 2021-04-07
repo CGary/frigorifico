@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useAdd } from "../../../../brlRecibo";
-import Form from "./Form";
+import FormularioView from "./FormularioView";
 
 export default function Formulario() {
   console.log({ Formulario: "render" });
@@ -22,7 +22,7 @@ export default function Formulario() {
     document.getElementById("recibo").focus();
   };
 
-  const propsForm = {
+  const propsFormularioView = {
     recibo: {
       id: "recibo",
       label: "Nro de Recibo",
@@ -71,5 +71,5 @@ export default function Formulario() {
     },
   };
 
-  return <Form {...propsForm} />;
+  return <FormularioView {...propsFormularioView} />;
 }

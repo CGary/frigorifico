@@ -3,20 +3,20 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { mobileClose } from "../../../../../redux";
-import Mobile from "./Mobile";
+import NavMobileView from "./NavMobileView";
 
 export default function NavMobile() {
   console.log({ Mobile: "render" });
   const dispatch = useDispatch();
 
-  const propsMobile = {
+  const propsNavMobileView = {
     isMobileOpen: useSelector((state) => state.navMobileReducer.isMobileOpen),
     handlerClose: () => dispatch({ type: mobileClose }),
   };
 
   return (
     <>
-      <Mobile {...propsMobile} />
+      <NavMobileView {...propsNavMobileView} />
       <ListenerToCloseMobilDrawer />
     </>
   );

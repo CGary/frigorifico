@@ -1,5 +1,5 @@
 import * as React from "react";
-import Grilla from "./Grilla";
+import TablaView from "./TablaView";
 import { useDelete } from "../../../../brlCliente";
 import { useSelector } from "react-redux";
 
@@ -8,10 +8,10 @@ export default function Tabla() {
   const eliminar = useDelete();
   const arrCliente = useSelector((state) => state.clienteReducer.arrCliente);
 
-  const propsGrilla = {
+  const propsTablaView = {
     eliminar,
     arrCliente,
   };
 
-  return <Grilla {...propsGrilla} />;
+  return <TablaView {...propsTablaView} />;
 }

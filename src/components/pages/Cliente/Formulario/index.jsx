@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useAdd } from "../../../../brlCliente";
-import Form from "./Form";
+import FormularioView from "./FormularioView";
 
 export default function Formulario() {
   console.log({ Formulario: "render" });
@@ -17,7 +17,7 @@ export default function Formulario() {
     setnombre("");
   };
 
-  const propsForm = {
+  const propsFormularioView = {
     codigo: {
       label: "Código Cliente",
       value: codigo,
@@ -55,5 +55,5 @@ export default function Formulario() {
     },
   };
 
-  return <Form {...propsForm} />;
+  return <FormularioView {...propsFormularioView} />;
 }

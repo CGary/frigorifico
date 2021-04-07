@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button, Box } from "@material-ui/core";
 import Buscador from "./Buscador";
-import IngresoGrid from "./IngresoGrid";
+import TablaView from "./TablaView";
 import { SearchCliente } from "../../../common";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -54,8 +54,8 @@ export default function Toolbar() {
 
   const setIngreso = useSetIngreso();
   const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
-  const propsIngresoGrid = {
-    handlerClickRow: (idIngreso) => () => {
+  const propsTablaView = {
+    rowClick: (idIngreso) => () => {
       setIngreso(arrIngreso.find((row) => row.id === idIngreso));
       setOpen(false);
     },
@@ -88,7 +88,7 @@ export default function Toolbar() {
       </Box>
       <Buscador
         {...propsBuscador}
-        ingresoGrid={() => <IngresoGrid {...propsIngresoGrid} />}
+        ingresoGrid={() => <TablaView {...propsTablaView} />}
         searchCliente={() => <SearchCliente {...fieldCliente} />}
       />
     </>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useAdd } from "../../../../brlIngreso";
-import Form from "./Form";
+import FormularioView from "./FormularioView";
 
 export default function Formulario() {
   console.log({ Form: "render" });
@@ -24,7 +24,7 @@ export default function Formulario() {
     document.getElementById("cliente").focus();
   };
 
-  const propsForm = {
+  const propsFormularioView = {
     cliente: {
       id: "cliente",
       label: "Cliente",
@@ -83,5 +83,5 @@ export default function Formulario() {
     },
   };
 
-  return <Form {...propsForm} />;
+  return <FormularioView {...propsFormularioView} />;
 }

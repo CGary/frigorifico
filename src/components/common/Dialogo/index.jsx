@@ -2,19 +2,19 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { dialogoClose } from "../../../redux";
 import dialogoReducer from "./reducer";
-import Mssg from "./Mssg";
+import DialogoView from "./DialogoView";
 
 const ConfirmationDialog = (props) => {
   const { dispatch, ...rest } = props;
 
-  const propsMssg = {
+  const propsDialogoView = {
     ...rest,
     onClose: () => {
       dispatch({ type: dialogoClose });
     },
   };
 
-  return <Mssg {...propsMssg} />;
+  return <DialogoView {...propsDialogoView} />;
 };
 
 const mapStateToProps = (reducers) => reducers.dialogoReducer;

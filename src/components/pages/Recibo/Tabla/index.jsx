@@ -1,13 +1,13 @@
 import * as React from "react";
-import Grilla from "./Grilla";
+import TablaView from "./TablaView";
 import { useDelete } from "../../../../brlRecibo";
 import { useSelector } from "react-redux";
 
 export default function Tabla() {
   console.log({ Tabla: "render" });
-  const propsGrilla = {
+  const propsTablaView = {
     eliminar: useDelete(),
     arrRecibo: useSelector((state) => state.reciboReducer.arrRecibo),
   };
-  return <Grilla {...propsGrilla} />;
+  return <TablaView {...propsTablaView} />;
 }

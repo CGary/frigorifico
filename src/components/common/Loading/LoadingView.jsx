@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Telon({ open }) {
+export default function LoadingView({ open }) {
   const propsBackdrop = {
     className: useStyles().backdrop,
     open,

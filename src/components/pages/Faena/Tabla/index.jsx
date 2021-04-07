@@ -1,5 +1,5 @@
 import * as React from "react";
-import Grilla from "./Grilla";
+import TablaView from "./TablaView";
 import { useSelector } from "react-redux";
 import { useDelete } from "../../../../brlFaena";
 
@@ -8,7 +8,7 @@ export default function Tabla() {
     (state) => state.faenaReducer.faena
   );
 
-  const propsGrilla = {
+  const propsTablaView = {
     fecha,
     nombre,
     cliente,
@@ -17,5 +17,5 @@ export default function Tabla() {
       (row) => row.refIngreso.id === refIngreso?.id
     ),
   };
-  return cliente ? <Grilla {...propsGrilla} /> : null;
+  return cliente ? <TablaView {...propsTablaView} /> : null;
 }

@@ -1,15 +1,16 @@
 import * as React from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import DateFnsUtils from "@date-io/date-fns";
-import { KeyboardDatePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { KeyboardDatePicker } from "@material-ui/pickers";
 import { CardContent } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
+import { SearchCliente } from "../../../common";
 
-export default function Form(props) {
+export default function FormularioView(props) {
   return (
     <Card>
-      <CardHeader title="Cliente" />
+      <CardHeader title="Registro de Recibo" />
       <Divider />
       <form autoComplete="off" {...props.form}>
         <CardContent>
@@ -20,16 +21,11 @@ export default function Form(props) {
                 variant="outlined"
                 required
                 fullWidth
-                {...props.codigo}
+                {...props.recibo}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                {...props.nombre}
-              />
+              <SearchCliente {...props.cliente} />
             </Grid>
             <Grid item xs={12}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -43,6 +39,14 @@ export default function Form(props) {
                   {...props.fecha}
                 />
               </MuiPickersUtilsProvider>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                {...props.monto}
+              />
             </Grid>
           </Grid>
         </CardContent>
