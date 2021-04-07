@@ -1,6 +1,7 @@
-import firebase from "firebase/app";
 import { useDialogo } from "../../components/common";
 import { eventEmitter, loadEvent, errorPeticion } from "../../tools";
+import { loginUseCase } from "../app";
+import { login } from "../infrastructure";
 
 export default () => {
   const { msgAlert } = useDialogo();
@@ -8,7 +9,7 @@ export default () => {
   return async (dsMail, dsPass) => {
     eventEmitter.emit(loadEvent, true);
     try {
-      await firebase.auth().signInWithEmailAndPassword(dsMail, dsPass);
+      await loginUseCase({ dsMail, dsPass, login });
     } catch (err) {
       console.log(err);
       if (err.message) {

@@ -1,9 +1,9 @@
 import * as React from "react";
 import AresetpassView from "./AresetpassView";
-import { useResetPass } from "../..";
+import { resetPassController } from "../../controller";
 
 export default function Aresetpass({ history }) {
-  const sendMail = useResetPass();
+  const sendMail = resetPassController();
 
   const propsAresetpassView = {
     history,
