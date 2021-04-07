@@ -6,10 +6,10 @@ import { login } from "../infrastructure";
 export default () => {
   const { msgAlert } = useDialogo();
 
-  return async (dsMail, dsPass) => {
+  return async ({ email, password }) => {
     eventEmitter.emit(loadEvent, true);
     try {
-      await loginUseCase({ dsMail, dsPass, login });
+      await loginUseCase({ email, password, login });
     } catch (err) {
       console.log(err);
       if (err.message) {

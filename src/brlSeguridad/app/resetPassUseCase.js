@@ -1,3 +1,3 @@
-export default async ({ dsMail, resetPass }) => {
-  await resetPass(dsMail);
+export default async ({ email, resetPass }) => {
+  await resetPass({ email });
 };

@@ -1,21 +1,19 @@
-import { useHistory } from "react-router-dom";
 import { eventEmitter, loadEvent } from "../../tools";
 import { useDialogo } from "../../components/common";
-import { resetpass_mail } from "../msg";
+import { resetpass_mail } from "./message";
 import { errorPeticion } from "../../tools";
 import { resetPassUseCase } from "../app";
 import { resetPass } from "../infrastructure";
 
-export default () => {
-  const { goBack } = useHistory();
+export default ({ history }) => {
   const { msgAlert } = useDialogo();
 
-  return async (dsMail) => {
+  return async ({ email }) => {
     eventEmitter.emit(loadEvent, true);
     try {
-      await resetPassUseCase({ dsMail, resetPass });
+      await resetPassUseCase({ email, resetPass });
       msgAlert({ description: resetpass_mail });
-      goBack();
+      history.goBack();
     } catch (err) {
       console.log(err);
       if (err.message) {

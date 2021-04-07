@@ -6,7 +6,7 @@ import Faena from "../../brlFaena/view/Faena";
 import Ingreso from "../../brlIngreso/view/Ingreso";
 import Recibo from "../../brlRecibo/view/Recibo";
 import Cliente from "../../brlCliente/view/Cliente";
-import Cerrar from "../../brlSeguridad/view/Cerrar";
+import Cerrar from "../../brlSeguridad/view/Logout";
 
 export default function LoggedInRoutes() {
   useSnapshots();

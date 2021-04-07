@@ -1,4 +1,4 @@
 import firebase from "firebase/app";
 
-export default async (dsMail) =>
-  await firebase.auth().sendPasswordResetEmail(dsMail);
+export default async ({ email }) =>
+  await firebase.auth().sendPasswordResetEmail(email);

@@ -4,7 +4,7 @@ import { eventEmitter, loadEvent } from "../../../tools";
 
 export default function Loading() {
   const [open, setOpen] = React.useState(false);
-  console.log({ Loading: "render", open });
+  // console.log({ Loading: "render", open });
 
   React.useEffect(() => {
     const listener = eventEmitter.addListener(loadEvent, (show) => {

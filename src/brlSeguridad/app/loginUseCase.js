@@ -1,3 +1,3 @@
-export default async ({ dsMail, dsPass, login }) => {
-  await login(dsMail, dsPass);
+export default async ({ email, password, login }) => {
+  await login({ email, password });
 };

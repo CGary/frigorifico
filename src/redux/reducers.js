@@ -1,4 +1,4 @@
-import { segReducer } from "../brlSeguridad";
+import { segReducer } from "../brlSeguridad/infrastructure";
 import { dialogoReducer } from "../components/common/Dialogo";
 import { navMobileReducer } from "../components/layout/DashLayout/NavBar";
 import { faenaReducer } from "../brlFaena";
