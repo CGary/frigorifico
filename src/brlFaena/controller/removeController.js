@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
-import { eventEmitter, loadEvent } from "../tools";
-import { useDialogo } from "../components/common";
-import { errorPeticion, msgEliminar } from "../tools";
-import { ingreso } from "../firebase";
+import { eventEmitter, loadEvent } from "../../tools";
+import { useDialogo } from "../../components/common";
+import { errorPeticion, msgEliminar } from "../../tools";
+import { faena } from "../../firebase";
 
 export default () => {
   const { msgAlert, msgConfirm } = useDialogo();
@@ -23,7 +23,7 @@ export default () => {
       });
       if (result === "confirm") {
         eventEmitter.emit(loadEvent, true);
-        await firebase.firestore().collection(ingreso).doc(id).delete();
+        await firebase.firestore().collection(faena).doc(id).delete();
         eventEmitter.emit(loadEvent, false);
       }
     } catch (err) {

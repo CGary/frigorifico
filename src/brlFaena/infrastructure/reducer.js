@@ -1,21 +1,21 @@
-import { setIngreso, setArrIngreso } from "../redux";
+import { setFaena, setArrFaena } from "../../redux";
 
 const initialState = {
-  ingreso: {},
-  arrIngreso: [],
+  faena: {},
+  arrFaena: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case setIngreso:
+    case setFaena:
       return {
         ...state,
-        ingreso: { ...action.payload },
+        faena: { ...action.payload },
       };
-    case setArrIngreso:
+    case setArrFaena:
       return {
         ...state,
-        arrIngreso: [...action.payload],
+        arrFaena: [...action.payload],
       };
     default:
       return state;

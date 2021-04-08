@@ -5,7 +5,7 @@ import TablaView from "./TablaView";
 import { SearchCliente } from "../../../../components/common";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useSetIngreso } from "../../..";
+import { setIngresoController } from "../../../controller";
 import { getDateLocalToUTC } from "../../../../tools";
 
 export default function Toolbar() {
@@ -52,7 +52,7 @@ export default function Toolbar() {
     handleClose,
   };
 
-  const setIngreso = useSetIngreso();
+  const setIngreso = setIngresoController();
   const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
   const propsTablaView = {
     rowClick: (idIngreso) => () => {

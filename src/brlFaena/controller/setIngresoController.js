@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
-import { ingreso } from "../firebase";
-import { setFaena } from "../redux";
+import { ingreso } from "../../firebase";
+import { setFaena } from "../../redux";
 import { useDispatch } from "react-redux";
-import { eventEmitter, loadEvent } from "../tools";
+import { eventEmitter, loadEvent } from "../../tools";
 
 export default () => {
   const dispatch = useDispatch();

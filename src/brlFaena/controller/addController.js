@@ -1,9 +1,9 @@
 import firebase from "firebase/app";
-import { eventEmitter, loadEvent } from "../tools";
-import { useDialogo } from "../components/common";
+import { eventEmitter, loadEvent } from "../../tools";
+import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
-import { errorPeticion } from "../tools";
-import { faena } from "../firebase";
+import { errorPeticion } from "../../tools";
+import { faena } from "../../firebase";
 
 export default () => {
   const { msgAlert } = useDialogo();

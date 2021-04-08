@@ -1,9 +1,9 @@
 import { segReducer } from "../brlSeguridad/infrastructure";
 import { dialogoReducer } from "../components/common/Dialogo";
 import { navMobileReducer } from "../components/layout/DashLayout/NavBar";
-import { faenaReducer } from "../brlFaena";
+import { faenaReducer } from "../brlFaena/infrastructure";
 import { clienteReducer } from "../brlCliente/infrastructure";
-import { ingresoReducer } from "../brlIngreso";
+import { ingresoReducer } from "../brlIngreso/infrastructure";
 import { reciboReducer } from "../brlRecibo/infrastructure";
 
 export default (state = {}, action = "") => {
