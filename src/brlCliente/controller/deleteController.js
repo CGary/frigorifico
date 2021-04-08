@@ -1,18 +1,20 @@
 import { eventEmitter, loadEvent } from "../../tools";
+import { errorPeticion, msgEliminar } from "../../tools";
 import { useDialogo } from "../../components/common";
-import { resetpass_mail } from "./message";
-import { errorPeticion } from "../../tools";
-import { resetPass } from "../infrastructure";
+import { remove } from "../infrastructure";
 
-export default ({ history }) => {
-  const { msgAlert } = useDialogo();
+export default () => {
+  const { msgAlert, msgConfirm } = useDialogo();
 
   return async (query) => {
-    eventEmitter.emit(loadEvent, true);
     try {
-      await resetPass(query);
-      msgAlert({ description: resetpass_mail });
-      history.goBack();
+      const result = await msgConfirm({
+        description: msgEliminar,
+      });
+      if (result === "confirm") {
+        eventEmitter.emit(loadEvent, true);
+        await remove(query);
+      }
     } catch (err) {
       console.log(err);
       if (err.message) {

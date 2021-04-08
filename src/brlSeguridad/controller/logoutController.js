@@ -1,6 +1,5 @@
 import { useDialogo } from "../../components/common";
 import { errorPeticion } from "../../tools";
-import { logoutUseCase } from "../app";
 import { logout } from "../infrastructure";
 
 export default () => {
@@ -8,7 +7,7 @@ export default () => {
 
   return () => {
     try {
-      logoutUseCase({ logout });
+      logout();
     } catch (err) {
       console.log(err);
       msgAlert({ description: errorPeticion });

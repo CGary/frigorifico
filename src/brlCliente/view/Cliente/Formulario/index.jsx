@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
-import { useAdd } from "../../..";
+import { addController } from "../../../controller";
 import FormularioView from "./FormularioView";
 
 export default function Formulario() {
   console.log({ Formulario: "render" });
-  const add = useAdd();
+  const add = addController();
 
   const [codigo, setcodigo] = useState("");
   const [nombre, setnombre] = useState("");
@@ -42,13 +42,8 @@ export default function Formulario() {
     form: {
       onSubmit: (e) => {
         e.preventDefault();
-        const query = {
-          codigo,
-          nombre,
-          fecha,
-        };
-        // console.log({ query });
-        add(query).then(() => {
+
+        add({ codigo, nombre, fecha }).then(() => {
           resetValues();
         });
       },

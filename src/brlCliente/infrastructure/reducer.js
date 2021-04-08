@@ -1,21 +1,21 @@
-import { setRecibo, setArrRecibo } from "../redux";
+import { setCliente, setArrCliente } from "../../redux";
 
 const initialState = {
-  recibo: {},
-  arrRecibo: [],
+  cliente: {},
+  arrCliente: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case setRecibo:
+    case setCliente:
       return {
         ...state,
-        recibo: { ...action.payload },
+        cliente: { ...action.payload },
       };
-    case setArrRecibo:
+    case setArrCliente:
       return {
         ...state,
-        arrRecibo: [...action.payload],
+        arrCliente: [...action.payload],
       };
     default:
       return state;
