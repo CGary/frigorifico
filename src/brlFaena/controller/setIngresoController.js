@@ -1,8 +1,9 @@
 import { setFaena } from "../../redux";
 import { useDispatch } from "react-redux";
 import { eventEmitter, loadEvent } from "../../tools";
+import { setIngresoUseCase } from "../app";
 import { getClientebyRef } from "../../brlCliente/infrastructure";
-import { getRefIngreso } from "../../brlIngreso/infrastructure";
+import { getRefIngresoById } from "../../brlIngreso/infrastructure";
 
 export default () => {
   const dispatch = useDispatch();
@@ -12,8 +13,12 @@ export default () => {
     try {
       const { refCliente, fecha, cliente, id } = objIngreso;
 
-      const refIngreso = getRefIngreso({ id });
-      const { nombre } = await getClientebyRef(refCliente);
+      const { refIngreso, nombre } = await setIngresoUseCase({
+        getRefIngresoById,
+        getClientebyRef,
+        idIngreso: id,
+        refCliente,
+      });
 
       dispatch({
         type: setFaena,

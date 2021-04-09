@@ -11,5 +11,5 @@ export const add = async (query) =>
 export const remove = async ({ id }) =>
   await firebase.firestore().collection(ingreso).doc(id).delete();
 
-export const getRefIngreso = ({ id }) =>
+export const getRefIngresoById = ({ id }) =>
   firebase.firestore().collection(ingreso).doc(id);
