@@ -1,8 +1,8 @@
-import firebase from "firebase/app";
-import { ingreso } from "../../firebase";
 import { setFaena } from "../../redux";
 import { useDispatch } from "react-redux";
 import { eventEmitter, loadEvent } from "../../tools";
+import { getClientebyRef } from "../../brlCliente/infrastructure";
+import { getRefIngreso } from "../../brlIngreso/infrastructure";
 
 export default () => {
   const dispatch = useDispatch();
@@ -11,12 +11,9 @@ export default () => {
     eventEmitter.emit(loadEvent, true);
     try {
       const { refCliente, fecha, cliente, id } = objIngreso;
-      const refIngreso = firebase.firestore().collection(ingreso).doc(id);
-      const docCliente = await refCliente.get();
-      if (!docCliente.exists) {
-        return;
-      }
-      const { nombre } = docCliente.data();
+
+      const refIngreso = getRefIngreso({ id });
+      const { nombre } = await getClientebyRef(refCliente);
 
       dispatch({
         type: setFaena,

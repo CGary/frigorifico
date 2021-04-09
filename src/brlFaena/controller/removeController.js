@@ -1,13 +1,12 @@
-import firebase from "firebase/app";
 import { eventEmitter, loadEvent } from "../../tools";
 import { useDialogo } from "../../components/common";
 import { errorPeticion, msgEliminar } from "../../tools";
-import { faena } from "../../firebase";
+import { remove } from "../infrastructure";
 
 export default () => {
   const { msgAlert, msgConfirm } = useDialogo();
 
-  return async (id) => {
+  return async ({ id }) => {
     const catchCallback = (err) => {
       console.log(err);
       if (err.message) {
@@ -23,7 +22,7 @@ export default () => {
       });
       if (result === "confirm") {
         eventEmitter.emit(loadEvent, true);
-        await firebase.firestore().collection(faena).doc(id).delete();
+        await remove({ id });
         eventEmitter.emit(loadEvent, false);
       }
     } catch (err) {
