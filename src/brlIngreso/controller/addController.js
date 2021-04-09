@@ -3,9 +3,9 @@ import { eventEmitter, loadEvent } from "../../tools";
 import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
 import { errorPeticion } from "../../tools";
-import { cliente } from "../../firebase";
 import { getDateLocalToUTC } from "../../tools";
 import { add } from "../infrastructure";
+import { getRefCliente } from "../../brlCliente/infrastructure";
 
 export default () => {
   const { msgAlert } = useDialogo();
@@ -17,10 +17,7 @@ export default () => {
       try {
         const { idCliente, fecha, ...rest } = query;
 
-        const refCliente = firebase
-          .firestore()
-          .collection(cliente)
-          .doc(idCliente);
+        const refCliente = getRefCliente({ idCliente });
 
         query = {
           ...rest,

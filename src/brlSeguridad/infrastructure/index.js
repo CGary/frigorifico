@@ -1,6 +1,13 @@
-import login from "./loginFirebase";
-import logout from "./logoutFirebase";
-import resetPass from "./resetPassFirebase";
+import firebase from "firebase/app";
 import segReducer from "../infrastructure/reducer";
 
-export { login, logout, resetPass, segReducer };
+export { segReducer };
+
+export const login = async ({ email, password }) => {
+  await firebase.auth().signInWithEmailAndPassword(email, password);
+};
+
+export const logout = () => firebase.auth().signOut();
+
+export const resetPass = async ({ email }) =>
+  await firebase.auth().sendPasswordResetEmail(email);

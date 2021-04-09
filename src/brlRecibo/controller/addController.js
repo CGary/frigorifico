@@ -3,8 +3,8 @@ import { eventEmitter, loadEvent } from "../../tools";
 import { errorPeticion, getDateLocalToUTC } from "../../tools";
 import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
-import { cliente } from "../../firebase";
 import { add } from "../infrastructure";
+import { getRefCliente } from "../../brlCliente/infrastructure";
 
 export default () => {
   const { msgAlert } = useDialogo();
@@ -15,11 +15,7 @@ export default () => {
       eventEmitter.emit(loadEvent, true);
       const { fecha, idCliente, ...rest } = query;
       try {
-        const refCliente = firebase
-          .firestore()
-          .collection(cliente)
-          .doc(idCliente);
-
+        const refCliente = getRefCliente({ idCliente });
         query = {
           ...rest,
           fecha: getDateLocalToUTC(fecha),
