@@ -13,12 +13,14 @@ export default () => {
     try {
       const { refCliente, fecha, cliente, id } = objIngreso;
 
-      const { refIngreso, nombre } = await setIngresoUseCase({
+      const injection = {
         getRefIngresoById,
         getClientebyRef,
         idIngreso: id,
         refCliente,
-      });
+      };
+
+      const { refIngreso, nombre } = await setIngresoUseCase(injection);
 
       dispatch({
         type: setFaena,
