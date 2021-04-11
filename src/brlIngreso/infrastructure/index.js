@@ -5,10 +5,10 @@ import ingresoReducer from "./reducer";
 
 export { ingresoReducer };
 
-export const add = async (query) =>
+export const addIngreso = async (query) =>
   await firebase.firestore().collection(ingreso).add(query);
 
-export const remove = async ({ id }) =>
+export const removeIngreso = async ({ id }) =>
   await firebase.firestore().collection(ingreso).doc(id).delete();
 
 export const getRefIngresoById = ({ id }) =>

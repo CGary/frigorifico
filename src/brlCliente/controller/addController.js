@@ -3,7 +3,7 @@ import { eventEmitter, loadEvent, errorPeticion } from "../../tools";
 import { getDateLocalToUTC } from "../../tools";
 import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
-import { add } from "../infrastructure";
+import { addCliente } from "../infrastructure";
 
 export default () => {
   const { msgAlert } = useDialogo();
@@ -20,7 +20,7 @@ export default () => {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       };
       try {
-        await add(query);
+        await addCliente(query);
       } catch (err) {
         console.log(err);
         if (err.message) {

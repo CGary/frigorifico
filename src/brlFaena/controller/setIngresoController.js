@@ -2,7 +2,7 @@ import { setFaena } from "../../redux";
 import { useDispatch } from "react-redux";
 import { eventEmitter, loadEvent } from "../../tools";
 import { setIngresoUseCase } from "../app";
-import { getClientebyRef } from "../../brlCliente/infrastructure";
+import { getClienteByRef } from "../../brlCliente/infrastructure";
 import { getRefIngresoById } from "../../brlIngreso/infrastructure";
 
 export default () => {
@@ -15,7 +15,7 @@ export default () => {
 
       const injection = {
         getRefIngresoById,
-        getClientebyRef,
+        getClienteByRef,
         idIngreso: id,
         refCliente,
       };

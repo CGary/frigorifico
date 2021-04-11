@@ -3,7 +3,7 @@ import { eventEmitter, loadEvent } from "../../tools";
 import { errorPeticion, getDateLocalToUTC } from "../../tools";
 import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
-import { add } from "../infrastructure";
+import { addRecibo } from "../infrastructure";
 import { getRefCliente } from "../../brlCliente/infrastructure";
 
 export default () => {
@@ -24,7 +24,7 @@ export default () => {
           refCliente,
         };
 
-        await add(query);
+        await addRecibo(query);
       } catch (err) {
         console.log(err);
         if (err.message) {

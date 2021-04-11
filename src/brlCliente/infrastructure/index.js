@@ -5,13 +5,13 @@ import clienteReducer from "./reducer";
 
 export { clienteReducer };
 
-export const add = async (query) =>
+export const addCliente = async (query) =>
   await firebase.firestore().collection(cliente).add(query);
 
-export const remove = async ({ id }) =>
+export const removeCliente = async ({ id }) =>
   await firebase.firestore().collection(cliente).doc(id).delete();
 
-export const getClientebyRef = async (refCliente) => {
+export const getClienteByRef = async (refCliente) => {
   const docCliente = await refCliente.get();
   if (!docCliente.exists) {
     throw new Error("No existe el cliente en la bdd");

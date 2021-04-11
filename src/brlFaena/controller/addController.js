@@ -3,7 +3,7 @@ import { eventEmitter, loadEvent } from "../../tools";
 import { errorPeticion } from "../../tools";
 import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
-import { add } from "../infrastructure";
+import { addFaena } from "../infrastructure";
 
 export default () => {
   const { msgAlert } = useDialogo();
@@ -18,7 +18,7 @@ export default () => {
         fecha: firebase.firestore.FieldValue.serverTimestamp(),
       };
       try {
-        await add(query);
+        await addFaena(query);
       } catch (err) {
         console.log(err);
         if (err.message) {

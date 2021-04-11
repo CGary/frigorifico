@@ -5,8 +5,8 @@ import faenaReducer from "./reducer";
 
 export { faenaReducer };
 
-export const add = async (query) =>
+export const addFaena = async (query) =>
   firebase.firestore().collection(faena).add(query);
 
-export const remove = async ({ id }) =>
+export const removeFaena = async ({ id }) =>
   firebase.firestore().collection(faena).doc(id).delete();

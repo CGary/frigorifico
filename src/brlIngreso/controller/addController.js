@@ -4,7 +4,7 @@ import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
 import { errorPeticion } from "../../tools";
 import { getDateLocalToUTC } from "../../tools";
-import { add } from "../infrastructure";
+import { addIngreso } from "../infrastructure";
 import { getRefCliente } from "../../brlCliente/infrastructure";
 
 export default () => {
@@ -27,7 +27,7 @@ export default () => {
           refCliente,
         };
 
-        await add(query);
+        await addIngreso(query);
       } catch (err) {
         console.log(err);
         if (err.message) {

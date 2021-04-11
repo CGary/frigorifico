@@ -5,8 +5,8 @@ import reciboReducer from "./reducer";
 
 export { reciboReducer };
 
-export const add = async (query) =>
+export const addRecibo = async (query) =>
   await firebase.firestore().collection(recibo).add(query);
 
-export const remove = async ({ id }) =>
+export const removeRecibo = async ({ id }) =>
   await firebase.firestore().collection(recibo).doc(id).delete();

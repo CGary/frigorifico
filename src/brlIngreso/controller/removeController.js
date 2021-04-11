@@ -1,7 +1,7 @@
 import { eventEmitter, loadEvent } from "../../tools";
 import { errorPeticion, msgEliminar } from "../../tools";
 import { useDialogo } from "../../components/common";
-import { remove } from "../infrastructure";
+import { removeIngreso } from "../infrastructure";
 
 export default () => {
   const { msgAlert, msgConfirm } = useDialogo();
@@ -22,7 +22,7 @@ export default () => {
       });
       if (result === "confirm") {
         eventEmitter.emit(loadEvent, true);
-        await remove({ id });
+        await removeIngreso({ id });
         eventEmitter.emit(loadEvent, false);
       }
     } catch (err) {
