@@ -1,16 +1,13 @@
 import * as React from "react";
 import TablaView from "./TablaView";
-import { removeClienteCtrl } from "../../../controller";
-import { useSelector } from "react-redux";
+import { removeClienteCtrl, getAllClienteCtrl } from "../../../controller";
 
 export default function Tabla() {
   console.log({ Tabla: "render" });
-  const eliminar = removeClienteCtrl();
-  const arrCliente = useSelector((state) => state.clienteReducer.arrCliente);
 
   const propsTablaView = {
-    eliminar,
-    arrCliente,
+    eliminar: removeClienteCtrl(),
+    arrCliente: getAllClienteCtrl(),
   };
 
   return <TablaView {...propsTablaView} />;

@@ -2,7 +2,7 @@ import { segReducer } from "../brlSeguridad/infrastructure";
 import { dialogoReducer } from "../components/common/Dialogo";
 import { navMobileReducer } from "../components/layout/DashLayout/NavBar";
 import { faenaReducer } from "../brlFaena/infrastructure";
-import { clienteReducer } from "../brlCliente/infrastructure";
+import { clienteReducer } from "../brlCliente/redux";
 import { ingresoReducer } from "../brlIngreso/infrastructure";
 import { reciboReducer } from "../brlRecibo/infrastructure";
 

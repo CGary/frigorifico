@@ -11,9 +11,6 @@ export const mobileClose = "mobileClose";
 export const setFaena = "setFaena";
 export const setArrFaena = "setArrFaena";
 
-export const setCliente = "setCliente";
-export const setArrCliente = "setArrCliente";
-
 export const setIngreso = "setIngreso";
 export const setArrIngreso = "setArrIngreso";
 

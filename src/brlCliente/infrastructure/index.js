@@ -1,9 +1,5 @@
 import firebase from "firebase/app";
-import { cliente } from "../../firebase";
-
-import clienteReducer from "./reducer";
-
-export { clienteReducer };
+import { cliente, desc } from "../../firebase";
 
 export const addCliente = async (query) => {
   await firebase
@@ -28,3 +24,14 @@ export const getClienteByRef = async (refCliente) => {
 
 export const getRefCliente = ({ idCliente }) =>
   firebase.firestore().collection(cliente).doc(idCliente);
+
+export const getAllCLiente = (callback) =>
+  firebase
+    .firestore()
+    .collection(cliente)
+    .orderBy("fecha", desc)
+    .onSnapshot((result) =>
+      callback([
+        ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
+      ])
+    );

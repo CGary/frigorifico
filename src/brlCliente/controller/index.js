@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { useDialogoPromise } from "../../components/hooks";
 import { addClienteRoute, removeClienteRoute } from "../routes";
 import { getDateLocalToUTC } from "../../tools";
+import getAllClienteCtrl from "./getAllClienteCtrl";
 
-export const addClienteCtrl = () => {
+const addClienteCtrl = () => {
   const uid = useSelector((state) => state.segReducer.uid);
   const promise = useDialogoPromise();
 
@@ -21,7 +22,7 @@ export const addClienteCtrl = () => {
   };
 };
 
-export const removeClienteCtrl = () => {
+const removeClienteCtrl = () => {
   const promise = useDialogoPromise();
 
   return (query) => {
@@ -30,3 +31,5 @@ export const removeClienteCtrl = () => {
     return promise({ callback, confirm: true });
   };
 };
+
+export { addClienteCtrl, removeClienteCtrl, getAllClienteCtrl };
