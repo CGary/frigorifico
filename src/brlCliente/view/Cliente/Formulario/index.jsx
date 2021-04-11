@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
-import { addController } from "../../../controller";
+import { addClienteCtrl } from "../../../controller";
 import FormularioView from "./FormularioView";
 
 export default function Formulario() {
   console.log({ Formulario: "render" });
-  const add = addController();
+  const add = addClienteCtrl();
 
   const [codigo, setcodigo] = useState("");
   const [nombre, setnombre] = useState("");

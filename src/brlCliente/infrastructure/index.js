@@ -8,8 +8,8 @@ export { clienteReducer };
 export const addCliente = async (query) =>
   await firebase.firestore().collection(cliente).add(query);
 
-export const removeCliente = async ({ id }) =>
-  await firebase.firestore().collection(cliente).doc(id).delete();
+export const removeCliente = async ({ idCliente }) =>
+  await firebase.firestore().collection(cliente).doc(idCliente).delete();
 
 export const getClienteByRef = async (refCliente) => {
   const docCliente = await refCliente.get();
