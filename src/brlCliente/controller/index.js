@@ -1,59 +1,32 @@
-import { eventEmitter, loadEvent, errorPeticion } from "../../tools";
-import { msgEliminar } from "../../tools";
-import { useDialogo } from "../../components/common";
 import { useSelector } from "react-redux";
-import { addCliente, removeCliente } from "../infrastructure";
-import { getServerTimestamp } from "../../common/infrastructure";
-import { addClienteUseCase, removeClienteUseCase } from "../app";
+import { useDialogoPromise } from "../../components/hooks";
+import { addClienteRoute, removeClienteRoute } from "../routes";
+import { getDateLocalToUTC } from "../../tools";
 
 export const addClienteCtrl = () => {
-  const { msgAlert } = useDialogo();
   const uid = useSelector((state) => state.segReducer.uid);
+  const promise = useDialogoPromise();
 
-  return (query) =>
-    new Promise(async (resolve) => {
-      eventEmitter.emit(loadEvent, true);
-      query = {
-        addCliente,
-        getServerTimestamp,
+  return ({ fecha, ...rest }) => {
+    const callback = async () => {
+      const query = {
+        ...rest,
+        fecha: getDateLocalToUTC(fecha),
         uidUser: uid,
-        ...query,
       };
-      try {
-        await addClienteUseCase(query);
-      } catch (err) {
-        console.log(err);
-        if (err.message) {
-          msgAlert({ description: err.message });
-        } else {
-          msgAlert({ description: errorPeticion });
-        }
-      }
-      eventEmitter.emit(loadEvent, false);
-      resolve();
-    });
+      await addClienteRoute(query);
+    };
+
+    return promise({ callback });
+  };
 };
 
 export const removeClienteCtrl = () => {
-  const { msgAlert, msgConfirm } = useDialogo();
+  const promise = useDialogoPromise();
 
-  return async ({ idCliente }) => {
-    try {
-      const result = await msgConfirm({
-        description: msgEliminar,
-      });
-      if (result === "confirm") {
-        eventEmitter.emit(loadEvent, true);
-        await removeClienteUseCase({ removeCliente, idCliente });
-      }
-    } catch (err) {
-      console.log(err);
-      if (err.message) {
-        msgAlert({ description: err.message });
-      } else {
-        msgAlert({ description: errorPeticion });
-      }
-    }
-    eventEmitter.emit(loadEvent, false);
+  return (query) => {
+    const callback = async () => await removeClienteRoute(query);
+
+    return promise({ callback, confirm: true });
   };
 };

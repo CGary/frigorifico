@@ -2,8 +2,9 @@ import { useDispatch } from "react-redux";
 import { dialogoOpen } from "../../../redux";
 export default () => {
   const dispatch = useDispatch();
-  const msgConfirm = (options = {}) => {
-    return new Promise((resolve) => {
+
+  const msgConfirm = (options = {}) =>
+    new Promise((resolve) => {
       dispatch({
         type: dialogoOpen,
         payload: {
@@ -13,7 +14,7 @@ export default () => {
         },
       });
     });
-  };
+
   const msgAlert = (options = {}) =>
     dispatch({
       type: dialogoOpen,

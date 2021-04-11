@@ -1,13 +1,5 @@
-import { getDateLocalToUTC } from "../../tools";
-
 export const addClienteUseCase = async (props) => {
-  const { addCliente, getServerTimestamp, fecha, ...rest } = props;
-
-  const query = {
-    ...rest,
-    fecha: getDateLocalToUTC(fecha),
-    timestamp: getServerTimestamp(),
-  };
+  const { addCliente, ...query } = props;
   await addCliente(query);
 };
 

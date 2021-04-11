@@ -5,8 +5,15 @@ import clienteReducer from "./reducer";
 
 export { clienteReducer };
 
-export const addCliente = async (query) =>
-  await firebase.firestore().collection(cliente).add(query);
+export const addCliente = async (query) => {
+  await firebase
+    .firestore()
+    .collection(cliente)
+    .add({
+      ...query,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+};
 
 export const removeCliente = async ({ idCliente }) =>
   await firebase.firestore().collection(cliente).doc(idCliente).delete();
