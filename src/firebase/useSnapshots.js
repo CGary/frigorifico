@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
 import { setArrFaena } from "../redux";
-import { setArrIngreso } from "../redux";
+import { setArrIngreso } from "../brlIngreso/redux";
 import { faena, ingreso, desc } from "./index";
 
 export default () => {

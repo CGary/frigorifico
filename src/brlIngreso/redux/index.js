@@ -1,11 +1,12 @@
-import { setIngreso, setArrIngreso } from "../../redux";
-
 const initialState = {
   ingreso: {},
   arrIngreso: [],
 };
 
-export default (state = initialState, action) => {
+const setIngreso = "setIngreso";
+const setArrIngreso = "setArrIngreso";
+
+const ingresoReducer = (state = initialState, action) => {
   switch (action.type) {
     case setIngreso:
       return {
@@ -21,3 +22,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export { setIngreso, setArrIngreso, ingresoReducer };

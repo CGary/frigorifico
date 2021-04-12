@@ -6,6 +6,3 @@ export const mobileClose = "mobileClose";
 
 export const setFaena = "setFaena";
 export const setArrFaena = "setArrFaena";
-
-export const setIngreso = "setIngreso";
-export const setArrIngreso = "setArrIngreso";

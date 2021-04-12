@@ -3,7 +3,7 @@ import { dialogoReducer } from "../components/common/Dialogo";
 import { navMobileReducer } from "../components/layout/DashLayout/NavBar";
 import { faenaReducer } from "../brlFaena/infrastructure";
 import { clienteReducer } from "../brlCliente/redux";
-import { ingresoReducer } from "../brlIngreso/infrastructure";
+import { ingresoReducer } from "../brlIngreso/redux";
 import { reciboReducer } from "../brlRecibo/redux";
 
 export default (state = {}, action = "") => {
