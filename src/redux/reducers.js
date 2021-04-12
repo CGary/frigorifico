@@ -4,7 +4,7 @@ import { navMobileReducer } from "../components/layout/DashLayout/NavBar";
 import { faenaReducer } from "../brlFaena/infrastructure";
 import { clienteReducer } from "../brlCliente/redux";
 import { ingresoReducer } from "../brlIngreso/infrastructure";
-import { reciboReducer } from "../brlRecibo/infrastructure";
+import { reciboReducer } from "../brlRecibo/redux";
 
 export default (state = {}, action = "") => {
   return {

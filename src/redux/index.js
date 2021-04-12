@@ -9,6 +9,3 @@ export const setArrFaena = "setArrFaena";
 
 export const setIngreso = "setIngreso";
 export const setArrIngreso = "setArrIngreso";
-
-export const setRecibo = "setRecibo";
-export const setArrRecibo = "setArrRecibo";

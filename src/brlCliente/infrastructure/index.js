@@ -22,8 +22,8 @@ export const getClienteByRef = async (refCliente) => {
   return docCliente.data();
 };
 
-export const getRefCliente = ({ idCliente }) =>
-  firebase.firestore().collection(cliente).doc(idCliente);
+export const getRefCliente = async ({ idCliente }) =>
+  await firebase.firestore().collection(cliente).doc(idCliente);
 
 export const getAllCLiente = (callback) =>
   firebase

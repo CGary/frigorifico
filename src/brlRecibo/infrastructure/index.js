@@ -1,12 +1,32 @@
 import firebase from "firebase/app";
-import { recibo } from "../../firebase";
+import { recibo, desc } from "../../firebase";
+import { getRefCliente } from "../../brlCliente/infrastructure";
 
-import reciboReducer from "./reducer";
+export const addRecibo = async (query) => {
+  const { idCliente, ...rest } = query;
 
-export { reciboReducer };
+  const refCliente = await getRefCliente({ idCliente });
 
-export const addRecibo = async (query) =>
-  await firebase.firestore().collection(recibo).add(query);
+  await firebase
+    .firestore()
+    .collection(recibo)
+    .add({
+      ...rest,
+      refCliente,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+};
 
-export const removeRecibo = async ({ id }) =>
-  await firebase.firestore().collection(recibo).doc(id).delete();
+export const removeRecibo = async ({ idRecibo }) =>
+  await firebase.firestore().collection(recibo).doc(idRecibo).delete();
+
+export const getAllRecibo = (callback) =>
+  firebase
+    .firestore()
+    .collection(recibo)
+    .orderBy("fecha", desc)
+    .onSnapshot((result) =>
+      callback([
+        ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
+      ])
+    );

@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
 import { setArrFaena } from "../redux";
-import { setArrIngreso, setArrRecibo } from "../redux";
-import { faena, ingreso, recibo, desc } from "./index";
+import { setArrIngreso } from "../redux";
+import { faena, ingreso, desc } from "./index";
 
 export default () => {
   const dispatch = useDispatch();
@@ -37,23 +37,9 @@ export default () => {
         })
       );
 
-    //recibo
-    const unsubscribeRecibo = firebase
-      .firestore()
-      .collection(recibo)
-      .orderBy("fecha", desc)
-      .onSnapshot((result) =>
-        dispatch({
-          type: setArrRecibo,
-          payload: [
-            ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
-          ],
-        })
-      );
     return () => {
       unsubscribeFaena();
       unsubscribeIngreso();
-      unsubscribeRecibo();
     };
   }, []);
 };

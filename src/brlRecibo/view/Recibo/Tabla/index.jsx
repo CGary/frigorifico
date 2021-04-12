@@ -1,13 +1,13 @@
 import * as React from "react";
 import TablaView from "./TablaView";
-import { removeController } from "../../../controller";
-import { useSelector } from "react-redux";
+import { removeReciboCtrl, getAllReciboCtrl } from "../../../controller";
 
 export default function Tabla() {
   console.log({ Tabla: "render" });
+
   const propsTablaView = {
-    eliminar: removeController(),
-    arrRecibo: useSelector((state) => state.reciboReducer.arrRecibo),
+    eliminar: removeReciboCtrl(),
+    arrRecibo: getAllReciboCtrl(),
   };
   return <TablaView {...propsTablaView} />;
 }
