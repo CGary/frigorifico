@@ -1,9 +1,9 @@
 import * as React from "react";
-import { logoutController } from "../../controller";
+import { logoutCtrl } from "../../controller";
 
 export default function Logout() {
   console.log({ Alogout: "render" });
-  const sendLogout = logoutController();
+  const sendLogout = logoutCtrl();
 
   React.useEffect(() => {
     sendLogout();

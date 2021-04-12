@@ -1,7 +1,3 @@
-//seguridad Actions
-export const login = "login";
-export const logout = "logout";
-
 export const dialogoOpen = "dialogoOpen";
 export const dialogoClose = "dialogoClose";
 

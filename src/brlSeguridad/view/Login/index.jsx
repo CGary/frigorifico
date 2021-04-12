@@ -1,10 +1,10 @@
 import * as React from "react";
 import LoginView from "./LoginView";
-import { loginController } from "../../controller";
+import { loginCtrl } from "../../controller";
 
 export default function Login({ history }) {
   console.log({ Login: "render" });
-  const sendLogin = loginController();
+  const sendLogin = loginCtrl();
 
   const propsLoginView = {
     history,

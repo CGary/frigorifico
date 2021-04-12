@@ -1,7 +1,4 @@
 import firebase from "firebase/app";
-import segReducer from "../infrastructure/reducer";
-
-export { segReducer };
 
 export const login = async ({ email, password }) => {
   await firebase.auth().signInWithEmailAndPassword(email, password);

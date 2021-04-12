@@ -1,11 +1,12 @@
-import { login, logout } from "../../redux";
-
 const initialState = {
   isLogin: false,
   isInitializingUser: true,
 };
 
-export default (state = initialState, action) => {
+const login = "login";
+const logout = "logout";
+
+const segReducer = (state = initialState, action) => {
   switch (action.type) {
     case login:
       return {
@@ -23,3 +24,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export { segReducer, login, logout };
