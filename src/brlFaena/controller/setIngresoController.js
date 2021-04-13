@@ -9,6 +9,7 @@ export default () => {
   const dispatch = useDispatch();
 
   return async (objIngreso) => {
+    console.log({ objIngreso });
     eventEmitter.emit(loadEvent, true);
     try {
       const { refCliente, fecha, cliente, id } = objIngreso;

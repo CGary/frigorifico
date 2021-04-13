@@ -1,6 +1,8 @@
-export const addIngresoUseCase = () => {};
+export const addIngresoUseCase = async ({ addFaena, ...query }) =>
+  await addFaena(query);
 
-export const removeIngresoCase = () => {};
+export const removeIngresoCase = async ({ removeFaena, ...query }) =>
+  await removeFaena(query);
 
 export const setIngresoUseCase = async (props) => {
   const { getRefIngresoById, getClienteByRef, idIngreso, refCliente } = props;

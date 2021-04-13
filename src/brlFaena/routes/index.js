@@ -2,7 +2,7 @@ import { addFaena, removeFaena } from "../infrastructure";
 import { addIngresoUseCase, removeIngresoCase } from "../app";
 
 export const addFaenaRoute = async (query) =>
-  await addIngresoUseCase({ ...query, addFaena });
+  await addIngresoUseCase({ addFaena, ...query });
 
 export const removeFaenaRoute = async (query) =>
-  await removeIngresoCase({ ...query, removeFaena });
+  await removeIngresoCase({ removeFaena, ...query });
