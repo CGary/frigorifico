@@ -1,7 +1,7 @@
 import * as React from "react";
 import TablaView from "./TablaView";
 import { useSelector } from "react-redux";
-import { removeController } from "../../../controller";
+import { removeFaenaCtrl } from "../../../controller";
 
 export default function Tabla() {
   const { fecha, nombre, cliente, refIngreso } = useSelector(
@@ -12,7 +12,7 @@ export default function Tabla() {
     fecha,
     nombre,
     cliente,
-    eliminar: removeController(),
+    eliminar: removeFaenaCtrl(),
     arrSource: useSelector((state) => state.faenaReducer.arrFaena).filter(
       (row) => row.refIngreso.id === refIngreso?.id
     ),

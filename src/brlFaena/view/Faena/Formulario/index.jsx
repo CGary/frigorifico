@@ -1,12 +1,12 @@
 import * as React from "react";
 import FormularioView from "./FormularioView";
 import { useState } from "react";
-import { addController } from "../../../controller";
+import { addFaenaCtrl } from "../../../controller";
 import { useSelector } from "react-redux";
 
 export default function Formulario() {
   console.log({ Form: "render" });
-  const add = addController();
+  const add = addFaenaCtrl();
 
   const [izq, setizq] = useState("");
   const [der, setder] = useState("");

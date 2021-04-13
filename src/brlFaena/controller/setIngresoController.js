@@ -1,4 +1,4 @@
-import { setFaena } from "../../redux";
+import { setFaena } from "../../brlFaena/redux";
 import { useDispatch } from "react-redux";
 import { eventEmitter, loadEvent } from "../../tools";
 import { setIngresoUseCase } from "../app";

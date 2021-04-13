@@ -5,7 +5,7 @@ import { getDateLocalToUTC } from "../../tools";
 import getAllClienteCtrl from "./getAllClienteCtrl";
 
 const addClienteCtrl = () => {
-  const uid = useSelector((state) => state.segReducer.uid);
+  const uidUser = useSelector((state) => state.segReducer.uid);
   const promise = useDialogoPromise();
 
   return ({ fecha, ...rest }) => {
@@ -13,7 +13,7 @@ const addClienteCtrl = () => {
       const query = {
         ...rest,
         fecha: getDateLocalToUTC(fecha),
-        uidUser: uid,
+        uidUser,
       };
       await addClienteRoute(query);
     };

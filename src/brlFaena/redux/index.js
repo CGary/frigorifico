@@ -1,11 +1,12 @@
-import { setFaena, setArrFaena } from "../../redux";
-
 const initialState = {
   faena: {},
   arrFaena: [],
 };
 
-export default (state = initialState, action) => {
+const setFaena = "setFaena";
+const setArrFaena = "setArrFaena";
+
+const faenaReducer = (state = initialState, action) => {
   switch (action.type) {
     case setFaena:
       return {
@@ -21,3 +22,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export { setFaena, faenaReducer, setArrFaena };

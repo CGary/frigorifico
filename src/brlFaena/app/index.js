@@ -1,3 +1,7 @@
+export const addIngresoUseCase = () => {};
+
+export const removeIngresoCase = () => {};
+
 export const setIngresoUseCase = async (props) => {
   const { getRefIngresoById, getClienteByRef, idIngreso, refCliente } = props;
 

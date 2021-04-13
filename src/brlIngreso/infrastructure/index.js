@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import { ingreso } from "../../firebase";
+import { ingreso, desc } from "../../firebase";
 import { getRefCliente } from "../../brlCliente/infrastructure";
 
 export const addIngreso = async ({ idCliente, ...rest }) => {
@@ -18,3 +18,14 @@ export const removeIngreso = async ({ idIngreso }) =>
 
 export const getRefIngresoById = ({ id }) =>
   firebase.firestore().collection(ingreso).doc(id);
+
+export const getAllIngreso = (callback) =>
+  firebase
+    .firestore()
+    .collection(ingreso)
+    .orderBy("fecha", desc)
+    .onSnapshot((result) =>
+      callback([
+        ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
+      ])
+    );
