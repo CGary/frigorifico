@@ -1,4 +1,4 @@
-import addController from "./addController";
+import addIngresoCtrl from "./addIngresoCtrl";
 import removeController from "./removeController";
 
-export { addController, removeController };
+export { addIngresoCtrl, removeController };
