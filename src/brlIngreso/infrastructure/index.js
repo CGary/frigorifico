@@ -13,8 +13,8 @@ export const addIngreso = async ({ idCliente, ...rest }) => {
   await firebase.firestore().collection(ingreso).add(query);
 };
 
-export const removeIngreso = async ({ id }) =>
-  await firebase.firestore().collection(ingreso).doc(id).delete();
+export const removeIngreso = async ({ idIngreso }) =>
+  await firebase.firestore().collection(ingreso).doc(idIngreso).delete();
 
 export const getRefIngresoById = ({ id }) =>
   firebase.firestore().collection(ingreso).doc(id);

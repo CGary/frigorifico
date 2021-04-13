@@ -7,5 +7,5 @@ export const addClienteRoute = async (query) =>
     addCliente,
   });
 
-export const removeClienteRoute = async ({ idCliente }) =>
-  await removeClienteUseCase({ removeCliente, idCliente });
+export const removeClienteRoute = async (query) =>
+  await removeClienteUseCase({ ...query, removeCliente });

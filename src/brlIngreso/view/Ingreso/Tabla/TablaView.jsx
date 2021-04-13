@@ -46,7 +46,7 @@ export default function TablaView({ eliminar, arrIngreso }) {
       <IconButton
         style={{ padding: "0" }}
         color="secondary"
-        onClick={() => eliminar({ id: row.id })}
+        onClick={() => eliminar({ idIngreso: row.id })}
       >
         <IoTrashOutline size="28px" />
       </IconButton>,
