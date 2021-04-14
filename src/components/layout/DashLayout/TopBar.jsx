@@ -2,13 +2,11 @@ import * as React from "react";
 import { AppBar, Hidden, IconButton, Toolbar, Box } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import { MdViewHeadline } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import { mobileOpen } from "../../../redux";
+import { eventEmitter, changeNavEvent } from "../../../tools";
 
 export default function TopBar() {
-  const dispatch = useDispatch();
   const handlerClick = () => {
-    dispatch({ type: mobileOpen });
+    eventEmitter.emit(changeNavEvent, false);
   };
   return (
     <AppBar position="sticky" elevation={0} style={{ height: "64px" }}>

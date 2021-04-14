@@ -1,7 +1,31 @@
 import React from "react";
-import { useStyelesNavItem, ListItem } from "./styles";
+import { ListItem } from "./styles";
 import { NavLink as RouterLink } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
+
+const useStyelesNavItem = makeStyles((theme) => ({
+  button: {
+    color: theme.palette.text.secondary,
+    fontWeight: theme.typography.fontWeightMedium,
+    justifyContent: "flex-start",
+    letterSpacing: 0,
+    padding: "10px 8px",
+    textTransform: "none",
+    width: "100%",
+  },
+  icon: {
+    marginRight: theme.spacing(1),
+  },
+  active: {
+    color: theme.palette.primary.main,
+    "& $title": {
+      fontWeight: theme.typography.fontWeightMedium,
+    },
+    "& $icon": {
+      color: theme.palette.primary.main,
+    },
+  },
+}));
 
 const NavItem = ({ href, icon: Icon, title }) => {
   const classes = useStyelesNavItem();

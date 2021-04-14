@@ -29,30 +29,6 @@ export const BoxAvatar = styled.div`
   padding: 16px;
 `;
 
-export const useStyelesNavItem = makeStyles((theme) => ({
-  button: {
-    color: theme.palette.text.secondary,
-    fontWeight: theme.typography.fontWeightMedium,
-    justifyContent: "flex-start",
-    letterSpacing: 0,
-    padding: "10px 8px",
-    textTransform: "none",
-    width: "100%",
-  },
-  icon: {
-    marginRight: theme.spacing(1),
-  },
-  active: {
-    color: theme.palette.primary.main,
-    "& $title": {
-      fontWeight: theme.typography.fontWeightMedium,
-    },
-    "& $icon": {
-      color: theme.palette.primary.main,
-    },
-  },
-}));
-
 export const ListItem = styled(ListItemBase)`
   padding-top: 0;
   padding-bottom: 0;
