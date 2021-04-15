@@ -3,9 +3,9 @@ import { addCliente, removeCliente } from "../infrastructure";
 
 export const addClienteRoute = async (query) =>
   await addClienteUseCase({
-    ...query,
     addCliente,
+    ...query,
   });
 
 export const removeClienteRoute = async (query) =>
-  await removeClienteUseCase({ ...query, removeCliente });
+  await removeClienteUseCase({ removeCliente, ...query });

@@ -1,11 +1,10 @@
 import * as React from "react";
+import { useState } from "react";
 import { Button, Box } from "@material-ui/core";
 import Buscador from "./Buscador";
 import TablaView from "./TablaView";
 import { SearchCliente } from "../../../../components/common";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { setIngresoController } from "../../../controller";
+import { SearchIngresoCtrl } from "../../../controller";
 import { getDateLocalToUTC } from "../../../../tools";
 
 export default function Toolbar() {
@@ -52,8 +51,7 @@ export default function Toolbar() {
     handleClose,
   };
 
-  const setIngreso = setIngresoController();
-  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
+  const { setIngreso, arrIngreso } = SearchIngresoCtrl();
   const propsTablaView = {
     rowClick: (idIngreso) => () => {
       setIngreso(arrIngreso.find((row) => row.id === idIngreso));

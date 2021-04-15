@@ -1,21 +1,16 @@
 import * as React from "react";
 import TablaView from "./TablaView";
-import { useSelector } from "react-redux";
-import { removeFaenaCtrl } from "../../../controller";
+import { removeFaenaCtrl, getFaenaByIngresoCtrl } from "../../../controller";
 
 export default function Tabla() {
-  const { fecha, nombre, cliente, refIngreso } = useSelector(
-    (state) => state.faenaReducer.faena
-  );
+  const { fecha, nombre, cliente, arrFaena } = getFaenaByIngresoCtrl();
 
   const propsTablaView = {
     fecha,
     nombre,
     cliente,
     eliminar: removeFaenaCtrl(),
-    arrSource: useSelector((state) => state.faenaReducer.arrFaena).filter(
-      (row) => row.refIngreso.id === refIngreso?.id
-    ),
+    arrSource: arrFaena,
   };
   return cliente ? <TablaView {...propsTablaView} /> : null;
 }

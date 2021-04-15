@@ -68,7 +68,6 @@ export default function Formulario() {
       onSubmit: (e) => {
         e.preventDefault();
         const query = {
-          cliente,
           idCliente,
           fecha,
           cantidad,

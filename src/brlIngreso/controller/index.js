@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useDialogoPromise } from "../../components/hooks";
 import { getDateLocalToUTC } from "../../tools";
 import { addIngresoRoute, removeIngresoRoute } from "../routes";
-import getAllIngresoCtrl from "./getAllIngresoCtrl";
+import getListaIngresoCtrl from "./getListaIngresoCtrl";
 
 const addIngresoCtrl = () => {
   const uidUser = useSelector((state) => state.segReducer.uid);
@@ -34,4 +34,4 @@ const removeController = () => {
   };
 };
 
-export { addIngresoCtrl, removeController, getAllIngresoCtrl };
+export { addIngresoCtrl, removeController, getListaIngresoCtrl };

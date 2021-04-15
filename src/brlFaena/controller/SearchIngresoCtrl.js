@@ -1,5 +1,5 @@
-import { setFaena } from "../../brlFaena/redux";
-import { useDispatch } from "react-redux";
+import { setFaena } from "../redux";
+import { useDispatch, useSelector } from "react-redux";
 import { eventEmitter, loadEvent } from "../../tools";
 import { setIngresoUseCase } from "../app";
 import { getClienteByRef } from "../../brlCliente/infrastructure";
@@ -7,18 +7,19 @@ import { getRefIngresoById } from "../../brlIngreso/infrastructure";
 
 export default () => {
   const dispatch = useDispatch();
+  const arrIngreso = useSelector((state) => state.ingresoReducer.arrIngreso);
 
-  return async (objIngreso) => {
+  const setIngreso = async (objIngreso) => {
     console.log({ objIngreso });
     eventEmitter.emit(loadEvent, true);
     try {
-      const { refCliente, fecha, cliente, id } = objIngreso;
+      const { idCliente, fecha, cliente, id } = objIngreso;
 
       const injection = {
         getRefIngresoById,
         getClienteByRef,
         idIngreso: id,
-        refCliente,
+        idCliente,
       };
 
       const { refIngreso, nombre } = await setIngresoUseCase(injection);
@@ -31,5 +32,10 @@ export default () => {
       console.log(err);
     }
     eventEmitter.emit(loadEvent, false);
+  };
+
+  return {
+    setIngreso,
+    arrIngreso,
   };
 };

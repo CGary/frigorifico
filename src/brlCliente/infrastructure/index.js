@@ -35,3 +35,12 @@ export const getAllCLiente = (callback) =>
         ...result.docs.map((item) => ({ ...item.data(), id: item.id })),
       ])
     );
+
+export const getAllCliente = async () => {
+  const { docs } = await firebase
+    .firestore()
+    .collection(cliente)
+    .orderBy("fecha", desc)
+    .get();
+  return docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+};

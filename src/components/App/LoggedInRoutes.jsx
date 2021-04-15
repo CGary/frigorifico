@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useSnapshots } from "../../firebase";
 import { Switch, Route, Redirect } from "react-router-dom";
 import DashLayout from "../layout/DashLayout";
 import Faena from "../../brlFaena/view/Faena";
@@ -9,8 +8,6 @@ import Cliente from "../../brlCliente/view/Cliente";
 import Cerrar from "../../brlSeguridad/view/Logout";
 
 export default function LoggedInRoutes() {
-  useSnapshots();
-
   const routes = [
     { exact: true, path: "/faena", component: Faena },
     { exact: true, path: "/ingreso", component: Ingreso },

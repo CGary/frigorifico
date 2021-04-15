@@ -1,7 +1,8 @@
 import { useDialogoPromise } from "../../components/hooks";
 import { useSelector } from "react-redux";
 import { addFaenaRoute, removeFaenaRoute } from "../routes";
-import setIngresoController from "./setIngresoController";
+import SearchIngresoCtrl from "./SearchIngresoCtrl";
+import getFaenaByIngresoCtrl from "./getFaenaByIngresoCtrl";
 
 const addFaenaCtrl = () => {
   const uidUser = useSelector((state) => state.segReducer.uid);
@@ -28,4 +29,9 @@ const removeFaenaCtrl = () => {
   };
 };
 
-export { addFaenaCtrl, removeFaenaCtrl, setIngresoController };
+export {
+  addFaenaCtrl,
+  removeFaenaCtrl,
+  SearchIngresoCtrl,
+  getFaenaByIngresoCtrl,
+};
