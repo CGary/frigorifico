@@ -1,6 +1,7 @@
 import useFirebaseInit from "./useFirebaseInit";
+import useSnapshots from "./useSnapshots";
 
-export { useFirebaseInit };
+export { useFirebaseInit, useSnapshots };
 
 // tablas
 export const faena = "faena";

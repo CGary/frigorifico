@@ -3,10 +3,10 @@ import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
 import { Grilla } from "../../../../components/common";
 import { IoTrashOutline } from "react-icons/io5";
-import { MdEdit, MdCheck } from "react-icons/md";
+import { MdEdit, MdCheck, MdUpdate } from "react-icons/md";
 import { getDateUTCToLocalShort } from "../../../../tools";
 
-export default function TablaView({ eliminar, arrIngreso }) {
+export default function TablaView({ eliminar, arrIngreso, onUpdate }) {
   const propsGrilla = {
     columns: [
       {
@@ -63,7 +63,14 @@ export default function TablaView({ eliminar, arrIngreso }) {
   };
   return (
     <Card>
-      <CardHeader title="Listado de Ingresos de Servicios" />
+      <CardHeader
+        title="Listado de Ingresos de Servicios"
+        action={
+          <IconButton color="primary" onClick={onUpdate?.()}>
+            <MdUpdate size="28px" />
+          </IconButton>
+        }
+      />
       <Divider />
       <CardContent>
         <Grilla {...propsGrilla} />

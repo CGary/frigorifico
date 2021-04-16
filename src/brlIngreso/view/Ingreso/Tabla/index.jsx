@@ -1,12 +1,14 @@
 import * as React from "react";
 import TablaView from "./TablaView";
-import { removeController, getListaIngresoCtrl } from "../../../controller";
+import { removeIngresoCtrl, getAllIngresoCtrl } from "../../../controller";
 
 export default function Tabla() {
   console.log({ Tabla: "render" });
+  const { arrIngreso, getListaIngreso } = getAllIngresoCtrl();
   const propsTablaView = {
-    eliminar: removeController(),
-    arrIngreso: getListaIngresoCtrl(),
+    eliminar: removeIngresoCtrl(),
+    arrIngreso,
+    onUpdate: () => () => getListaIngreso(),
   };
 
   return <TablaView {...propsTablaView} />;

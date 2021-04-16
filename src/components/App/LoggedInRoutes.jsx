@@ -6,8 +6,11 @@ import Ingreso from "../../brlIngreso/view/Ingreso";
 import Recibo from "../../brlRecibo/view/Recibo";
 import Cliente from "../../brlCliente/view/Cliente";
 import Cerrar from "../../brlSeguridad/view/Logout";
+import { useSnapshots } from "../../firebase";
 
 export default function LoggedInRoutes() {
+  useSnapshots();
+
   const routes = [
     { exact: true, path: "/faena", component: Faena },
     { exact: true, path: "/ingreso", component: Ingreso },
