@@ -1,17 +1,24 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { mobileClose } from "../../../../../redux";
+import { eventEmitter, changeNavEvent } from "../../../../../tools";
 import NavMobileView from "./NavMobileView";
 
 export default function NavMobile() {
+  const [isMobileOpen, setIsMobileOpen] = React.useState(false);
   console.log({ Mobile: "render" });
-  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const listener = eventEmitter.addListener(changeNavEvent, (show) => {
+      setIsMobileOpen(show);
+    });
+    return () => {
+      listener.remove();
+    };
+  }, []);
 
   const propsNavMobileView = {
-    isMobileOpen: useSelector((state) => state.navMobileReducer.isMobileOpen),
-    handlerClose: () => dispatch({ type: mobileClose }),
+    isMobileOpen,
+    handlerClose: () => eventEmitter.emit(changeNavEvent, false),
   };
 
   return (
@@ -23,11 +30,10 @@ export default function NavMobile() {
 }
 
 const ListenerToCloseMobilDrawer = () => {
-  const dispatch = useDispatch();
   const location = useLocation();
 
-  useEffect(() => {
-    dispatch({ type: mobileClose });
+  React.useEffect(() => {
+    eventEmitter.emit(changeNavEvent, false);
   }, [location.pathname]);
 
   return null;

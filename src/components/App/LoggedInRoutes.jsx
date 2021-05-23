@@ -1,12 +1,12 @@
 import * as React from "react";
-import { useSnapshots } from "../../firebase";
 import { Switch, Route, Redirect } from "react-router-dom";
 import DashLayout from "../layout/DashLayout";
-import Faena from "../pages/Faena";
-import Ingreso from "../pages/Ingreso";
-import Recibo from "../pages/Recibo";
-import Cliente from "../pages/Cliente";
-import Cerrar from "../pages/Cerrar";
+import Faena from "../../brlFaena/view/Faena";
+import Ingreso from "../../brlIngreso/view/Ingreso";
+import Recibo from "../../brlRecibo/view/Recibo";
+import Cliente from "../../brlCliente/view/Cliente";
+import Cerrar from "../../brlSeguridad/view/Logout";
+import { useSnapshots } from "../../firebase";
 
 export default function LoggedInRoutes() {
   useSnapshots();

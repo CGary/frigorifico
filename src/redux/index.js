@@ -1,21 +1,19 @@
-//seguridad Actions
-export const login = "login";
-export const logout = "logout";
+import { createStore, compose } from "redux";
+import reducers from "./reducers";
+import { saveToLocalStorage, loadFromLocalStorage } from "./storage";
 
-export const dialogoOpen = "dialogoOpen";
-export const dialogoClose = "dialogoClose";
+const persistedState = loadFromLocalStorage();
 
-export const mobileOpen = "mobileOpen";
-export const mobileClose = "mobileClose";
+const arrComposes = [];
 
-export const setFaena = "setFaena";
-export const setArrFaena = "setArrFaena";
+if (window.__REDUX_DEVTOOLS_EXTENSION__)
+  arrComposes.push(window.__REDUX_DEVTOOLS_EXTENSION__());
 
-export const setCliente = "setCliente";
-export const setArrCliente = "setArrCliente";
+const store = createStore(reducers, persistedState, compose(...arrComposes));
 
-export const setIngreso = "setIngreso";
-export const setArrIngreso = "setArrIngreso";
+store.subscribe(() => {
+  const state = store.getState();
+  saveToLocalStorage(state);
+});
 
-export const setRecibo = "setRecibo";
-export const setArrRecibo = "setArrRecibo";
+export default store;

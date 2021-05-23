@@ -1,6 +1,6 @@
-import store from "./store";
+import store from "./";
 import reducers from "./reducers";
-import { setFaena } from ".";
+import { setFaena } from "../brlFaena/redux";
 import { arrUnstoredReducers, loadFromLocalStorage } from "./storage";
 
 describe("Tests redux", () => {

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import { login, logout } from "../redux";
+import { login, logout } from "../brlSeguridad/redux";
 import { eventEmitter, loadEvent } from "../tools";
 
 export default () => {
