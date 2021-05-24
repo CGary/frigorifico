@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
-import { Grilla } from "../../../../components/common";
+import { Grilla } from "../../../../../components/common";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdEdit, MdCheck, MdUpdate } from "react-icons/md";
-import { getDateUTCToLocalShort } from "../../../../tools";
+import { getDateUTCToLocalShort } from "../../../../../tools";
 
 export default function TablaView({ eliminar, arrIngreso, onUpdate }) {
   const propsGrilla = {

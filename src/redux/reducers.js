@@ -1,7 +1,7 @@
 import { segReducer } from "../module/seguridad/redux";
 import { faenaReducer } from "../brlFaena/redux";
 import { clienteReducer } from "../brlCliente/redux";
-import { ingresoReducer } from "../brlIngreso/redux";
+import { ingresoReducer } from "../module/ingreso/redux";
 import { reciboReducer } from "../module/recibo/redux";
 import { dialogoReducer } from "../components/common/Dialogo/redux";
 

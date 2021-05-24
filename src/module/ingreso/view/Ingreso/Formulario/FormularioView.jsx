@@ -5,7 +5,7 @@ import { KeyboardDatePicker } from "@material-ui/pickers";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardContent, FormControlLabel, Checkbox } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-import { SearchCliente } from "../../../../components/common";
+import { SearchCliente } from "../../../../../components/common";
 
 export default function FormularioView(props) {
   return (

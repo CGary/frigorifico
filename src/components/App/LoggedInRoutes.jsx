@@ -2,7 +2,7 @@ import * as React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import DashLayout from "../layout/DashLayout";
 import Faena from "../../brlFaena/view/Faena";
-import Ingreso from "../../brlIngreso/view/Ingreso";
+import Ingreso from "../../module/ingreso/view/Ingreso";
 import Recibo from "../../module/recibo/view/Recibo";
 import Cliente from "../../brlCliente/view/Cliente";
 import Cerrar from "../../module/seguridad/view/Logout";

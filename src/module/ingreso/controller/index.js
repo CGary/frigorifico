@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useDialogoPromise } from "../../components/hooks";
-import { getDateLocalToUTC } from "../../tools";
+import { useDialogoPromise } from "../../../components/hooks";
+import { getDateLocalToUTC } from "../../../tools";
 import { setArrIngreso } from "../redux";
 import { addIngresoRoute, removeIngresoRoute } from "../routes";
 import { getListaIngresoRoute } from "../routes";
-import { eventEmitter, loadEvent } from "../../tools";
+import { eventEmitter, loadEvent } from "../../../tools";
 
 const addIngresoCtrl = () => {
   const dispatch = useDispatch();

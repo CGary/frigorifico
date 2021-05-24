@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { eventEmitter, loadEvent } from "../../tools";
 import { setIngresoUseCase } from "../app";
 import { getClienteByRef } from "../../brlCliente/infrastructure";
-import { getRefIngresoById } from "../../brlIngreso/infrastructure";
+import { getRefIngresoById } from "../../module/ingreso/infrastructure";
 
 export default () => {
   const dispatch = useDispatch();

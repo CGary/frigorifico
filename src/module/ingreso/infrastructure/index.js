@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import { ingreso, desc } from "../../firebase";
+import { ingreso, desc } from "../../../firebase";
 // import { getRefCliente } from "../../brlCliente/infrastructure";
 
 export const addIngreso = async ({ idCliente, ...rest }) => {
