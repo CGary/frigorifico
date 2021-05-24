@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
-import Alogin from "../../brlSeguridad/view/Login";
-import Aresetpass from "../../brlSeguridad/view/Resetpass";
+import Alogin from "../../module/seguridad/view/Login";
+import Aresetpass from "../../module/seguridad/view/Resetpass";
 
 export default function LoggedOutRoutes() {
   const routes = [

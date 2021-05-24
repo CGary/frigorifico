@@ -1,4 +1,4 @@
-import { segReducer } from "../brlSeguridad/redux";
+import { segReducer } from "../module/seguridad/redux";
 import { faenaReducer } from "../brlFaena/redux";
 import { clienteReducer } from "../brlCliente/redux";
 import { ingresoReducer } from "../brlIngreso/redux";

@@ -5,7 +5,7 @@ import Faena from "../../brlFaena/view/Faena";
 import Ingreso from "../../brlIngreso/view/Ingreso";
 import Recibo from "../../brlRecibo/view/Recibo";
 import Cliente from "../../brlCliente/view/Cliente";
-import Cerrar from "../../brlSeguridad/view/Logout";
+import Cerrar from "../../module/seguridad/view/Logout";
 import { useSnapshots } from "../../firebase";
 
 export default function LoggedInRoutes() {

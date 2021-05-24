@@ -1,5 +1,5 @@
-import { useDialogoPromise } from "../../components/hooks";
-import { useDialogo } from "../../components/common";
+import { useDialogoPromise } from "../../../components/hooks";
+import { useDialogo } from "../../../components/common";
 import { resetpass_mail } from "./message";
 import { loginRoute, logoutRoute, resetPassRoute } from "../routes";
 

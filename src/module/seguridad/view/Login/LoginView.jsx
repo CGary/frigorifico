@@ -1,23 +1,27 @@
 import * as React from "react";
-import { MainForms } from "../../../components/styled";
+import { MainForms } from "../../../../components/styled";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
-export default function ResetpassView({ history, sendMail }) {
-  const handler_onSubmit = async (e) => {
+export default function LoginView({ history, sendLogin }) {
+  const onClick_pass = (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    sendMail({ email });
+    history.push("/resetpass");
   };
 
-  const onClick_volver = () => history.goBack();
+  const handler_onSubmit = (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("pass").value;
+    sendLogin({ email, password });
+  };
 
   return (
     <MainForms>
       <Typography component="h1" variant="h5">
-        Reiniciar Contraseña
+        Inicio de Sesión
       </Typography>
       <form onSubmit={handler_onSubmit}>
         <TextField
@@ -29,12 +33,20 @@ export default function ResetpassView({ history, sendMail }) {
           type="email"
           id="email"
         />
+        <TextField
+          variant="outlined"
+          required
+          fullWidth
+          label="Contraseña"
+          type="password"
+          id="pass"
+        />
         <Button type="submit" fullWidth variant="contained" color="primary">
-          Enviar
+          Iniciar Sesión
         </Button>
       </form>
-      <Link href="#" variant="body1" onClick={onClick_volver}>
-        Volver
+      <Link href="#" variant="body1" onClick={onClick_pass}>
+        ¿Olvidaste tu Contraseña?
       </Link>
     </MainForms>
   );
