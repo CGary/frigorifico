@@ -1,6 +1,6 @@
-import { useDialogoPromise } from "../../components/hooks";
+import { useDialogoPromise } from "../../../components/hooks";
 import { useSelector } from "react-redux";
-import { getDateLocalToUTC } from "../../tools";
+import { getDateLocalToUTC } from "../../../tools";
 import { addReciboRoute, removeReciboRoute } from "../routes";
 import getAllReciboCtrl from "./getAllReciboCtrl";
 

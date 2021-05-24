@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useStylesPageMain } from "../../../components/hooks";
+import { useStylesPageMain } from "../../../../components/hooks";
 import { Container, Grid } from "@material-ui/core";
 import Formulario from "./Formulario";
 import Tabla from "./Tabla";

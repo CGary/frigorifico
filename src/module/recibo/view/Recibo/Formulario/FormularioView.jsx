@@ -5,7 +5,7 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import { CardContent } from "@material-ui/core";
 import { CardHeader } from "@material-ui/core";
-import { SearchCliente } from "../../../../components/common";
+import { SearchCliente } from "../../../../../components/common";
 
 export default function FormularioView(props) {
   return (
