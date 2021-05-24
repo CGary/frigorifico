@@ -14,6 +14,6 @@ export const getListaIngresoUseCase = async ({
   ]);
   return arrIngreso.map(({ idCliente, ...rest }) => ({
     ...rest,
-    cliente: arrCliente.find(({ id }) => id === idCliente).codigo,
+    cliente: arrCliente.find(({ id }) => id === idCliente)?.codigo,
   }));
 };
