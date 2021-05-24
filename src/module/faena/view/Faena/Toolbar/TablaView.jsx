@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Grilla } from "../../../../components/common";
+import { Grilla } from "../../../../../components/common";
 import { MdCheck } from "react-icons/md";
-import { getDateUTCToLocalShort } from "../../../../tools";
+import { getDateUTCToLocalShort } from "../../../../../tools";
 
 export default function TablaView({ source, rowClick }) {
   const propsGrilla = {

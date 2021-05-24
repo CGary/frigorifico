@@ -1,9 +1,9 @@
 import { setFaena } from "../redux";
 import { useDispatch, useSelector } from "react-redux";
-import { eventEmitter, loadEvent } from "../../tools";
+import { eventEmitter, loadEvent } from "../../../tools";
 import { setIngresoUseCase } from "../app";
-import { getClienteByRef } from "../../brlCliente/infrastructure";
-import { getRefIngresoById } from "../../module/ingreso/infrastructure";
+import { getClienteByRef } from "../../../brlCliente/infrastructure";
+import { getRefIngresoById } from "../../ingreso/infrastructure";
 
 export default () => {
   const dispatch = useDispatch();

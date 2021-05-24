@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TextField, Button, Card, Divider, Grid, Box } from "@material-ui/core";
 import { CardHeader, CardContent } from "@material-ui/core";
-import { getDateUTCToLocalShort } from "../../../../tools";
+import { getDateUTCToLocalShort } from "../../../../../tools";
 
 export default function FormularioView({
   fecha,

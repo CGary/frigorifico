@@ -1,4 +1,4 @@
-import { useDialogoPromise } from "../../components/hooks";
+import { useDialogoPromise } from "../../../components/hooks";
 import { useSelector } from "react-redux";
 import { addFaenaRoute, removeFaenaRoute } from "../routes";
 import SearchIngresoCtrl from "./SearchIngresoCtrl";

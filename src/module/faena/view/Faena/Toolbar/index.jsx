@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Button, Box } from "@material-ui/core";
 import Buscador from "./Buscador";
 import TablaView from "./TablaView";
-import { SearchCliente } from "../../../../components/common";
+import { SearchCliente } from "../../../../../components/common";
 import { SearchIngresoCtrl } from "../../../controller";
-import { getDateLocalToUTC } from "../../../../tools";
+import { getDateLocalToUTC } from "../../../../../tools";
 
 export default function Toolbar() {
   console.log({ Toolbar: "render" });

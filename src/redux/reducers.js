@@ -1,5 +1,5 @@
 import { segReducer } from "../module/seguridad/redux";
-import { faenaReducer } from "../brlFaena/redux";
+import { faenaReducer } from "../module/faena/redux";
 import { clienteReducer } from "../brlCliente/redux";
 import { ingresoReducer } from "../module/ingreso/redux";
 import { reciboReducer } from "../module/recibo/redux";

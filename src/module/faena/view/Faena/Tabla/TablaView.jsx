@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Card, CardHeader, Divider, CardContent } from "@material-ui/core";
 import { IconButton, Typography } from "@material-ui/core";
-import { Grilla } from "../../../../components/common";
+import { Grilla } from "../../../../../components/common";
 import { IoTrashOutline } from "react-icons/io5";
-import { getDateUTCToLocalShort, getesESfromDate } from "../../../../tools";
+import { getDateUTCToLocalShort, getesESfromDate } from "../../../../../tools";
 
 export default function TablaView(props) {
   const { fecha, nombre, cliente, eliminar, arrSource } = props;

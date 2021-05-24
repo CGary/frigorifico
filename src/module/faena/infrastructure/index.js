@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import { faena, desc } from "../../firebase";
+import { faena, desc } from "../../../firebase";
 
 export const addFaena = async (query) =>
   await firebase
