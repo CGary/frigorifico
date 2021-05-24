@@ -2,7 +2,7 @@ import { setFaena } from "../redux";
 import { useDispatch, useSelector } from "react-redux";
 import { eventEmitter, loadEvent } from "../../../tools";
 import { setIngresoUseCase } from "../app";
-import { getClienteByRef } from "../../../brlCliente/infrastructure";
+import { getClienteByRef } from "../../cliente/infrastructure";
 import { getRefIngresoById } from "../../ingreso/infrastructure";
 
 export default () => {

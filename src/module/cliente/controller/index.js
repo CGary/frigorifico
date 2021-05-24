@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { useDialogoPromise } from "../../components/hooks";
+import { useDialogoPromise } from "../../../components/hooks";
 import { addClienteRoute, removeClienteRoute } from "../routes";
-import { getDateLocalToUTC } from "../../tools";
+import { getDateLocalToUTC } from "../../../tools";
 import getAllClienteCtrl from "./getAllClienteCtrl";
 
 const addClienteCtrl = () => {

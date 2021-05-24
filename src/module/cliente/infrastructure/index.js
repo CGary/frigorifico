@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import { cliente, desc } from "../../firebase";
+import { cliente, desc } from "../../../firebase";
 
 export const addCliente = async (query) => {
   await firebase

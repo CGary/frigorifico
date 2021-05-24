@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import firebase from "firebase/app";
 import { useDispatch } from "react-redux";
 import { cliente, desc } from "./";
-import { setArrCliente } from "../brlCliente/redux";
+import { setArrCliente } from "../module/cliente/redux";
 
 export default () => {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import DashLayout from "../layout/DashLayout";
 import Faena from "../../module/faena/view/Faena";
 import Ingreso from "../../module/ingreso/view/Ingreso";
 import Recibo from "../../module/recibo/view/Recibo";
-import Cliente from "../../brlCliente/view/Cliente";
+import Cliente from "../../module/cliente/view/Cliente";
 import Cerrar from "../../module/seguridad/view/Logout";
 import { useSnapshots } from "../../firebase";
 
