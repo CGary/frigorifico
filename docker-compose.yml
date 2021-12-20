@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  app:
+    image: node:16.13.1-alpine3.14
+    volumes:
+      - ./:/app:cached
+    ports:
+      - 3000:3000
+    network_mode: 'host'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    working_dir: /app
+    command: npm start
+    tty: true
+
+# sudo docker-compose run --rm app npm i
