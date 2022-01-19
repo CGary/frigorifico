@@ -13,7 +13,6 @@ export default () => {
         type: setArrCliente,
         payload: arr,
       });
-
     const unsubscribeCliente = getAllCLiente(callback);
     return () => {
       unsubscribeCliente();
